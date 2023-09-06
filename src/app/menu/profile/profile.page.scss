@@ -1,0 +1,29 @@
+.perfil-foto {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Para centralizar verticalmente, se necessário */
+    margin-top: 50px ;
+}
+
+ion-img {
+    width: 170px; /* Ajuste o tamanho da imagem conforme necessário */
+    height:170px;
+    border-radius: 50%; /* Define a borda como 50% da largura/altura para torná-la circular */
+    overflow: hidden; /* Certifique-se de que a imagem seja cortada corretamente em um círculo */
+    border: 4px solid #2dd36f; /* Adiciona uma borda branca de 2px à imagem */
+}
+
+.nome-usuario {
+    text-align: center; /* Alinhe o texto ao centro */
+    margin-top: 25px; /* Ajuste a margem superior para um espaçamento adequado */
+    font-size: 25px; /* Ajuste o tamanho da fonte conforme necessário */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Para centralizar verticalmente, se necessário */
+  }
+
+.sublinhado-colorido {
+    text-decoration: underline; /* Adicione um sublinhado */
+    text-decoration-color: #2dd36f; /* Defina a cor do sublinhado (exemplo: azul) */
+    margin-top: 10px;
+}

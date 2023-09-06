@@ -1,5 +1,26 @@
-<ion-header [translucent]="true">
-</ion-header>
+<ion-header>
+    <ion-toolbar color="darkgray">
 
+      <ion-title>PERFIL</ion-title>
+
+      <ion-buttons slot="end">
+        <ion-button (click)="editarPerfil()" color="success">
+          Editar Perfil
+        </ion-button>
+      </ion-buttons>
+
+    </ion-toolbar>
+  </ion-header>
+  
 <ion-content [fullscreen]="true" color="darkgray">
+
+    <div class="perfil-foto">
+        <ion-img src="../../../assets/Perfil.jpg" alt="Foto de Perfil do Usuário"></ion-img>
+    </div>
+
+    <ion-label class="nome-usuario">
+        <u class="sublinhado-colorido">Gabriel Godoy</u>
+    </ion-label>
+
 </ion-content>
+  
