@@ -8,13 +8,15 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'statistics',
-        loadChildren: () => import('../statistics/statistics.module').then(m => m.StatisticsPageModule)
-      },
-      {
         path: 'home',
         loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
       },
+
+      {
+        path: 'statistics',
+        loadChildren: () => import('../statistics/statistics.module').then(m => m.StatisticsPageModule)
+      },
+
       {
         path: 'notifications',
         loadChildren: () => import('../notifications/notifications.module').then(m => m.NotificationsPageModule)
@@ -25,7 +27,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/statistics',
+        redirectTo: '/tabs/home',
         pathMatch: 'full'
       }
     ]
