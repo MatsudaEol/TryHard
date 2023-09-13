@@ -1,0 +1,30 @@
+ion-header ion-toolbar {
+    --background: #1C1C1E; 
+}
+
+ion-title {
+    font-size: 18px;
+    font-weight: 800;
+    text-align: center;
+    color: var(--ion-color-light);
+}
+
+ion-card {
+    position: relative;
+}
+
+.card-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px; /* Espaçamento interno do texto, você pode ajustar conforme necessário */
+}
+
+ion-card-title {
+    color: white;
+}
+
+ion-card-subtitle {
+    color: #54BB77;
+}

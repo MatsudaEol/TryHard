@@ -1,5 +1,5 @@
 ion-icon {
-    color: #505050;
+    color: #2C2C2E;
 }
 
 ion-tab-bar{
@@ -9,3 +9,9 @@ ion-tab-bar{
 .border{
     border-top: 1px solid #2C2C2E;
 }
+
+ion-tab-button.tab-selected {
+    ion-icon {
+      color: #FFFFFF; /* Substitua pela cor desejada */
+    }
+  }
