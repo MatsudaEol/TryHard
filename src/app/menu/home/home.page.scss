@@ -11,6 +11,7 @@ ion-title {
 
 ion-card {
     position: relative;
+    height: 25vh;
 }
 
 .card-text {
@@ -18,7 +19,7 @@ ion-card {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 10px; /* Espaçamento interno do texto, você pode ajustar conforme necessário */
+    padding: 10px;
 }
 
 ion-card-title {
@@ -28,3 +29,32 @@ ion-card-title {
 ion-card-subtitle {
     color: #54BB77;
 }
+
+gradient {
+    position: relative;
+  }
+  
+
+.gradient::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      360deg,
+      rgba(18, 17, 18, 1) 0%,
+      rgba(18, 17, 17, 0.9) 20%,
+      rgba(17, 17, 18, 0.83) 25%,
+      rgba(18, 17, 18, 0) 100%
+    );
+  }
+
+
+  .border{
+    border: 1px solid #2C2C2E;
+    box-sizing: border-box;
+}
+
+  
