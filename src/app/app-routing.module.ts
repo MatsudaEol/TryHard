@@ -5,6 +5,19 @@ const routes: Routes = [
 
   {
     path: '',
+    redirectTo: 'splash',
+    pathMatch: 'full'
+  },
+  {
+    path: 'splash',
+    loadChildren: () => import('./splash/splash.module').then(m => m.SplashPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: '',
     loadChildren: () => import('./menu/tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
@@ -22,10 +35,6 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('./menu/profile/profile.module').then( m => m.ProfilePageModule)
-  },
-  {
-    path: 'splash',
-    loadChildren: () => import('./splash/splash.module').then(m => m.SplashPageModule)
   },
 ];
 @NgModule({
