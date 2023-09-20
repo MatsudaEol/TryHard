@@ -1,0 +1,33 @@
+<ion-content [fullscreen]="true" class="ion-content" style="--background: rgb(14, 14, 14);">
+  <div class="header">
+    <ion-title class="title">Bem vindo</ion-title>
+    <p class="subTitle">Crie sua conta</p>
+  </div>
+
+  <form class="form-container">
+    <div class="ion-padding">
+      <ion-item>
+        <ion-input placeholder="Usuário" class="input"></ion-input>
+        <ion-icon name="person-outline" slot="end" style="color: white;"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="Email" class="input"></ion-input>
+        <ion-icon name="person-outline" slot="end" style="color: white;"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="Senha" class="input"></ion-input>
+        <ion-icon name="lock-closed-outline" slot="end" style="color: white;"></ion-icon>
+      </ion-item>
+
+      <div class="signupLink">
+        <p>Já é membro? <a [routerLink]="['/login']" style="color:#f0d229" >Entrar na conta</a></p>
+      </div>
+    </div>
+  </form>
+
+  <ion-fab vertical="bottom" horizontal="end" style="margin-bottom:40px;">
+    <ion-fab-button [routerLink]="['/tabs/home']" color="success">
+      <ion-icon name="chevron-forward"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

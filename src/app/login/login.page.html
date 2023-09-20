@@ -1,14 +1,35 @@
-<ion-content [fullscreen]="true" class="ion-content">
-  <div class="login-container">
+<ion-content [fullscreen]="true" class="ion-content" style="--background:rgb(14,14,14)">
+  <div class="header">
+    <div class="fade-in-bottom">
     <img src="assets/logo2.png" alt="logo" class="logo">
-    <ion-item>
-      <ion-label position="floating">E-mail</ion-label>
-      <ion-input type="email"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Senha</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
-    <ion-button expand="block" class="login-button">Login</ion-button>
+    </div>
+    <p class="subTitle">Faça o login</p>
   </div>
+
+  <form class="form-container">
+    <div class="ion-padding">
+      <ion-item>
+        <ion-input placeholder="Usuário" class="input"></ion-input>
+        <ion-icon name="person-outline" slot="end" style="color: rgba(59, 59, 59, 0.767);"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="Senha" type="{{ showPassword ? 'text' : 'password' }}" class="input"></ion-input>
+        <ion-icon name="{{ showPassword ? 'eye-off-outline' : 'eye-outline' }}" slot="end" style="color: rgba(59, 59, 59, 0.767);" (click)="togglePassword()"></ion-icon>
+      </ion-item>
+
+      <div class="forgotPassword">
+        <a [routerLink]="['/reset-password']" style="color:#f0d229">Esqueceu sua senha?</a>
+      </div>
+
+      <div class="signupLink">
+        <p>Novo membro? <a [routerLink]="['/sign-up']" style="color:#f0d229">Inscreva-se agora</a></p>
+      </div>
+    </div>
+  </form>
+
+  <ion-fab vertical="bottom" horizontal="center" style="margin-bottom:170px;">
+    <ion-fab-button [routerLink]="['/tabs/home']" color="success">
+      <ion-icon name="chevron-forward"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

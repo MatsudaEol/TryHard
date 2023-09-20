@@ -1,0 +1,56 @@
+.input{
+  font-size: 300;
+}
+
+ion-item{
+  --background:#a8a3a3cb;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.header{
+  margin-top: 100px;
+  margin-bottom: 80px;
+  text-align: center;
+  .subTitle{
+    color: gray;
+    font-size: 1.3rem;
+  }
+  .title{
+    font-size: 2.3rem;
+    color: rgb(255, 255, 255);
+  }
+}
+
+.signupLink{
+  display: flex;
+  margin: auto;
+  flex-direction: row;
+  align-content: center;
+  position: absolute;
+  justify-content: center;
+  left: 0;
+  bottom: 0;
+  width: 80%;
+  right: 0;
+  color: white;
+
+  p{
+    font-size: 0.9
+  }
+  a{
+    text-decoration: none;
+  }
+}
+
+.forgotPassword{
+  display: flex;
+  justify-content: flex-end;
+  a{
+    font-weight: 400;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+
+}
+

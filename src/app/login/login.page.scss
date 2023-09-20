@@ -1,34 +1,92 @@
-.ion-content {
-  --background: #000000;
+.input{
+  font-size: 300;
 }
 
-.login-container {
+ion-item{
+  --background:#f1e7e7de;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.header{
+  margin-top: 100px;
+  margin-bottom: 80px;
+  text-align: center;
+  .subTitle{
+    color: rgb(175, 166, 166);
+    font-size: 0.9rem;
+  }
+  .title{
+    font-size: 2rem;
+  }
+}
+
+.signupLink{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  height: 100%;
+  margin: auto;
+  flex-direction: row;
+  align-content: center;
+  position: absolute;
+  justify-content: center;
+  left: 0;
+  right: 0;
+  bottom: 5px;
+  width: 100%;
+  color: rgb(175, 166, 166);
+
+  p{
+    font-size: 0.9
+  }
+  a{
+    text-decoration: none;
+  }
+}
+
+.forgotPassword{
+  display: flex;
+  justify-content: flex-end;
+  a{
+    font-weight: 400;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+
+}
+
+.fade-in-bottom {
+  -webkit-animation: fade-in-bottom 2.1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+          animation: fade-in-bottom 2.1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@-webkit-keyframes fade-in-bottom {
+  0% {
+    -webkit-transform: translateY(50px);
+            transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-bottom {
+  0% {
+    -webkit-transform: translateY(50px);
+            transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .logo {
-  width: 500px;
-  margin-bottom: 100px;
-}
-
-ion-item {
-  width: 80%;
-  margin-bottom: 20px;
-  border-radius: 15px;
-  --background:rgba(73, 72, 72, 0.856);
-}
-
-.login-button {
-  width: 50%;
-  height: 50px;
-  --background: #65aa44;
-  border-radius: 15px;
-}
-
-ion-item ion-label {
-  color: rgb(214, 214, 214);
+  height: auto;
+  width: 140px;
+  margin: auto;
+  margin-top: 20px;
 }

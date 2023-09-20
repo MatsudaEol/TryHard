@@ -36,6 +36,14 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () => import('./menu/profile/profile.module').then( m => m.ProfilePageModule)
   },
+  {
+    path: 'reset-password',
+    loadChildren: () => import('./reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
+  },
+  {
+    path: 'sign-up',
+    loadChildren: () => import('./sign-up/sign-up.module').then( m => m.SignUpPageModule)
+  },
 ];
 @NgModule({
   imports: [
