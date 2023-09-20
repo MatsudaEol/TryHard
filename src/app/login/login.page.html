@@ -9,19 +9,19 @@
     <div class="ion-padding">
       <ion-item>
         <ion-input placeholder="Usuário" class="input"></ion-input>
-        <ion-icon name="person-outline" slot="end" style="color: rgba(59, 59, 59, 0.767);"></ion-icon>
+        <ion-icon name="person-outline" slot="end" style="color: rgb(45, 211, 111);"></ion-icon>
       </ion-item>
       <ion-item>
         <ion-input placeholder="Senha" type="{{ showPassword ? 'text' : 'password' }}" class="input"></ion-input>
-        <ion-icon name="{{ showPassword ? 'eye-off-outline' : 'eye-outline' }}" slot="end" style="color: rgba(59, 59, 59, 0.767);" (click)="togglePassword()"></ion-icon>
+        <ion-icon name="{{ showPassword ? 'eye-off-outline' : 'eye-outline' }}" slot="end" style="color: rgb(45, 211, 111);" (click)="togglePassword()"></ion-icon>
       </ion-item>
 
       <div class="forgotPassword">
-        <a [routerLink]="['/reset-password']" style="color:#f0d229">Esqueceu sua senha?</a>
+        <a [routerLink]="['/reset-password']" style="color:#30E679">Esqueceu sua senha?</a>
       </div>
 
       <div class="signupLink">
-        <p>Novo membro? <a [routerLink]="['/sign-up']" style="color:#f0d229">Inscreva-se agora</a></p>
+        <p>Novo membro? <a [routerLink]="['/sign-up']" style="color:#2dd36f">Inscreva-se agora</a></p>
       </div>
     </div>
   </form>
