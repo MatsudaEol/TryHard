@@ -54,3 +54,9 @@ ion-item{
 
 }
 
+.ion-fab-horizontal-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-20%);
+  margin-bottom: 150px;
+}

@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true" class="ion-content" style="--background:rgb(14,14,14)">
-  <div class="header">
+  <div class="header" >
     <div class="fade-in-bottom">
     <img src="assets/logo2.png" alt="logo" class="logo">
     </div>
@@ -9,25 +9,25 @@
     <div class="ion-padding">
       <ion-item>
         <ion-input placeholder="Usuário" class="input"></ion-input>
-        <ion-icon name="person-outline" slot="end" style="color: rgb(45, 211, 111);"></ion-icon>
+        <ion-icon name="person-outline" slot="end" style="color: rgb(96, 100, 97);"></ion-icon>
       </ion-item>
       <ion-item>
         <ion-input placeholder="Senha" type="{{ showPassword ? 'text' : 'password' }}" class="input"></ion-input>
-        <ion-icon name="{{ showPassword ? 'eye-off-outline' : 'eye-outline' }}" slot="end" style="color: rgb(45, 211, 111);" (click)="togglePassword()"></ion-icon>
+        <ion-icon name="{{ showPassword ? 'eye-off-outline' : 'eye-outline' }}" slot="end" style="color: rgb(96, 100, 97);" (click)="togglePassword()"></ion-icon>
       </ion-item>
 
       <div class="forgotPassword">
-        <a [routerLink]="['/reset-password']" style="color:#30E679">Esqueceu sua senha?</a>
+        <a [routerLink]="['/reset-password']" style="color:#54BB77">Esqueceu sua senha?</a>
       </div>
 
       <div class="signupLink">
-        <p>Novo membro? <a [routerLink]="['/sign-up']" style="color:#2dd36f">Inscreva-se agora</a></p>
+        <p>Novo membro? <a [routerLink]="['/sign-up']" style="color:#54BB77">Inscreva-se agora</a></p>
       </div>
     </div>
   </form>
 
-  <ion-fab vertical="bottom" horizontal="center" style="margin-bottom:170px;">
-    <ion-fab-button [routerLink]="['/tabs/home']" color="success">
+  <ion-fab vertical="bottom" horizontal="center" class="ion-fab-horizontal-center">
+    <ion-fab-button [routerLink]="['/tabs/home']" color="trygreen" style="width: 90px; height: 90px;">
       <ion-icon name="chevron-forward"></ion-icon>
     </ion-fab-button>
   </ion-fab>
