@@ -5,12 +5,16 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" color="darkgray">
-    <ion-card class="gradient border" href="">
-        <img alt="Treadmill Workout" src="https://www.glam.com/img/gallery/treadmill-strut-the-viral-tiktok-workout-you-need-to-know/intro-1679354804.jpg" />
+  <a [routerLink]="['/exercise']">
+    <ion-card class="gradient border" href="/exercise">
+      <img 
+        alt="Treadmill Workout" 
+        src="https://www.glam.com/img/gallery/treadmill-strut-the-viral-tiktok-workout-you-need-to-know/intro-1679354804.jpg" />
         <ion-card-content class="card-text">
           <ion-card-title>Aquecimento</ion-card-title>
           <ion-card-subtitle>|  15 Minutos</ion-card-subtitle>
         </ion-card-content>
       </ion-card>
-      
+  </a>
 </ion-content>
+
