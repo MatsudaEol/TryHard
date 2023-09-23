@@ -1,32 +1,34 @@
 <ion-content [fullscreen]="true" class="ion-content" style="--background: rgb(14, 14, 14);">
   <div class="header">
-    <ion-title class="title">Bem vindo</ion-title>
-    <p class="subTitle">Crie sua conta</p>
+    <div class="fade-in-bottom">
+    <img src="assets/logo2.png" alt="logo" class="logo">
+    </div>
+    <ion-title class="subTitle">Crie sua conta</ion-title>
   </div>
 
   <form class="form-container">
     <div class="ion-padding">
       <ion-item>
         <ion-input placeholder="Usuário" class="input"></ion-input>
-        <ion-icon name="person-outline" slot="end" style="color: rgba(59, 59, 59, 0.767);"></ion-icon>
+        <ion-icon name="person-outline" slot="end" style="color: rgb(96, 100, 97)"></ion-icon>
       </ion-item>
       <ion-item>
         <ion-input placeholder="Email" class="input"></ion-input>
-        <ion-icon name="person-outline" slot="end" style="color: rgba(59, 59, 59, 0.767);"></ion-icon>
+        <ion-icon name="person-outline" slot="end" style="color: rgb(96, 100, 97)"></ion-icon>
       </ion-item>
       <ion-item>
-        <ion-input placeholder="Senha" class="input"></ion-input>
-        <ion-icon name="lock-closed-outline" slot="end" style="color: rgba(59, 59, 59, 0.767);"></ion-icon>
+        <ion-input placeholder="Senha" type="{{ showPassword ? 'text' : 'password' }}" class="input"></ion-input>
+        <ion-icon name="{{ showPassword ? 'eye-off-outline' : 'eye-outline' }}" slot="end" style="color: rgb(96, 100, 97);" (click)="togglePassword()"></ion-icon>
       </ion-item>
 
       <div class="signupLink">
-        <p>Já é membro? <a [routerLink]="['/login']" style="color:#f0d229" >Entrar na conta</a></p>
+        <p>Já é membro? <a [routerLink]="['/login']" style="color:#54BB77" >Entrar na conta</a></p>
       </div>
     </div>
   </form>
 
-  <ion-fab vertical="bottom" horizontal="end" style="margin-bottom:40px;">
-    <ion-fab-button [routerLink]="['/tabs/home']" color="success">
+  <ion-fab vertical="bottom" horizontal="center" class="ion-fab-horizontal-center">
+    <ion-fab-button [routerLink]="['/tabs/home']" color="trygreen" style="width: 90px; height: 90px;">
       <ion-icon name="chevron-forward"></ion-icon>
     </ion-fab-button>
   </ion-fab>

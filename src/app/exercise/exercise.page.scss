@@ -1,0 +1,41 @@
+ion-header ion-toolbar {
+    --background: #1C1C1E; 
+}
+
+ion-title {
+    font-size: 18px;
+    font-weight: 800;
+    text-align: center;
+    color: var(--ion-color-light);
+}
+
+.exercise-start {
+    width: 75%;
+    margin: 0 auto; 
+    margin-bottom: 0;
+  }
+
+ion-card {
+    height: 80vh;
+    --background: var(--ion-color-darkgray2); 
+}
+
+ion-card-content p {
+    margin-top: 20px;
+    font-size: 16px; 
+    line-height: 1.5; 
+    text-align: justify;
+    margin-bottom: 10px; 
+  }
+
+p, ul, li{
+    color: var(--ion-color-light);
+}
+
+ion-card-title {
+    color: var(--ion-color-light);
+}
+
+ion-card-subtitle {
+    color: var(--ion-color-trygreen);
+}
