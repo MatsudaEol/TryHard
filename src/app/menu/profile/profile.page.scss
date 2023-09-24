@@ -27,3 +27,24 @@ ion-img {
     text-decoration-color: #2dd36f; /* Defina a cor do sublinhado (exemplo: azul) */
     margin-top: 10px;
 }
+
+
+ion-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+html, body {
+  height: 100%; /* Garante que a altura do body seja 100% */
+  margin: 0;
+  padding: 0;
+}
+
+/* Classe personalizada para ajustar a largura do ion-list */
+.perfil-list {
+  width: 80%;
+  max-width: 400px;
+}
