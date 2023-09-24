@@ -1,18 +1,18 @@
 <ion-content [fullscreen]="true" class="ion-content" style="--background:rgb(14,14,14)">
-  <div class="header" >
+  <div class="header">
     <div class="fade-in-bottom">
-    <img src="assets/logo2.png" alt="logo" class="logo">
+      <img src="assets/logo2.png" alt="logo" class="logo">
     </div>
   </div>
 
-  <form class="form-container">
+  <form class="form-container" (ngSubmit)="login()">
     <div class="ion-padding">
       <ion-item>
-        <ion-input placeholder="Usuário" class="input"></ion-input>
+        <ion-input [(ngModel)]="username" name="username" placeholder="Usuário" class="input"></ion-input>
         <ion-icon name="person-outline" slot="end" style="color: rgb(96, 100, 97);"></ion-icon>
       </ion-item>
       <ion-item>
-        <ion-input placeholder="Senha" type="{{ showPassword ? 'text' : 'password' }}" class="input"></ion-input>
+        <ion-input [(ngModel)]="password" name="password" placeholder="Senha" type="{{ showPassword ? 'text' : 'password' }}" class="input"></ion-input>
         <ion-icon name="{{ showPassword ? 'eye-off-outline' : 'eye-outline' }}" slot="end" style="color: rgb(96, 100, 97);" (click)="togglePassword()"></ion-icon>
       </ion-item>
 
@@ -23,11 +23,15 @@
       <div class="signupLink">
         <p>Novo membro? <a [routerLink]="['/sign-up']" style="color:#54BB77">Inscreva-se agora</a></p>
       </div>
+
+      <div *ngIf="showAlert">
+        {{ alertMessage }}
+      </div>
     </div>
   </form>
 
   <ion-fab vertical="bottom" horizontal="center" class="ion-fab-horizontal-center">
-    <ion-fab-button [routerLink]="['/tabs/home']" color="trygreen" style="width: 90px; height: 90px;">
+    <ion-fab-button color="trygreen" style="width: 90px; height: 90px;" (click)="login()">
       <ion-icon name="chevron-forward"></ion-icon>
     </ion-fab-button>
   </ion-fab>
