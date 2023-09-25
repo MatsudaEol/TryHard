@@ -22,7 +22,7 @@ export class LoginPage {
 
   async login() {
     if (this.username && this.password) {
-      if (this.username === 'vitor' && this.password === 'vitor123') {
+      if (this.username === 'Vitor' && this.password === 'vitor123') {
         this.router.navigate(['/tabs/home']);
       } else {
         const alert = await this.alertController.create({

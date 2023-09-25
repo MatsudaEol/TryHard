@@ -12,14 +12,11 @@ ion-item{
   margin-top: 100px;
   margin-bottom: 80px;
   text-align: center;
-  .subTitle{
-    color: rgb(187, 199, 188);
-    font-size: 1.3rem;
-  }
-  .title{
-    font-size: 2.3rem;
-    color: rgb(255, 255, 255);
-  }
+}
+
+.subTitle{
+  color: #54BB77;
+  font-size: 1.2rem;
 }
 
 .signupLink{
@@ -58,7 +55,7 @@ ion-item{
   position: absolute;
   left: 50%;
   transform: translateX(-20%);
-  margin-bottom: 150px;
+  margin-bottom: 130px;
 }
 
 .logo {
