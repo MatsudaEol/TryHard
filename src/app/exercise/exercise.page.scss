@@ -1,5 +1,5 @@
 ion-header ion-toolbar {
-    --background: #1C1C1E; 
+    --background: #1C1C1E;
 }
 
 ion-title {
@@ -9,27 +9,14 @@ ion-title {
     color: var(--ion-color-light);
 }
 
-.exercise-start {
-    width: 75%;
-    margin: 0 auto; 
-    margin-bottom: 0;
+ion-card img {
+    max-width: 100%; /* Define a largura máxima como 100% do container pai */
+    height: auto; /* Mantém a proporção original da imagem */
   }
 
 ion-card {
-    height: 80vh;
-    --background: var(--ion-color-darkgray2); 
-}
-
-ion-card-content p {
-    margin-top: 20px;
-    font-size: 16px; 
-    line-height: 1.5; 
-    text-align: justify;
-    margin-bottom: 10px; 
-  }
-
-p, ul, li{
-    color: var(--ion-color-light);
+    height: auto;
+    --background: var(--ion-color-darkgray2);
 }
 
 ion-card-title {
@@ -39,3 +26,22 @@ ion-card-title {
 ion-card-subtitle {
     color: var(--ion-color-trygreen);
 }
+
+.description {
+    color: white;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+  .exercise-button {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto; 
+    font-size: 16px; 
+    font-weight: bold; 
+    color: white;
+    border: none; 
+    padding: 10px 20px; 
+    transition: background-color 0.3s ease; 
+  }
+  

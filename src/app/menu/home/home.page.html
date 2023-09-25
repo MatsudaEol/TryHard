@@ -1,20 +1,26 @@
 <ion-header [translucent]="true">
-    <ion-toolbar>
-        <ion-title class="ion-text-center">Inicio</ion-title>
-    </ion-toolbar>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Inicio</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" color="darkgray">
-  <a [routerLink]="['/exercise']">
-    <ion-card class="gradient border" href="/exercise">
-      <img 
-        alt="Treadmill Workout" 
-        src="https://www.glam.com/img/gallery/treadmill-strut-the-viral-tiktok-workout-you-need-to-know/intro-1679354804.jpg" />
+
+    <a [routerLink]="['/exercise', exercise.id]" *ngFor="let exercise of listExercises; let i = index">
+      <ion-card class="gradient border">
+          <img 
+            alt="{{ exercise.alt }}" 
+            [src]="exercise.image" />
         <ion-card-content class="card-text">
-          <ion-card-title>Aquecimento</ion-card-title>
-          <ion-card-subtitle>|  15 Minutos</ion-card-subtitle>
+          <ion-card-title>Exercicio {{ i + 1 }} - {{ exercise.name }}</ion-card-title>
+          <ion-card-subtitle>
+            |  {{ exercise.amount }}
+            <ng-container *ngIf="exercise.type === 'tempo'">
+              Minutos
+            </ng-container>
+          </ion-card-subtitle>
         </ion-card-content>
       </ion-card>
-  </a>
-</ion-content>
+    </a>
 
+</ion-content>

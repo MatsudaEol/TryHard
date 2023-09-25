@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BdtempService } from 'src/app/services/bdtemp.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+  listExercises: any[] = [];
+
+  constructor(private bdtempService: BdtempService) { }
 
    ngOnInit() {
+
+    this.listExercises = this.bdtempService.listExercises;
+
   }
 
 }

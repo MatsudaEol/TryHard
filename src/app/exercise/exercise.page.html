@@ -1,30 +1,22 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-        <ion-buttons slot="start">
+    <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/home" color="light"></ion-back-button>
     </ion-buttons>
-    <!-- Aqui terá uma linkagem com o exercicio -->
-    <ion-title class="ion-text-center">Aquecimento</ion-title> 
-</ion-toolbar>
+    <ion-title class="ion-text-center">{{ exercise.name }}</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" color="darkgray">
   <ion-card>
-    <img alt="Treadmill Workout" 
-    src="https://www.glam.com/img/gallery/treadmill-strut-the-viral-tiktok-workout-you-need-to-know/intro-1679354804.jpg" />
+    <img [alt]="exercise.alt" [src]="exercise.image" />
     <ion-card-content shape="round">
-      <ion-card-title>Exercicio 1 - Aquecimento</ion-card-title>
-      <ion-card-subtitle>Aquecimento Inicial  |  15 Minutos</ion-card-subtitle>
-      <p>O aquecimento na esteira é crucial para preparar o corpo para o exercício. Você pode seguir estas etapas de 15 minutos:</p>
-      <ul>
-        <li>Caminhe levemente por 2-3 min.</li>
-        <li>Aumente a velocidade por mais 2-3 min.</li>
-        <li>Aumente a inclinação por mais 2-3 min.</li>
-        <li>Acelere por mais 2-3 min.</li>
-        <li>Caminhe novamente por 2-3 min para resfriar o corpo.</li>
-      </ul>
-      <p>O aquecimento ajuda a evitar lesões e prepara o corpo para o esforço físico.<br>Aproveite seus exercícios cardiovasculares!</p>
+      <ion-card-title>Exercício {{ exerciseNumber }} - {{ exercise.name }}</ion-card-title>
+      <ion-card-subtitle *ngIf="exercise.type === 'tempo'" >{{ exercise.group }} - {{ exercise.amount }} Minutos</ion-card-subtitle>
+      <ion-card-subtitle *ngIf="exercise.type === 'repetições'" >{{ exercise.group }} - {{ exercise.amount }}</ion-card-subtitle>
+      <div [innerHTML]="exercise.description" class="description"></div>
     </ion-card-content>
   </ion-card>
-  <ion-button expand="full" color="primary" color="trygreen" class="exercise-start " shape="round" >Começar Exercicio</ion-button>
+  <ion-button expand="full" color="primary" color="trygreen" class="exercise-button" shape="round" >Começar Treino</ion-button>
 </ion-content>
+
