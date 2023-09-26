@@ -4,13 +4,14 @@
       <img src="assets/logo2.png" alt="logo" class="logo">
     </div>
   </div>
-  <ion-title class="subTitle">Crie sua conta</ion-title>
   <form class="form-container" (ngSubmit)="login()">
     <div class="ion-padding">
+      <div class="text-helper1">Coloque seu nome de usuário</div>
       <ion-item>
         <ion-input [(ngModel)]="username" name="username" placeholder="Usuário" class="input"></ion-input>
         <ion-icon name="person-outline" slot="end" style="color: rgb(96, 100, 97);"></ion-icon>
       </ion-item>
+      <div class="text-helper">Digite sua senha</div>
       <ion-item>
         <ion-input [(ngModel)]="password" name="password" placeholder="Senha" type="{{ showPassword ? 'text' : 'password' }}" class="input"></ion-input>
         <ion-icon name="{{ showPassword ? 'eye-off-outline' : 'eye-outline' }}" slot="end" style="color: rgb(96, 100, 97);" (click)="togglePassword()"></ion-icon>
@@ -29,10 +30,11 @@
       </div>
     </div>
   </form>
-
   <ion-fab vertical="bottom" horizontal="center" class="ion-fab-horizontal-center">
     <ion-fab-button color="trygreen" style="width: 90px; height: 90px;" (click)="login()">
       <ion-icon name="chevron-forward"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>
+
+

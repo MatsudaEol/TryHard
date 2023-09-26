@@ -1,16 +1,15 @@
 .input{
   font-size: 300;
 }
-
 ion-item{
   --background:#f1f1f1de;
-  border-radius: 10px;
-  margin-bottom: 16px;
+  border-radius: 15px;
+  margin-bottom: 4%;
 }
 
 .header{
-  margin-top: 100px;
-  margin-bottom: 80px;
+  margin-top: 5%;
+  margin-bottom: 3%px;
   text-align: center;
 }
 
@@ -57,13 +56,15 @@ ion-item{
   transform: translateX(-20%);
   margin-bottom: 130px;
 }
-
 .logo {
   height: auto;
-  width: 140px;
+  width: 30%;
+  max-width: 140px;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 10%;
+  padding-bottom: 7%;
 }
+
 
 .fade-in-bottom {
   -webkit-animation: fade-in-bottom 2.1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
@@ -94,4 +95,11 @@ ion-item{
             transform: translateY(0);
     opacity: 1;
   }
+}
+
+.text-helper, .text-helper1 {
+  color: #54bb77;
+  font-size: 1.1rem;
+  font-family: 'Gill Sans mt';
+  padding-bottom: 2%;
 }
