@@ -1,16 +1,16 @@
 .input{
-  font-size: 300;
+  font-size: 1rem;
 }
 
 ion-item{
   --background:#f1f1f1de;
-  border-radius: 10px;
-  margin-bottom: 20px;
+  border-radius: 15px;
+  margin-bottom: 4%;
 }
 
 .header{
-  margin-top: 100px;
-  margin-bottom: 80px;
+  margin-top: 5%;
+  margin-bottom: 3%px;
   text-align: center;
 }
 
@@ -26,9 +26,8 @@ ion-item{
   align-content: center;
   position: absolute;
   justify-content: center;
-  left: 0;
-  right: 0;
-  bottom: 5px;
+  left: 1%;
+  bottom: 1%;
   width: 100%;
   color: rgb(175, 166, 166);
 
@@ -84,15 +83,17 @@ ion-item{
 
 .logo {
   height: auto;
-  width: 140px;
+  width: 40%;
+  max-width: 140px;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 30%;
+  padding-bottom: 10%;
 }
 
 
 .ion-fab-horizontal-center {
-  position: absolute;
+  position: fixed;
   left: 50%;
   transform: translateX(-20%);
-  margin-bottom: 150px;
+  bottom: 150px;
 }
