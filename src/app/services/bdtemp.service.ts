@@ -136,7 +136,42 @@ export class BdtempService {
       alt: "Flexão de Pernas"
     }
   ];
+
+  listUsers = [
+    {
+      id: 1,
+      username: "Vitor",
+      picture: "https://i.pinimg.com/1200x/33/7a/ca/337aca4d9c0c3182f7e863c11fec83a3.jpg",
+      email: "vitinho123@gmail.com",
+      password: "a"
+    },
+    {
+      id: 2,
+      username: "Daniel",
+      picture: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0jdrL9uo6aP-ooUeDVnwmkBXSIZYHeVMBufy2HA1dhMAcvMg3dlVfwke1dcHabNSqjyw&usqp=CAU",
+      email: "daniel@gmail.com",
+      password: "b"
+    },
+    {
+      id: 3,
+      username: "Gabriel",
+      picture: "https://i.pinimg.com/1200x/6b/e8/6e/6be86ee43bb016e3e04bdadbb121871f.jpg",
+      email: "gabrielmata2@gmail.com",
+      password: "c"
+    },
+    {
+      id: 4,
+      username: "a",
+      picture: "https://static.vecteezy.com/ti/vetor-gratis/p3/16587988-fofo-jesus-cristo-com-personagem-de-desenho-animado-de-maos-abertas-personagem-chibi-desenhado-a-mao-clip-art-adesivo-fundo-branco-isolado-biblia-crista-para-criancas-ilustracao-de-arteial-de-icone-de-logotipo-de-mascote-vetor.jpg",
+      email: "a",
+      password: "a"
+    }
+
+
+  ]
   
+  constructor() { }
+
   getExerciseById(id: string) {
     const exerciseId = parseInt(id, 10); // Convertemos o ID para um número inteiro
 
@@ -145,5 +180,7 @@ export class BdtempService {
     return exercise;
   }
 
-  constructor() { }
+  obterUsuarios() {
+    return this.listUsers;
+  }
 }
