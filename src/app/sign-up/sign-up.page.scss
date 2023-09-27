@@ -65,6 +65,17 @@ ion-item{
   padding-bottom: 7%;
 }
 
+.centered-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px; /* A largura que você deseja */
+  height: 80px; /* A altura que você deseja */
+  margin: 0 auto; /* Centralizar horizontalmente */
+  margin-top: 20px; /* Ajuste a margem superior conforme necessário */
+}
+
+
 
 .fade-in-bottom {
   -webkit-animation: fade-in-bottom 2.1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
