@@ -1,61 +1,7 @@
 <ion-header>
-    <ion-toolbar color="darkgray">
 
-      <ion-title>PERFIL</ion-title>
-
-      <ion-buttons slot="end">
-        <ion-button (click)="editarPerfil()" color="success">
-          Editar Perfil
-        </ion-button>
-      </ion-buttons>
-
-    </ion-toolbar>
   </ion-header>
 
   <ion-content [fullscreen]="true" color="darkgray">
-
-    <!-- Foto de Perfil -->
-    <div class="perfil-foto">
-      <ion-img src="../../../assets/Perfil.jpg" alt="Foto de Perfil do Usuário"></ion-img>
-    </div>
-
-    <!-- Nome de Usuário -->
-    <ion-label class="nome-usuario">
-      <h2 class="sublinhado-colorido">Gabriel Godoy</h2>
-    </ion-label>
-
-    <!-- Formulário de Edição de Perfil -->
-    <ion-list class="perfil-list">
-      <ion-item>
-        <ion-label position="stacked">Nome do Usuário</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked">E-mail</ion-label>
-        <ion-input type="email"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked">Alterar Senha</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked">Gênero</ion-label>
-        <ion-select>
-          <ion-select-option value="masculino">Masculino</ion-select-option>
-          <ion-select-option value="feminino">Feminino</ion-select-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked">Idade</ion-label>
-        <ion-input type="number"></ion-input>
-      </ion-item>
-    </ion-list>
-
-    <!-- Botão de Salvar -->
-    <ion-button expand="full" color="primary">Salvar</ion-button>
 
   </ion-content>
