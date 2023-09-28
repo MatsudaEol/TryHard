@@ -33,14 +33,14 @@ export class LoginPage {
       });
 
       await alert.present();
-      return; 
+      return;
     }
 
     const users = this.bdtempService.obterUsuarios();
     const user = users.find(u => u.username === this.username && u.password === this.password);
 
     if (user) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/tabs/home']);
     } else {
       const alert = await this.alertController.create({
         header: 'Erro de autenticação',
