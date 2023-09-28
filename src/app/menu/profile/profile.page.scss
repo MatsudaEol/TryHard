@@ -1,31 +1,17 @@
-.perfil-foto {
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Para centralizar verticalmente, se necessário */
-    margin-top: 50px ;
+.ion-text-center{
+  background-color: #1C1C1E;
 }
 
-ion-img {
-    width: 170px; /* Ajuste o tamanho da imagem conforme necessário */
-    height:170px;
-    border-radius: 50%; /* Define a borda como 50% da largura/altura para torná-la circular */
+
+
+  div {
+    width: 47%; /* Ajuste o tamanho da imagem conforme necessário */
+    height:26%;
+    border-radius: 80%; /* Define a borda como 50% da largura/altura para torná-la circular */
     overflow: hidden; /* Certifique-se de que a imagem seja cortada corretamente em um círculo */
-    border: 4px solid #2dd36f; /* Adiciona uma borda branca de 2px à imagem */
-}
-
-.nome-usuario {
-    text-align: center; /* Alinhe o texto ao centro */
-    margin-top: 25px; /* Ajuste a margem superior para um espaçamento adequado */
-    font-size: 25px; /* Ajuste o tamanho da fonte conforme necessário */
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Para centralizar verticalmente, se necessário */
-  }
-
-.sublinhado-colorido {
-    text-decoration: underline; /* Adicione um sublinhado */
-    text-decoration-color: #2dd36f; /* Defina a cor do sublinhado (exemplo: azul) */
-    margin-top: 10px;
+    border: 2px solid #2dd36f; /* Adiciona uma borda branca de 2px à imagem */
+    margin-top: 8%;
+    margin-left: 5%;
 }
 
 
@@ -37,14 +23,44 @@ ion-content {
   height: 100%;
 }
 
-html, body {
-  height: 100%; /* Garante que a altura do body seja 100% */
-  margin: 0;
-  padding: 0;
+ion-title {
+  font-size: 18px;
+  font-weight: 800;
+  text-align: center;
+  color: var(--ion-color-trygreen);
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  align-items: center;
+  padding-top: 20px;
 }
 
-/* Classe personalizada para ajustar a largura do ion-list */
-.perfil-list {
-  width: 80%;
-  max-width: 400px;
+  .title-name {
+  font-size: 2rem;
+  text-align: center;
+  color: #abb8b0;
+  margin-top: 67%;
+  margin-right: 30%;
+
+}
+
+ion-list{
+  width: 90%;
+  height: 40%;
+  padding: 10%;
+  margin-left: 1%;
+  --ion-background-color: #14131333;
+  --ion-border-color: #777474;
+  margin-top: 9%;
+  ion-label{
+    color: rgb(221, 212, 212);
+    font-size: 1.1em;
+  }
+}
+
+.item{
+  color: #1C1C1E;
 }

@@ -8,8 +8,8 @@
 
     <a [routerLink]="['/exercise', exercise.id]" *ngFor="let exercise of listExercises; let i = index">
       <ion-card class="gradient border">
-          <img 
-            alt="{{ exercise.alt }}" 
+          <img
+            alt="{{ exercise.alt }}"
             [src]="exercise.image" />
         <ion-card-content class="card-text">
           <ion-card-title>Exercicio {{ i + 1 }} - {{ exercise.name }}</ion-card-title>
