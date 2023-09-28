@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-import { Router } from '@angular/router'; // Importe o Router
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,9 +10,9 @@ import { Router } from '@angular/router'; // Importe o Router
 export class SignUpPage implements OnInit {
 
   showPassword: boolean = false;
-  selectedGender: string = 'masculino'; // Valor padrão selecionado é 'masculino'
+  selectedGender: string = 'masculino';
 
-  constructor(public alertController: AlertController, private router: Router) { } // Injete o Router
+  constructor(public alertController: AlertController, private router: Router) { }
 
   ngOnInit() {
   }
@@ -35,8 +35,26 @@ export class SignUpPage implements OnInit {
         {
           text: 'OK',
           handler: () => {
-             // Após acessar as informações, você pode redirecionar o usuário para a página home
-            this.router.navigate(['/tabs/home']);
+            // Verifique se os campos estão preenchidos
+            const inputFields = document.querySelectorAll('.input') as NodeListOf<HTMLInputElement>;
+            let fieldsEmpty = false;
+            inputFields.forEach((input) => {
+              if (input.value.trim() === '') {
+                fieldsEmpty = true;
+              }
+            });
+
+            if (!fieldsEmpty) {
+              // Se os campos não estiverem vazios, redirecione para a página home
+              this.router.navigate(['/tabs/home']);
+            } else {
+              // Exiba um alerta se os campos estiverem em branco
+              this.alertController.create({
+                header: 'Campos em Branco',
+                message: 'Por favor, preencha todos os campos.',
+                buttons: ['OK'],
+              }).then(alert => alert.present());
+            }
           }
         }
       ],
