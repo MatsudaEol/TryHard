@@ -1,0 +1,57 @@
+ion-header ion-toolbar {
+    --background: #1C1C1E;
+}
+
+ion-title {
+    font-size: 18px;
+    font-weight: 800;
+    text-align: center;
+    color: var(--ion-color-trygreen);
+    flex-direction: column; 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    align-items: center;
+    padding-top: 20px;
+}
+
+
+
+ion-card img {
+    max-width: 100%; /* Define a largura máxima como 100% do container pai */
+    height: auto; /* Mantém a proporção original da imagem */
+  }
+
+ion-card {
+    height: auto;
+    --background: var(--ion-color-darkgray2);
+}
+
+ion-card-title {
+    color: var(--ion-color-light);
+}
+
+ion-card-subtitle {
+    color: var(--ion-color-trygreen);
+}
+
+.description {
+    color: white;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+  .exercise-button {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto; 
+    font-size: 16px; 
+    font-weight: bold; 
+    color: white;
+    border: none; 
+    padding: 10px 20px; 
+    transition: background-color 0.3s ease; 
+  }
+  

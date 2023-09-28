@@ -13,12 +13,8 @@
             [src]="exercise.image" />
         <ion-card-content class="card-text">
           <ion-card-title>Exercicio {{ i + 1 }} - {{ exercise.name }}</ion-card-title>
-          <ion-card-subtitle>
-            |  {{ exercise.amount }}
-            <ng-container *ngIf="exercise.type === 'tempo'">
-              Minutos
-            </ng-container>
-          </ion-card-subtitle>
+            <ion-card-subtitle *ngIf="exercise.type === 'tempo'" >{{ exercise.group }} - {{ exercise.amount }} Minutos</ion-card-subtitle>
+            <ion-card-subtitle *ngIf="exercise.type === 'repetições'" >{{ exercise.group }} - {{ exercise.sets }} séries de {{ exercise.amount}} repetições</ion-card-subtitle>
         </ion-card-content>
       </ion-card>
     </a>

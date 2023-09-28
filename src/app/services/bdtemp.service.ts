@@ -24,6 +24,7 @@ export class BdtempService {
       amount: "15",
       image: "/assets/img/treino1.jpg",
       alt: "Esteira"
+      
     },
     {
       id: 2,
@@ -39,7 +40,8 @@ export class BdtempService {
       `,
       group: "Musculação",
       type: "repetições",
-      amount: "3 séries de 10 repetições",
+      sets: "3",
+      amount: "10",
       image: "/assets/img/treino2.jpg",
       alt: "Supino Reto"
     },
@@ -57,7 +59,8 @@ export class BdtempService {
       `,
       group: "Musculação",
       type: "repetições",
-      amount: "3 séries de 12 repetições",
+      sets: "3",
+      amount: "10",
       image: "/assets/img/treino3.jpg",
       alt: "Agachamento"
     },
@@ -76,7 +79,8 @@ export class BdtempService {
       `,
       group: "Musculação",
       type: "repetições",
-      amount: "3 séries de 12 repetições",
+      sets: "3",
+      amount: "10",
       image: "/assets/img/treino4.jpg",
       alt: "Leg Press"
     },
@@ -94,7 +98,8 @@ export class BdtempService {
       `,
       group: "Musculação",
       type: "repetições",
-      amount: "3 séries de 12 repetições",
+      sets: "3",
+      amount: "10",
       image: "/assets/img/treino5.jpg",
       alt: "Rosca Direta"
     },
@@ -112,7 +117,8 @@ export class BdtempService {
       `,
       group: "Musculação",
       type: "repetições",
-      amount: "3 séries de 12 repetições",
+      sets: "3",
+      amount: "10",
       image: "/assets/img/treino6.jpg",
       alt: "Puxada Alta"
     },
@@ -131,7 +137,8 @@ export class BdtempService {
       `,
       group: "Musculação",
       type: "repetições",
-      amount: "3 séries de 12 repetições",
+      sets: "3",
+      amount: "10",
       image: "/assets/img/treino7.jpg",
       alt: "Flexão de Pernas"
     }

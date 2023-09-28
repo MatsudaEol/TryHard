@@ -1,9 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/home" color="light"></ion-back-button>
+      <ion-back-button [routerLink]="'/tabs/home'" color="light"></ion-back-button>
     </ion-buttons>
-    <ion-title class="ion-text-center">{{ exercise.name }}</ion-title>
+    <ion-title class="ion-text-center"> Começar <a class="workout-name">{{ exercise.name }}</a></ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,7 +13,7 @@
     <ion-card-content shape="round">
       <ion-card-title>Exercício {{ exerciseNumber }} - {{ exercise.name }}</ion-card-title>
       <ion-card-subtitle *ngIf="exercise.type === 'tempo'" >{{ exercise.group }} - {{ exercise.amount }} Minutos</ion-card-subtitle>
-      <ion-card-subtitle *ngIf="exercise.type === 'repetições'" >{{ exercise.group }} - {{ exercise.amount }}</ion-card-subtitle>
+      <ion-card-subtitle *ngIf="exercise.type === 'repetições'" >{{ exercise.group }} - {{ exercise.sets }} séries de {{ exercise.amount}} repetições</ion-card-subtitle>
       <div [innerHTML]="exercise.description" class="description"></div>
     </ion-card-content>
   </ion-card>
