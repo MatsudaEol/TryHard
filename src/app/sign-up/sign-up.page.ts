@@ -23,7 +23,7 @@ export class SignUpPage implements OnInit {
 
   async presentAlert() {
     const alert = await this.alertController.create({
-      header: 'Insira suas Informações Pessoais!',
+      header: 'Preencha os Campos!',
       buttons: [
         {
           text: 'Cancelar',
@@ -63,12 +63,6 @@ export class SignUpPage implements OnInit {
           placeholder: 'Nome',
         },
         {
-          placeholder: 'Nome de Usuário (max 8 caracteres)',
-          attributes: {
-            maxlength: 8,
-          },
-        },
-        {
           type: 'number',
           placeholder: 'Idade',
           min: 1,
@@ -76,7 +70,7 @@ export class SignUpPage implements OnInit {
         },
         {
           type: 'textarea',
-          placeholder: 'Escreva seu Gênero',
+          placeholder: 'Gênero',
         },
       ],
     });
