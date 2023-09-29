@@ -1,48 +1,64 @@
 .ion-text-center {
-  color:darkgray;
+  color: darkgray;
 }
 
-div.perfil-container {
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.perfil-container {
   width: 40%;
-  height: 20%;
+  height: 30%;
+  margin-left: 5%;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid #2dd36f;
-  margin-top: 20%;
-  margin-left: 8%;
+  margin-top: 20px;
 }
 
-ion-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+.perfil-foto {
+  width: 150%;
+  height: 140%;
+  object-fit: cover;
+  object-position: center;
 }
 
-.ion-text-center{
-  font-size: 18px;
-  font-weight: 800;
+.horizontal-line {
+  width: 35%;
+  height: 1px;
+  background-color: #75797760;
+  margin-left: 10px;
+}
+
+.profile-details {
   text-align: center;
-  color: #39df7b;
+}
+
+.title-name, .title2-name {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20%;
+  padding: 9%;
 }
 
 .title-name {
-  font-size: 1.8rem;
-  text-align: left;
-  margin-left: 5%;
-  margin-top: 2%;
+  font-size: 1.4rem;
+  text-align: right;
+  margin-right: 15%;
   color: #39df7b;
-  font-family: 'Segoe UI';
 }
 
 .title2-name {
-  font-size: 1.4rem;
-  text-align: left;
-  margin-left: 8%;
+  padding: 9%;
+  font-size: 1.2rem;
+  text-align: right;
+  margin-right: 10%;
   color: #39df7b;
-  padding-top: 1%;
-  font-family: 'Times New Roman';
+  font-family: 'Courier New medium';
+  margin-top: 27%;
 }
 
 .list {
@@ -70,26 +86,20 @@ ion-accordion ion-item {
 }
 
 .item {
-  color: #1C1C1E;
+  color: #d1d1e2;
 }
 
 ion-padding {
   color: black;
 }
 
-.perfil-container {
-  width: 40%; 
-  height: 20%;
-  margin-left: 5%;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid #2dd36f;
-  margin-top: 20px;
+.membro-desde {
+  margin-bottom: 30%;
+  margin-left: 30%;
+  font-size: 0.8rem;
+  color: #6c7a72;
 }
 
-.perfil-foto {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+ion-button[color="dark"] {
+  margin-left: 30%;
 }

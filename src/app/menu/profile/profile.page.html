@@ -2,40 +2,49 @@
   <ion-toolbar color="darkgray2">
     <ion-title class="ion-text-center">Perfil</ion-title>
   </ion-toolbar>
-  </ion-header>
+</ion-header>
 
-  <ion-content [fullscreen]="true" color="darkgray">
+<ion-content [fullscreen]="true" color="darkgray">
+  <div class="profile-container">
     <ion-avatar class="perfil-container">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxXWv3oxSqjHh_0js-jYYHoj39D9sxUZKu6w&usqp=CAU" alt="perfil" class="perfil-foto">
-    </ion-avatar>    
-  <ion-title class="title-name">
-    VITOR
- </ion-title>
-  <ion-title class="title2-name">
-    PINHEIRO
- </ion-title>
- <ion-accordion-group (ionChange)="accordionGroupChange($event)" class="list">
-  <ion-accordion value="first">
-    <ion-item slot="header" color="#141414">
-      <ion-label>Editar Perfil</ion-label>
-    </ion-item>
-    <div class="ion-padding" slot="content">Trocar Senha</div>
-    <div class="ion-padding" slot="content">Trocar Foto</div>
-  </ion-accordion>
-  <ion-accordion value="second">
-    <ion-item slot="header"  color="#141414">
-      <ion-label>Avaliações Físicas</ion-label>
-    </ion-item>
-    <div class="ion-padding" slot="content">Second Content</div>
-  </ion-accordion>
-  <ion-accordion value="third">
-    <ion-item slot="header"  color="#141414">
-      <ion-label>Configurações</ion-label>
-    </ion-item>
-    <div class="ion-padding" slot="content">Mudar Senha</div>
-  </ion-accordion>
-</ion-accordion-group>
-
-
+      <img src="https://scontent.fbau3-2.fna.fbcdn.net/v/t1.6435-9/33720277_194455014706329_9070826807229415424_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=174925&_nc_ohc=sAFbY7ZEIuEAX9864o-&_nc_ht=scontent.fbau3-2.fna&oh=00_AfDgUxFn2zAd4FagaCkt4ci3kf9o4yDdw6p8X1kVKzkFJA&oe=653EB23C" alt="perfil" class="perfil-foto">
+    </ion-avatar>
+    <div class="horizontal-line"></div>
+  </div>
+  <div class="profile-details">
+    <ion-title class="title-name">
+      Valdemir
+    </ion-title>
+    <ion-title class="title2-name">
+      Pedro
+    </ion-title>
+    <div class="horizontal-line"></div>
+    <div class="membro-desde">
+      Membro desde 2023
+    </div>
+  </div>
+  <ion-accordion-group (ionChange)="accordionGroupChange($event)" class="list">
+    <ion-accordion value="first">
+      <ion-item slot="header" color="#141414">
+        <ion-label>Editar Perfil</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">Trocar Senha</div>
+      <div class="ion-padding" slot="content">Trocar Foto</div>
+    </ion-accordion>
+    <ion-accordion value="second">
+      <ion-item slot="header"  color="#141414">
+        <ion-label>Avaliações Físicas</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">Second Content</div>
+    </ion-accordion>
+    <ion-accordion value="third">
+      <ion-item slot="header"  color="#141414">
+        <ion-label>Configurações</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">Mudar Senha</div>
+    </ion-accordion>
+  </ion-accordion-group>
+  <ion-button color="dark" (click)="mostrarAlerta()">
+ <a style="color:rgb(240, 33, 33)" >Sair da conta</a>
+  </ion-button>
 </ion-content>
-
