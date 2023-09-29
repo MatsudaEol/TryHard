@@ -49,6 +49,7 @@
   text-align: right;
   margin-right: 15%;
   color: #39df7b;
+  font-family: 'monospace';
 }
 
 .title2-name {
@@ -57,17 +58,17 @@
   text-align: right;
   margin-right: 10%;
   color: #39df7b;
-  font-family: 'Courier New medium';
+  font-family:'Ubuntu';
   margin-top: 27%;
 }
 
 .list {
-  --ion-background-color: #13111133;
+  --ion-background-color: #25242433;
   --ion-border-color: #2dd36f;
 }
 
 ion-accordion-group {
-  margin: 10%;
+  margin: 7%;
 }
 
 ion-item[slot="header"] {
@@ -94,12 +95,14 @@ ion-padding {
 }
 
 .membro-desde {
-  margin-bottom: 30%;
-  margin-left: 30%;
+  
   font-size: 0.8rem;
   color: #6c7a72;
+  text-align: center;
+  margin-top: 3%;
 }
 
 ion-button[color="dark"] {
   margin-left: 30%;
+  margin-top: 40%;
 }
