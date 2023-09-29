@@ -8,7 +8,7 @@
     <div class="ion-padding">
       <div class="text-helper1">Crie sua conta</div>
       <ion-item>
-        <ion-input placeholder="Usuário" class="input"></ion-input>
+        <ion-input placeholder="Nome" class="input"></ion-input>
         <ion-icon name="person-outline" slot="end" style="color: rgb(96, 100, 97)"></ion-icon>
       </ion-item>
       <ion-item>
@@ -19,13 +19,14 @@
         <ion-input placeholder="Senha" type="{{ showPassword ? 'text' : 'password' }}" class="input"></ion-input>
         <ion-icon name="{{ showPassword ? 'eye-off-outline' : 'eye-outline' }}" slot="end" style="color: rgb(96, 100, 97);" (click)="togglePassword()"></ion-icon>
       </ion-item>
+      <ion-item>
+        <ion-input placeholder="Idade" class="input"></ion-input>
+      </ion-item>
 
       <div class="signupLink">
         <p>Já é membro? <a [routerLink]="['/login']" style="color:#54BB77" >Entrar na conta</a></p>
       </div>
     </div>
   </form>
-
-  <ion-button (click)="presentAlert()" color="trygreen" class="centered-button" >Continuar</ion-button>
 
 </ion-content>

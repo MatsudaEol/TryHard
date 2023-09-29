@@ -1,19 +1,16 @@
-.ion-text-center{
-  background-color: #1C1C1E;
+.ion-text-center {
+  color:darkgray;
 }
 
-
-
-  div {
-    width: 47%; /* Ajuste o tamanho da imagem conforme necessário */
-    height:26%;
-    border-radius: 80%; /* Define a borda como 50% da largura/altura para torná-la circular */
-    overflow: hidden; /* Certifique-se de que a imagem seja cortada corretamente em um círculo */
-    border: 2px solid #2dd36f; /* Adiciona uma borda branca de 2px à imagem */
-    margin-top: 8%;
-    margin-left: 5%;
+div.perfil-container {
+  width: 40%;
+  height: 20%;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #2dd36f;
+  margin-top: 20%;
+  margin-left: 8%;
 }
-
 
 ion-content {
   display: flex;
@@ -23,44 +20,76 @@ ion-content {
   height: 100%;
 }
 
-ion-title {
+.ion-text-center{
   font-size: 18px;
   font-weight: 800;
   text-align: center;
-  color: var(--ion-color-trygreen);
-  flex-direction: column;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  align-items: center;
-  padding-top: 20px;
+  color: #39df7b;
 }
 
-  .title-name {
-  font-size: 2rem;
-  text-align: center;
-  color: #abb8b0;
-  margin-top: 67%;
-  margin-right: 30%;
-
+.title-name {
+  font-size: 1.8rem;
+  text-align: left;
+  margin-left: 5%;
+  margin-top: 2%;
+  color: #39df7b;
+  font-family: 'Segoe UI';
 }
 
-ion-list{
-  width: 90%;
-  height: 40%;
-  padding: 10%;
-  margin-left: 1%;
-  --ion-background-color: #14131333;
-  --ion-border-color: #777474;
-  margin-top: 9%;
-  ion-label{
-    color: rgb(221, 212, 212);
-    font-size: 1.1em;
-  }
+.title2-name {
+  font-size: 1.4rem;
+  text-align: left;
+  margin-left: 8%;
+  color: #39df7b;
+  padding-top: 1%;
+  font-family: 'Times New Roman';
 }
 
-.item{
+.list {
+  --ion-background-color: #13111133;
+  --ion-border-color: #2dd36f;
+}
+
+ion-accordion-group {
+  margin: 10%;
+}
+
+ion-item[slot="header"] {
+  --background: var(--ion-color-light);
+}
+
+ion-accordion div[slot="content"] {
+  padding: 10px;
+  background-color: var(--ion-background-color);
+  border: 1px solid var(--ion-border-color);
+}
+
+ion-accordion ion-item {
+  --color: #1C1C1E;
+  --ion-color: var(--ion-border-color);
+}
+
+.item {
   color: #1C1C1E;
+}
+
+ion-padding {
+  color: black;
+}
+
+.perfil-container {
+  width: 40%; 
+  height: 20%;
+  margin-left: 5%;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #2dd36f;
+  margin-top: 20px;
+}
+
+.perfil-foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }

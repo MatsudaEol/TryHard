@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -6,16 +6,21 @@ import { NavController } from '@ionic/angular';
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
-export class ProfilePage implements OnInit {
-  
+export class ProfilePage {
+
   constructor(private navCtrl: NavController) {}
-  
+
   editarPerfil() {
-    // Navegar para a página de edição de perfil
     this.navCtrl.navigateForward('/editar-perfil');
   }
 
-  ngOnInit() {
-  }
+  accordionGroupChange = (ev: any) => {
+    const collapsedItems = ['first', 'second', 'third'].filter((value) => value !== ev.detail.value);
+    const selectedValue = ev.detail.value;
+
+    console.log(
+      `Expanded: ${selectedValue === undefined ? 'None' : ev.detail.value} | Collapsed: ${collapsedItems.join(', ')}`
+    );
+  };
 
 }

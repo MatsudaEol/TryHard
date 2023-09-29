@@ -1,30 +1,41 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="darkgray2">
     <ion-title class="ion-text-center">Perfil</ion-title>
   </ion-toolbar>
   </ion-header>
 
   <ion-content [fullscreen]="true" color="darkgray">
-    <div>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxXWv3oxSqjHh_0js-jYYHoj39D9sxUZKu6w&usqp=CAU" alt="perfil" class="perfil-foto">
-  </div>
+    <ion-avatar class="perfil-container">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxXWv3oxSqjHh_0js-jYYHoj39D9sxUZKu6w&usqp=CAU" alt="perfil" class="perfil-foto">
+    </ion-avatar>    
   <ion-title class="title-name">
-    Vitor Pinheiro
+    VITOR
  </ion-title>
-<ion-list lines="inset">
-  <ion-item>
-    <ion-label>Editar Perfil</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Politicas de privacidade</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Configurações</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Avaliações físicas</ion-label>
-  </ion-item>
-</ion-list>
+  <ion-title class="title2-name">
+    PINHEIRO
+ </ion-title>
+ <ion-accordion-group (ionChange)="accordionGroupChange($event)" class="list">
+  <ion-accordion value="first">
+    <ion-item slot="header" color="#141414">
+      <ion-label>Editar Perfil</ion-label>
+    </ion-item>
+    <div class="ion-padding" slot="content">Trocar Senha</div>
+    <div class="ion-padding" slot="content">Trocar Foto</div>
+  </ion-accordion>
+  <ion-accordion value="second">
+    <ion-item slot="header"  color="#141414">
+      <ion-label>Avaliações Físicas</ion-label>
+    </ion-item>
+    <div class="ion-padding" slot="content">Second Content</div>
+  </ion-accordion>
+  <ion-accordion value="third">
+    <ion-item slot="header"  color="#141414">
+      <ion-label>Configurações</ion-label>
+    </ion-item>
+    <div class="ion-padding" slot="content">Mudar Senha</div>
+  </ion-accordion>
+</ion-accordion-group>
+
 
 </ion-content>
 
