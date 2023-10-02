@@ -1,28 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="darkgray2">
-    <ion-title class="ion-text-center">Perfil</ion-title>
+    <div class="profile-container">
+      <ion-avatar class="perfil-container">
+        <img src="https://png.pngtree.com/png-vector/20220807/ourmid/pngtree-man-avatar-wearing-gray-suit-png-image_6102786.png" alt="perfil" class="perfil-foto">
+      </ion-avatar>
+    </div>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true" color="darkgray">
-  <div class="profile-container">
-    <ion-avatar class="perfil-container">
-      <img src="https://scontent.fbau3-2.fna.fbcdn.net/v/t1.6435-9/33720277_194455014706329_9070826807229415424_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=174925&_nc_ohc=sAFbY7ZEIuEAX9864o-&_nc_ht=scontent.fbau3-2.fna&oh=00_AfDgUxFn2zAd4FagaCkt4ci3kf9o4yDdw6p8X1kVKzkFJA&oe=653EB23C" alt="perfil" class="perfil-foto">
-    </ion-avatar>
-    <div class="horizontal-line"></div>
-  </div>
-  <div class="profile-details">
-    <ion-title class="title-name">
-      Valdemir
-    </ion-title>
-    <ion-title class="title2-name">
-      Pedro
-    </ion-title>
-    <div class="horizontal-line"></div>
-    <div class="membro-desde">
-      Membro desde 2023
-    </div>
-  </div>
+
   <ion-accordion-group (ionChange)="accordionGroupChange($event)" class="list">
     <ion-accordion value="first">
       <ion-item slot="header" color="#141414">
