@@ -25,7 +25,7 @@
 }
 
 .list {
-  --ion-background-color: #13111133;
+  --ion-background-color: #25242433;
   --ion-border-color: #2dd36f;
 }
 
@@ -58,13 +58,15 @@ ion-padding {
 }
 
 .membro-desde {
-  margin-bottom: 30%;
-  margin-left: 30%;
+
   font-size: 0.8rem;
   color: #6c7a72;
+  text-align: center;
+  margin-top: 3%;
 }
 
 ion-button[color="dark"] {
   margin-left: 30%;
+  margin-top: 40%;
 }
 

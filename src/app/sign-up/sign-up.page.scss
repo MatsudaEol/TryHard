@@ -114,3 +114,11 @@ ion-item{
   font-family: 'Gill Sans mt';
   padding-bottom: 2%;
 }
+
+
+.ion-fab-horizontal-center {
+  left: 50%;
+  transform: translateX(-20%);
+  bottom: 10%;
+  max-width: 100px;
+}
