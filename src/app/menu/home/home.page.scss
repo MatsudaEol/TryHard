@@ -1,6 +1,5 @@
 ion-header ion-toolbar {
     --background: #1C1C1E;
-    height: 65px;
 }
 
 ion-title {
@@ -52,11 +51,6 @@ gradient {
     );
   }
 
-  .border {
-    position: relative;
-    border-top: 5px solid #7ebe81; /* Cor da borda no topo */
-  }
-
   .border::after {
     content: "";
     position: absolute;
@@ -65,4 +59,8 @@ gradient {
     width: 100%;
     height: 5px;
     background: linear-gradient(to right, transparent, #94df77); /* Transição de cor na parte de baixo */
+  }
+
+  .listpopover {
+    background-color: #1a1b1b;
   }
