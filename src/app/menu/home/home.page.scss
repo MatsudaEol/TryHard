@@ -1,5 +1,6 @@
 ion-header ion-toolbar {
-    --background: #1C1C1E;
+    --background: #03030300;
+    height: 3.75rem;
 }
 
 ion-title {
@@ -64,3 +65,24 @@ gradient {
   .listpopover {
     background-color: #1a1b1b;
   }
+
+  .ion-text-user{
+    font-size: x-large;
+    margin-right: 52%;
+    font-family: 'ubuntu';
+    font-size: 1.5rem;
+  }
+
+  .ion-text-center{
+    margin-right: 75%;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: #54BB77;
+  }
+
+  .meu-botao {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+}

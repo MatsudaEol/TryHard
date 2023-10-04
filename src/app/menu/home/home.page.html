@@ -1,20 +1,21 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title class="ion-text-center" slot="start">Olá</ion-title>
-    <ion-buttons class="meu-botao" slot="end">
+<ion-content [fullscreen]="true" color="darkgray">
+    <div>
+      <ion-title class="ion-text-center">Olá</ion-title>
+    <ion-title class="ion-text-user">Vitor</ion-title>
+     <ion-buttons class="meu-botao">
     <ion-button id="click-trigger">
       <ion-popover trigger="click-trigger" triggerAction="click">
         <ng-template>
           <ion-list class="listpopover">
-            <ion-item color="darkgray2">
+            <ion-item color="darkgray2" routerLink="/tabs/profile" (click)="closePopover()">
               <ion-icon name="person-outline" slot="start" color="trygreen"></ion-icon>
               <ion-label>Meus dados</ion-label>
             </ion-item>
-            <ion-item color="darkgray2">
+            <ion-item color="darkgray2" (click)="closePopover()">
               <ion-icon name="information-circle-outline" slot="start" color="trygreen"></ion-icon>
               <ion-label>Sobre</ion-label>
             </ion-item>
-            <ion-item color="darkgray2">
+            <ion-item color="darkgray2"  routerLink="/splash" (click)="closePopover()">
               <ion-icon name="exit-outline" slot="start" color="trygreen"></ion-icon>
               <ion-label>Sair</ion-label>
             </ion-item>
@@ -24,11 +25,7 @@
       <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
     </ion-button>
   </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true" color="darkgray">
-
+    </div>
     <a [routerLink]="['/exercise', exercise.id]" *ngFor="let exercise of listExercises; let i = index">
       <ion-card class="gradient border">
           <img

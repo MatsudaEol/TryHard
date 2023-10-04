@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BdtempService } from 'src/app/services/bdtemp.service';
+import { PopoverController } from '@ionic/angular'; // Importe o PopoverController
 
 @Component({
   selector: 'app-home',
@@ -10,12 +11,13 @@ export class HomePage implements OnInit {
 
   listExercises: any[] = [];
 
-  constructor(private bdtempService: BdtempService) { }
+  constructor(private bdtempService: BdtempService, public popoverController: PopoverController) { }
 
-   ngOnInit() {
-
+  ngOnInit() {
     this.listExercises = this.bdtempService.listExercises;
-
   }
 
+  async closePopover() {
+    await this.popoverController.dismiss();
+  }
 }
