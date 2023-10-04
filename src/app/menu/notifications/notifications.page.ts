@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-notifications',
@@ -10,6 +9,6 @@ export class NotificationsPage {
   segment = 'novas';
   notifications: Notification[] = [];
 
-  constructor(private notificationService: NotificationService) {}
+  constructor() {}
 
 }
