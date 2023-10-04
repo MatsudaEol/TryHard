@@ -72,16 +72,25 @@ gradient {
     font-size: 1.5rem;
   }
 
-  .ion-text-center{
-    margin-right: 75%;
+  .ion-text-left{
     margin-top: 20px;
     font-size: 1.1rem;
     color: #54BB77;
   }
 
   .meu-botao {
-    position: absolute;
+    position: start;
     top: 0;
     right: 0;
     margin: 10px;
+}
+
+.ion-text-center{
+  margin-top: 20px;
+  font-size: 1.1rem;
+  color: #54BB77;
+}
+
+.dia-semana{
+  color: rgb(235, 237, 238);
 }

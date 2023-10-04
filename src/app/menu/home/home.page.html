@@ -22,14 +22,15 @@
         </ion-popover>
         <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical" color="trygreen"></ion-icon>
       </ion-button>
+      <ion-title class="ion-text-center">Olá, Vitor</ion-title>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" color="darkgray">
     <div>
-      <ion-title class="ion-text-center">Olá</ion-title>
-    <ion-title class="ion-text-user">Vitor</ion-title>
+      <ion-title class="ion-text-left">Treino de <a class="dia-semana">Segunda-Feira</a></ion-title>
+    <ion-title class="ion-text-user"></ion-title>
     </div>
     <a [routerLink]="['/exercise', exercise.id]" *ngFor="let exercise of listExercises; let i = index">
       <ion-card class="gradient border">
