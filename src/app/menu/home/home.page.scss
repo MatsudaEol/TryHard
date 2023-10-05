@@ -7,6 +7,13 @@ ion-title {
     font-weight: 800;
     text-align: center;
     color: var(--ion-color-light);
+    flex-direction: column;  
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    align-items: center;
+    padding-bottom: 1%;
 }
 
 ion-card {
@@ -86,9 +93,10 @@ gradient {
 }
 
 .ion-text-center{
-  margin-top: 20px;
+  margin-right:10%;
   font-size: 1.1rem;
   color: #54BB77;
+  font-family: 'ubuntu';
 }
 
 .dia-semana{
