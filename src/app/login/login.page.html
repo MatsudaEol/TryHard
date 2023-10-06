@@ -1,4 +1,6 @@
 <ion-content [fullscreen]="true" class="ion-content" style="--background:rgb(14,14,14)">
+  <div class="login-tio">
+
   <div class="header">
     <div class="fade-in-bottom">
       <img src="assets/logo2.png" alt="logo" class="logo">
@@ -21,21 +23,25 @@
         <a [routerLink]="['/reset-password']" style="color:#54BB77">Esqueceu sua senha?</a>
       </div>
 
-      <div class="signupLink">
-        <p>Novo membro? <a [routerLink]="['/sign-up']" style="color:#54BB77">Inscreva-se agora</a></p>
-      </div>
-
       <div *ngIf="showAlert">
         {{ alertMessage }}
       </div>
     </div>
   </form>
-  
-  <ion-fab vertical="bottom" horizontal="center" class="ion-fab-horizontal-center">
-    <ion-fab-button color="trygreen" style="width: 90px; height: 90px;" (click)="login()">
-      <ion-icon name="chevron-forward"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+<div class="ion-justify-content-center " style="display: flex;">
+  <ion-button color="trygreen" class="redondo" (click)="login()">
+    <ion-icon slot="icon-only" name="chevron-forward"></ion-icon>
+  </ion-button>
+</div>
+
+</div>
 </ion-content>
 
+<ion-footer>
+  <ion-toolbar color="darkgray">        
+    <div class="signupLink">
+      <p>Novo membro? <a [routerLink]="['/sign-up']" style="color:#54BB77">Inscreva-se agora</a></p>
+    </div>
+  </ion-toolbar>
 
+</ion-footer>
