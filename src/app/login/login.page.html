@@ -6,30 +6,51 @@
       <img src="assets/logo2.png" alt="logo" class="logo">
     </div>
   </div>
-  <form class="form-container" (ngSubmit)="login()">
+
+  <form [formGroup]="loginForm" class="form-container" >
     <div class="ion-padding">
-      <div class="text-helper1">Coloque seu nome de usuário</div>
+
+      <div class="text-helper1">Digite seu email</div>
       <ion-item>
-        <ion-input [(ngModel)]="username" name="username" placeholder="Usuário" class="input"></ion-input>
-        <ion-icon name="person-outline" slot="end" style="color: rgb(96, 100, 97);"></ion-icon>
+        <ion-input formControlName="email" name="email" placeholder="Email" class="input"></ion-input>
+        <ion-icon name="mail-outline" slot="end" style="color: rgb(96, 100, 97);"></ion-icon>
       </ion-item>
+      <div *ngIf="this.loginForm.controls?.['email'].touched && this.loginForm.controls?.['email'].invalid">
+        <ion-text *ngIf="errorControl.email.errors?.required" style="color: red">
+          Por favor, insira seu email
+        </ion-text>
+        <ion-text *ngIf="errorControl.email.errors?.pattern" style="color: red">
+          Por favor, insira um email válido
+        </ion-text>
+      </div>
+
       <div class="text-helper">Digite sua senha</div>
       <ion-item>
-        <ion-input [(ngModel)]="password" name="password" placeholder="Senha" type="{{ showPassword ? 'text' : 'password' }}" class="input"></ion-input>
+        <ion-input formControlName="password" name="password" placeholder="Senha" type="{{ showPassword ? 'text' : 'password' }}" class="input"></ion-input>
         <ion-icon name="{{ showPassword ? 'eye-off-outline' : 'eye-outline' }}" slot="end" style="color: rgb(96, 100, 97);" (click)="togglePassword()"></ion-icon>
       </ion-item>
+      <div *ngIf="this.loginForm.controls?.['password'].touched && this.loginForm.controls?.['password'].invalid">
+        <ion-text *ngIf="errorControl.password.errors?.required" style="color: red">
+          Por favor, insira sua senha
+        </ion-text>
+        <ion-text *ngIf="errorControl.password.errors?.pattern" style="color: red">
+          A senha deve possuir
+          Uma letra
+          Uma letra maiúscula
+          Um número
+          Um caractere especial
+          Conter 8 dígitos 
+        </ion-text>
+      </div>
 
       <div class="forgotPassword">
         <a [routerLink]="['/reset-password']" style="color:#54BB77">Esqueceu sua senha?</a>
       </div>
-
-      <div *ngIf="showAlert">
-        {{ alertMessage }}
-      </div>
     </div>
   </form>
+
 <div class="ion-justify-content-center " style="display: flex;">
-  <ion-button color="trygreen" class="redondo" (click)="login()">
+  <ion-button color="trygreen" class="round" (click)="login()">
     <ion-icon slot="icon-only" name="chevron-forward"></ion-icon>
   </ion-button>
 </div>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoadingController } from '@ionic/angular';
+import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -8,73 +11,56 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-up.page.scss'],
 })
 export class SignUpPage implements OnInit {
-
   showPassword: boolean = false;
-  selectedGender: string = 'masculino';
+  regForm: FormGroup
 
-  constructor(public alertController: AlertController, private router: Router) { }
+  constructor(public formBuilder:FormBuilder, public loadingCtrl: LoadingController, public authService:AuthenticationService, public router : Router ) { }
 
   ngOnInit() {
-  }
+    this.regForm = this.formBuilder.group({
+      fullname : ['', [Validators.required]],
+      email : ['', [
+        Validators.required,
+        Validators.email,
+        Validators.pattern("[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"),
+      ]],
+      password:['', [
+      Validators.required,
+      Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-8])(?=.*[$@$!%*?&.,])[A-Za-z\d$@$!%*?&].{8,}'),
+      ]]
 
+    })
+  }
+  
   togglePassword() {
     this.showPassword = !this.showPassword;
   }
 
-  async presentAlert() {
-    const alert = await this.alertController.create({
-      header: 'Preencha os Campos!',
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          handler: () => {
-            // Lidar com o cancelamento, se necessário
-          }
-        },
-        {
-          text: 'OK',
-          handler: () => {
-            // Verifique se os campos estão preenchidos
-            const inputFields = document.querySelectorAll('.input') as NodeListOf<HTMLInputElement>;
-            let fieldsEmpty = false;
-            inputFields.forEach((input) => {
-              if (input.value.trim() === '') {
-                fieldsEmpty = true;
-              }
-            });
+    get errorControl(){
+      return this.regForm?.controls
+    }
 
-            if (!fieldsEmpty) {
-              // Se os campos não estiverem vazios, redirecione para a página home
-              this.router.navigate(['/tabs/home']);
-            } else {
-              // Exiba um alerta se os campos estiverem em branco
-              this.alertController.create({
-                header: 'Campos em Branco',
-                message: 'Por favor, preencha todos os campos.',
-                buttons: ['OK'],
-              }).then(alert => alert.present());
-            }
+    async signUp() {
+      const loading = await this.loadingCtrl.create();
+      await loading.present();
+      if (this.regForm?.valid) {
+        try {
+          const user = await this.authService.registerUser(this.regForm.value.email, this.regForm.value.password);
+          if (user) {
+            loading.dismiss();
+            this.router.navigate(['/tabs/home']);
+          } else {
+            console.log('provide correct value');
+            loading.dismiss(); // Oculta o loading no caso de informações incorretas
           }
+        } catch (error) {
+          console.log(error);
+          loading.dismiss(); // Oculta o loading no caso de erro no registro
         }
-      ],
-      inputs: [
-        {
-          placeholder: 'Nome',
-        },
-        {
-          type: 'number',
-          placeholder: 'Idade',
-          min: 1,
-          max: 100,
-        },
-        {
-          type: 'textarea',
-          placeholder: 'Gênero',
-        },
-      ],
-    });
-
-    await alert.present();
-  }
+      } else {
+        loading.dismiss(); // Oculta o loading se o formulário não for válido
+      }
+    }
+    
+  
 }
