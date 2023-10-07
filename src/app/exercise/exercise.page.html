@@ -4,12 +4,12 @@
       <ion-back-button [routerLink]="'/tabs/home'" color="light"></ion-back-button>
     </ion-buttons>
     <ion-title class="ion-text-center"> Começar <a class="workout-name">{{ exercise.name }}</a></ion-title>
+    <img [alt]="exercise.alt" [src]="exercise.image" />
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" color="darkgray">
-  <ion-card>
-    <img [alt]="exercise.alt" [src]="exercise.image" />
+  <ion-card> 
     <ion-card-content shape="round">
       <ion-card-title>Exercício {{ exerciseNumber }} - {{ exercise.name }}</ion-card-title>
       <ion-card-subtitle *ngIf="exercise.type === 'tempo'" >{{ exercise.group }} - {{ exercise.amount }} Minutos</ion-card-subtitle>

@@ -17,13 +17,13 @@ ion-title {
     padding-top: 20px;
 }
 
-ion-card img {
-    max-width: 100%; /* Define a largura máxima como 100% do container pai */
-    height: auto; /* Mantém a proporção original da imagem */
+ion-header img {
+    max-width: 130%;
+    height: auto; 
   }
 
 ion-card {
-    height: auto;
+    height: 80%;
     --background: var(--ion-color-darkgray2);
 }
 
