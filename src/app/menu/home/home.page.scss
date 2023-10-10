@@ -102,3 +102,17 @@ gradient {
 .dia-semana{
   color: rgb(235, 237, 238);
 }
+
+@media only screen and (min-width: 1200px) {
+  .ion-text-custom{
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: #54BB77;
+  }
+
+  ion-card {
+    margin: 0 auto;
+    width: 50rem;
+    height: 15rem;
+  }
+}

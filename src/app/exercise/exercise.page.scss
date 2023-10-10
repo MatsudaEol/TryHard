@@ -18,11 +18,32 @@ ion-title {
     text-shadow: -3px 2px 3px rgba(0, 0, 0, 2.5);
 }
 
+.container
+{
+  position: relative; /* Define o contexto de posicionamento para os elementos filhos absolutos */
+    width: 100vw;
+    height: 400px;
+    background-color: #f0f0f0;
+}
+
+
 ion-header img {
-    width:500px;
-    height: 22em;;
+    position: relative;
     object-fit: cover;
     border: none;
+    width: 100%;
+    height: 100%;
+  }
+
+  .flecha{
+    display: grid;
+    position: absolute;
+    justify-content: start;
+    align-items: center;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    font-size: 2rem;
   }
 
   .gradient-border {
