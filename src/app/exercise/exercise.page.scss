@@ -7,21 +7,40 @@ ion-title {
     font-weight: 800;
     text-align: center;
     color: var(--ion-color-light);
-    flex-direction: column; 
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    right: 0; 
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
     align-items: center;
     padding-top: 20px;
+    text-shadow: -3px 2px 3px rgba(0, 0, 0, 2.5);
 }
 
 ion-header img {
-    max-width: 130%;
-    height: auto; 
+    width:500px;
+    height: 22em;;
+    object-fit: cover;
+    border: none;
   }
 
+  .gradient-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background-image: linear-gradient(to left, transparent, #4fe2a5cc) ;
+}
+.vertical-border {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 5px;
+  background-image: linear-gradient(to bottom, transparent, #4fe2a5cc); /* Gradiente de cima para baixo */
+}
 ion-card {
     height: 80%;
     --background: var(--ion-color-darkgray2);
@@ -44,15 +63,15 @@ ion-card-subtitle {
   .exercise-button {
     width: 100%;
     max-width: 400px;
-    margin: 0 auto; 
-    font-size: 16px; 
-    font-weight: bold; 
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: bold;
     color: white;
-    border: none; 
-    padding: 10px 20px; 
-    transition: background-color 0.3s ease; 
+    border: none;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
   }
-  
+
  .workout-name {
     color: var(--ion-color-trygreen);
  }

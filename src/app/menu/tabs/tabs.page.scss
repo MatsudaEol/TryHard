@@ -11,9 +11,22 @@ ion-tab-bar{
     border-top: 1px solid #2C2C2E;
 }
 
+ion-tab-button {
+  ion-icon {
+      transition: background-color 0.3s, color 0.6s;
+  }
+}
 ion-tab-button.tab-selected {
     ion-icon {
-      color: #54BB77; /* Substitua pela cor desejada */
+      color: #54BB77;
+      background-color: #2b332ec5;
+      border-radius: 30px;
+      width: 70px;
+      max-width: 130px;
+      height: 26px;
+      max-height: 150px;
+      border: 1px solid ;
     }
   }
+
 
