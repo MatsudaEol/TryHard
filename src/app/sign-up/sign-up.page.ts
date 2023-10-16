@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
-
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,11 +14,11 @@ export class SignUpPage implements OnInit {
   showPassword: boolean = false;
   regForm: FormGroup
 
-  constructor(public formBuilder:FormBuilder, public loadingCtrl: LoadingController, public authService:AuthenticationService, public router : Router ) { }
+  constructor(public formBuilder:FormBuilder, public loadingCtrl: LoadingController, public authService:AuthenticationService, public router : Router, private firestore: AngularFirestore ) { }
 
   ngOnInit() {
     this.regForm = this.formBuilder.group({
-      fullname : ['', [Validators.required]],
+      username : ['', [Validators.required]],
       email : ['', [
         Validators.required,
         Validators.email,
@@ -45,8 +45,16 @@ export class SignUpPage implements OnInit {
       await loading.present();
       if (this.regForm?.valid) {
         try {
-          const user = await this.authService.registerUser(this.regForm.value.email, this.regForm.value.password);
+          const userCredential = await this.authService.registerUser(this.regForm.value.email, this.regForm.value.password);
+          const user = userCredential.user;
           if (user) {
+            const userData = {
+              username: this.regForm.value.username,
+              email: this.regForm.value.email,
+            };
+
+            await this.firestore.collection('users').doc(user.uid).set(userData);
+
             loading.dismiss();
             this.router.navigate(['/tabs/home']);
           } else {

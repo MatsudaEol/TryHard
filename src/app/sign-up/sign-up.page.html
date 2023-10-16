@@ -11,11 +11,11 @@
       <div class="text-helper1">Crie sua conta</div>
 
       <ion-item>
-        <ion-input formControlName="fullname" placeholder="Nome" class="input"></ion-input>
+        <ion-input formControlName="username" placeholder="Nome" class="input"></ion-input>
         <ion-icon name="person-outline" slot="end" style="color: rgb(96, 100, 97)"></ion-icon>
       </ion-item>
-      <div *ngIf="this.regForm.controls?.['fullname'].touched && this.regForm.controls?.['fullname'].invalid" >
-        <ion-text *ngIf="errorControl.fullname.errors?.required" style="color: red">
+      <div *ngIf="this.regForm.controls?.['username'].touched && this.regForm.controls?.['username'].invalid" >
+        <ion-text *ngIf="errorControl.username.errors?.required" style="color: red">
         Por favor, insira seu nome
         </ion-text>
       </div>
