@@ -17,7 +17,6 @@ export class ExerciseService {
             const exerciseId = e.exerciseId;
             return this.afs.doc(`exercises/${exerciseId}`).valueChanges().pipe(
               map((exerciseData: any) => {
-                // Verifique o tipo do exercício diretamente na coleção "exercise"
                 const type = exerciseData.type;
                 const reps = type === 'rep' ? e.reps : undefined;
                 const sets = type === 'rep' ? e.sets : undefined;
@@ -46,5 +45,9 @@ export class ExerciseService {
         );
       })
     );
+  }
+
+  clearUserExercises() {
+    localStorage.removeItem('userExercises'); 
   }
 }

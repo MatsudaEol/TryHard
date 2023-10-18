@@ -50,10 +50,10 @@ export class LoginPage {
         const user = userCredential.user;
 
         if (user) {
-          const userId = user.uid; // Obtenha o ID do usuário autenticado
+          const userId = user.uid;
+          this.loginForm.reset();
           loading.dismiss();
 
-          // Use o serviço ExerciseService para buscar os treinos do usuário
           this.exerciseService.getExercises(userId).subscribe((exercicios) => {
             console.log('Dados dos exercícios:', exercicios);
             

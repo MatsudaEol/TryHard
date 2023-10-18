@@ -7,7 +7,6 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class UserService {
   constructor(private firestore: AngularFirestore) { }
 
-  // Método para obter o nome do usuário
   getUserName(uid: string): Promise<string> {
     return new Promise((resolve, reject) => {
       this.firestore.collection('users').doc(uid).get().subscribe(doc => {

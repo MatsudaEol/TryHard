@@ -83,6 +83,7 @@ gradient {
     margin-top: 20px;
     font-size: 1.1rem;
     color: #54BB77;
+    margin-bottom: 20px;
   }
 
   .meu-botao {
@@ -115,4 +116,9 @@ gradient {
     width: 50rem;
     height: 25rem;
   }
+}
+
+.clicked {
+  transform: scale(1.05); 
+  transition: transform 0.2s; 
 }

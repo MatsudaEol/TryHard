@@ -14,6 +14,8 @@ import { ExerciseService } from 'src/app/services/exercise.service';
 export class HomePage implements OnInit {
   listExercises: any[] = [];
   userName: string;
+  currentDay: string;
+clickedCards: { [key: number]: boolean } = {};
 
   constructor(
     private authService: AuthenticationService,
@@ -30,12 +32,24 @@ export class HomePage implements OnInit {
     this.afAuth.authState.subscribe(async user => {
       if (user) {
         this.userName = await this.userService.getUserName(user.uid);
-
+  
+        const daysOfWeek = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+        const today = new Date().getDay();
+        this.currentDay = daysOfWeek[today];
+  
         this.exerciseService.getExercises(user.uid).subscribe(exercicios => {
-          console.log('Dados dos exercícios:', exercicios);
+          // console.log('Dados dos exercícios:', exercicios);
           this.listExercises = exercicios;
         });
+      } else {
+        this.exerciseService.clearUserExercises();
       }
+    });
+  } 
+
+  loadUserExercises(userId: string) {
+    this.exerciseService.getExercises(userId).subscribe(exercicios => {
+      this.listExercises = exercicios;
     });
   }
 
@@ -45,9 +59,16 @@ export class HomePage implements OnInit {
 
   logout() {
     this.authService.logoutUser().then(() => {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/login']).then(() => {
+        window.location.reload();
+      });
     }).catch(error => {
       console.log('Erro ao fazer logout:', error);
     });
   }
+
+  onCardClick(index: number) {
+    this.clickedCards[index] = !this.clickedCards[index];
+  }
+  
 }

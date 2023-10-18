@@ -4,6 +4,7 @@ import { LoadingController } from '@ionic/angular';
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ExerciseService } from '../services/exercise.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,63 +13,92 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class SignUpPage implements OnInit {
   showPassword: boolean = false;
-  regForm: FormGroup
+  regForm: FormGroup;
 
-  constructor(public formBuilder:FormBuilder, public loadingCtrl: LoadingController, public authService:AuthenticationService, public router : Router, private firestore: AngularFirestore ) { }
+  constructor(
+    public formBuilder: FormBuilder,
+    public loadingCtrl: LoadingController,
+    public authService: AuthenticationService,
+    public router: Router,
+    private firestore: AngularFirestore,
+    public exerciseService: ExerciseService,
+  ) { }
 
   ngOnInit() {
     this.regForm = this.formBuilder.group({
-      username : ['', [Validators.required]],
-      email : ['', [
-        Validators.required,
-        Validators.email,
-        Validators.pattern("[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"),
-      ]],
-      password:['', [
-      Validators.required,
-      Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-8])(?=.*[$@$!%*?&.,])[A-Za-z\d$@$!%*?&].{8,}'),
-      ]]
-
-    })
+      username: ['', [Validators.required]],
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.email,
+          Validators.pattern("[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"),
+        ],
+      ],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-8])(?=.*[$@$!%*?&.,])[A-Za-z\d$@$!%*?&].{8,}'),
+        ],
+      ],
+    });
   }
-  
+
   togglePassword() {
     this.showPassword = !this.showPassword;
   }
 
-    get errorControl(){
-      return this.regForm?.controls
-    }
+  get errorControl() {
+    return this.regForm?.controls;
+  }
 
-    async signUp() {
-      const loading = await this.loadingCtrl.create();
-      await loading.present();
-      if (this.regForm?.valid) {
-        try {
-          const userCredential = await this.authService.registerUser(this.regForm.value.email, this.regForm.value.password);
-          const user = userCredential.user;
-          if (user) {
-            const userData = {
-              username: this.regForm.value.username,
-              email: this.regForm.value.email,
-            };
+  async signUp() {
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+  
+    if (this.regForm?.valid) {
+      try {
+        const userCredential = await this.authService.registerUser(this.regForm.value.email, this.regForm.value.password);
+        const user = userCredential.user;
+  
+        if (user) {
+          const userId = user.uid;
+          const username = this.regForm.value.username;
+          this.regForm.reset();
+          loading.dismiss();
+  
+          const userData = {
+            uid: userId,
+            username: username,
+          };
+  
+          await this.firestore.collection('users').doc(userId).set(userData);
 
-            await this.firestore.collection('users').doc(user.uid).set(userData);
+          const userExerciseData = {
+            exercises: [],
+            userId: userId,
+            username: username
+          };
+  
+          await this.firestore.collection('userExercises').doc(userId).set(userExerciseData);
 
-            loading.dismiss();
-            this.router.navigate(['/tabs/home']);
-          } else {
-            console.log('provide correct value');
-            loading.dismiss(); // Oculta o loading no caso de informações incorretas
-          }
-        } catch (error) {
-          console.log(error);
-          loading.dismiss(); // Oculta o loading no caso de erro no registro
+          this.exerciseService.getExercises(userId).subscribe((exercicios) => {
+            console.log('Dados dos exercícios:', exercicios);
+          });
+  
+          this.router.navigate(['/tabs/home']);
+        } else {
+          console.log('Fornecer valores corretos');
+          loading.dismiss();
         }
-      } else {
-        loading.dismiss(); // Oculta o loading se o formulário não for válido
+      } catch (error) {
+        console.log(error);
+        loading.dismiss();
       }
+    } else {
+      loading.dismiss();
     }
-    
+  }
   
 }

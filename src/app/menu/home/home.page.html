@@ -27,14 +27,20 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" color="darkgray">
-  <div>
-    <ion-title class="ion-text-left">Treino de <a class="dia-semana">Segunda-Feira</a></ion-title>
-    <ion-title class="ion-text-user"></ion-title>
-  </div>
 
-  <ng-container *ngFor="let userExercise of listExercises; let i = index">
-    <ion-card *ngFor="let exercise of userExercise.exercises; let j = index" class="gradient border">
+<ion-content [fullscreen]="true" color="darkgray">
+  
+  <ion-item color="darkgray">
+    <ion-title class="ion-text-left">Treino de <a class="dia-semana">{{ currentDay }}</a></ion-title>
+  </ion-item>
+  
+      <ng-container *ngFor="let userExercise of listExercises; let i = index" >
+        <ion-card class=" gradient border"
+        *ngFor="let exercise of userExercise.exercises; let j = index"
+        [ngClass]="{'clicked': clickedCards[j]}"
+        (click)="onCardClick(j)"
+        [routerLink]="['/exercise', exercise.id]"
+      >
       <img [src]="exercise.image" alt="{{ exercise.name }}">
       <ion-card-content class="card-text">
         <ion-card-title>Exercício {{ j + 1 }} - {{ exercise.name }}</ion-card-title>
@@ -46,5 +52,7 @@
         </ion-card-subtitle>
       </ion-card-content>
     </ion-card>
-  </ng-container>
+    </ng-container>
+
+  
 </ion-content>

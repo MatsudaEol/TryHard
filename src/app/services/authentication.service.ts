@@ -30,6 +30,11 @@ export class AuthenticationService {
   }
 
   async logoutUser() {
-    return await this.ngFireAuth.signOut();
+    try {
+      localStorage.removeItem('userToken'); 
+      await this.ngFireAuth.signOut();
+    } catch (error) {
+      console.log('Erro ao fazer logout:', error);
+    }
   }
 } 
