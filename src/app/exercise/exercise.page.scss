@@ -36,15 +36,23 @@ ion-header img {
   }
 
   .flecha{
-    display: grid;
     position: absolute;
-    justify-content: start;
     align-items: center;
     z-index: 2;
     top: 0;
     left: 0;
-    font-size: 2rem;
+    font-size: 2.3rem;
+    border: 1px solid green;
+    background-color: rgb(146, 185, 153);
+    border-radius: 50%;
+    padding: 3%;
+    margin-left: 7px;
+    margin-top: 2.5px;
   }
+
+
+
+
 
   .gradient-border {
     position: absolute;

@@ -1,10 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <div class="container"><img [alt]="exercise.alt" [src]="exercise.image" /></div>
     <ion-buttons slot="start">
-      <ion-icon name="arrow-back" color="Danger" class="flecha"></ion-icon>
+      <ion-icon name="arrow-back" class="flecha" color="medium"></ion-icon>
+      <div class="container"><img [alt]="exercise.alt" [src]="exercise.image" /></div>
+      <ion-title class="ion-text-center"> Começar <a class="workout-name">{{ exercise.name }}</a></ion-title>
     </ion-buttons>
-    <ion-title class="ion-text-center"> Começar <a class="workout-name">{{ exercise.name }}</a></ion-title>
     <div class="gradient-border"></div>
     <div class="vertical-border"></div>
   </ion-toolbar>
@@ -22,3 +22,5 @@
   <ion-button expand="full" color="primary" color="trygreen" class="exercise-button" shape="round" (click)="startWorkout()">Começar Treino</ion-button>
 </ion-content>
 
+
+<ion-icon name="arrow-dropleft-circle"></ion-icon>
