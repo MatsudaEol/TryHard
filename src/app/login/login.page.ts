@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
+import { ExerciseService } from '../services/exercise.service'; // Importe o serviço ExerciseService
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginPage {
     public formBuilder: FormBuilder,
     public loadingCtrl: LoadingController,
     public authService: AuthenticationService,
-    public router: Router
+    public router: Router,
+    public exerciseService: ExerciseService // Injete o serviço ExerciseService
   ) { }
   
   ngOnInit() {
@@ -48,15 +50,22 @@ export class LoginPage {
         const user = userCredential.user;
 
         if (user) {
+          const userId = user.uid; // Obtenha o ID do usuário autenticado
           loading.dismiss();
+
+          // Use o serviço ExerciseService para buscar os treinos do usuário
+          this.exerciseService.getExercises(userId).subscribe((exercicios) => {
+            console.log('Dados dos exercícios:', exercicios);
+            
+          });
           this.router.navigate(['/tabs/home']);
         } else {
           console.log('Usuário não encontrado.');
-          loading.dismiss(); 
+          loading.dismiss();
         }
       } catch (error) {
         console.log(error);
-        loading.dismiss(); 
+        loading.dismiss();
       }
     } else {
       loading.dismiss();

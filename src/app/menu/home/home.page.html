@@ -13,7 +13,7 @@
                 <ion-icon name="information-circle-outline" slot="start" color="trygreen"></ion-icon>
                 <ion-label>Sobre</ion-label>
               </ion-item>
-              <ion-item color="darkgray2"  (click)="logout()" (click)="closePopover()">
+              <ion-item color="darkgray2" (click)="logout()" (click)="closePopover()">
                 <ion-icon name="exit-outline" slot="start" color="trygreen"></ion-icon>
                 <ion-label>Sair</ion-label>
               </ion-item>
@@ -28,21 +28,23 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" color="darkgray">
-    <div>
-      <ion-title class="ion-text-left">Treino de <a class="dia-semana">Segunda-Feira</a></ion-title>
+  <div>
+    <ion-title class="ion-text-left">Treino de <a class="dia-semana">Segunda-Feira</a></ion-title>
     <ion-title class="ion-text-user"></ion-title>
-    </div>
-    <a [routerLink]="['/exercise', exercise.id]" *ngFor="let exercise of listExercises; let i = index">
-      <ion-card class="gradient border">
-          <img
-            alt="{{ exercise.alt }}"
-            [src]="exercise.image" />
-        <ion-card-content class="card-text">
-          <ion-card-title>Exercicio {{ i + 1 }} - {{ exercise.name }}</ion-card-title>
-            <ion-card-subtitle *ngIf="exercise.type === 'tempo'" >{{ exercise.group }} - {{ exercise.amount }} Minutos</ion-card-subtitle>
-            <ion-card-subtitle *ngIf="exercise.type === 'repetições'" >{{ exercise.group }} - {{ exercise.sets }} séries de {{ exercise.amount}} repetições</ion-card-subtitle>
-        </ion-card-content>
-      </ion-card>
-    </a>
+  </div>
 
+  <ng-container *ngFor="let userExercise of listExercises; let i = index">
+    <ion-card *ngFor="let exercise of userExercise.exercises; let j = index" class="gradient border">
+      <img [src]="exercise.image" alt="{{ exercise.name }}">
+      <ion-card-content class="card-text">
+        <ion-card-title>Exercício {{ j + 1 }} - {{ exercise.name }}</ion-card-title>
+        <ion-card-subtitle *ngIf="exercise.type === 'time'">
+          {{ exercise.group }} - {{ exercise.amount }} Minutos
+        </ion-card-subtitle>
+        <ion-card-subtitle *ngIf="exercise.type === 'rep'">
+          {{ exercise.group }} - {{ exercise.sets }} séries de {{ exercise.reps }} repetições
+        </ion-card-subtitle>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
 </ion-content>

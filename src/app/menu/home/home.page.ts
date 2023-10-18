@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { BdtempService } from 'src/app/services/bdtemp.service';
 import { PopoverController } from '@ionic/angular';
-import { AngularFireAuth } from '@angular/fire/compat/auth'; 
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UserService } from 'src/app/services/user.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
+import { ExerciseService } from 'src/app/services/exercise.service';
 
 @Component({
   selector: 'app-home',
@@ -13,25 +13,28 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit {
   listExercises: any[] = [];
-  userName: string; 
+  userName: string;
 
   constructor(
     private authService: AuthenticationService,
-    private bdtempService: BdtempService,
     public popoverController: PopoverController,
-    private afAuth: AngularFireAuth, 
-    private userService: UserService, 
-    private router: Router
+    private afAuth: AngularFireAuth,
+    private userService: UserService,
+    private router: Router,
+    private exerciseService: ExerciseService
   ) {
     this.userName = 'Visitante';
   }
 
   async ngOnInit() {
-    this.listExercises = this.bdtempService.listExercises;
-
     this.afAuth.authState.subscribe(async user => {
       if (user) {
         this.userName = await this.userService.getUserName(user.uid);
+
+        this.exerciseService.getExercises(user.uid).subscribe(exercicios => {
+          console.log('Dados dos exercícios:', exercicios);
+          this.listExercises = exercicios;
+        });
       }
     });
   }
@@ -42,7 +45,7 @@ export class HomePage implements OnInit {
 
   logout() {
     this.authService.logoutUser().then(() => {
-      this.router.navigate(['/login']); // Redireciona para a página de login após o logout
+      this.router.navigate(['/login']);
     }).catch(error => {
       console.log('Erro ao fazer logout:', error);
     });
