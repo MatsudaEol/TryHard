@@ -23,6 +23,7 @@ export class ExerciseService {
                 const amount = type === 'time' ? e.amount : undefined;
 
                 return {
+                  exerciseId,
                   reps,
                   sets,
                   amount,
@@ -35,6 +36,7 @@ export class ExerciseService {
           return combineLatest(exerciseObservables);
         });
 
+        
         return combineLatest(exerciseObservables).pipe(
           map((updatedUserExercises: any[]) => {
             userExercises.forEach((userExercise, index) => {
@@ -45,6 +47,10 @@ export class ExerciseService {
         );
       })
     );
+  }
+
+  getExerciseById(exerciseId: string) {
+    return this.afs.doc(`exercises/${exerciseId}`).valueChanges();
   }
 
   clearUserExercises() {

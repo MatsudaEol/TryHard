@@ -45,15 +45,15 @@ const routes: Routes = [
     loadChildren: () => import('./sign-up/sign-up.module').then( m => m.SignUpPageModule)
   },
   {
-    path: 'exercise/',
+    path: 'exercise/:exerciseId',
     loadChildren: () => import('./exercise/exercise.module').then( m => m.ExercisePageModule)
   },
   {
-    path: 'repetitive-exercise/',
+    path: 'repetitive-exercise',
     loadChildren: () => import('./repetitive-exercise/repetitive-exercise.module').then( m => m.RepetitiveExercisePageModule)
   },
   {
-    path: 'timed-exercise/',
+    path: 'timed-exercise',
     loadChildren: () => import('./timed-exercise/timed-exercise.module').then( m => m.TimedExercisePageModule)
   },
 

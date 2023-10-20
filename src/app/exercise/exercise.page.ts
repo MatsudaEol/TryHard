@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { BdtempService } from 'src/app/services/bdtemp.service';
+import { ActivatedRoute } from '@angular/router';
 
+import { ExerciseService } from '../services/exercise.service';
 
 @Component({
   selector: 'app-exercise',
@@ -9,37 +9,24 @@ import { BdtempService } from 'src/app/services/bdtemp.service';
   styleUrls: ['./exercise.page.scss'],
 })
 export class ExercisePage implements OnInit {
-  exercise: any;
-  exerciseNumber: number = 1; // Inicializado com 1 por padrão
+  exerciseData: any;  // Certifique-se de que a propriedade 'exerciseData' seja declarada.
 
-  constructor(private activatedRoute: ActivatedRoute, private bdtempService: BdtempService, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private exerciseService: ExerciseService
+  ) { }
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe((paramMap) => {
-      const exerciseId = paramMap.get('id');
-
-      // Verifica se exerciseId não é nulo antes de fazer a comparação
-      if (exerciseId !== null) {
-        // Use o ID para buscar os detalhes do exercício
-        this.exercise = this.bdtempService.getExerciseById(exerciseId);
-
-        // Calcula o número do exercício com base na posição na lista
-        const exerciseIndex = this.bdtempService.listExercises.findIndex(
-          (exercise) => exercise.id === +exerciseId
-        );
-
-        if (exerciseIndex !== -1) {
-          this.exerciseNumber = exerciseIndex + 1;
-        }
+    this.route.paramMap.subscribe((params) => {
+      const exerciseId = params.get('exerciseId');
+      if (exerciseId) {
+        // Usar o exerciseId para recuperar os detalhes do exercício
+        this.exerciseService.getExerciseById(exerciseId).subscribe((exerciseData) => {
+          console.log('Detalhes do exercício:', exerciseData);
+          // Agora você tem os detalhes do exercício e pode exibi-los na página "exercise"
+          this.exerciseData = exerciseData;
+        });
       }
     });
-
-  }
-  startWorkout() {
-    if (this.exercise && this.exercise.type === 'tempo') {
-      this.router.navigate(['/timed-exercise', this.exercise.id]);
-    } else if (this.exercise && this.exercise.type === 'repetições') {
-      this.router.navigate(['/repetitive-exercise', this.exercise.id]);
-    }
   }
 }
