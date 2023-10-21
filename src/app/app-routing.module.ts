@@ -49,11 +49,11 @@ const routes: Routes = [
     loadChildren: () => import('./exercise/exercise.module').then( m => m.ExercisePageModule)
   },
   {
-    path: 'repetitive-exercise',
+    path: 'repetitive-exercise/:exerciseId',
     loadChildren: () => import('./repetitive-exercise/repetitive-exercise.module').then( m => m.RepetitiveExercisePageModule)
   },
   {
-    path: 'timed-exercise',
+    path: 'timed-exercise/:exerciseId',
     loadChildren: () => import('./timed-exercise/timed-exercise.module').then( m => m.TimedExercisePageModule)
   },
 

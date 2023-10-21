@@ -1,9 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button [routerLink]="'/tabs/home'" color="light"></ion-back-button>
+      <ion-back-button defaultHref="/tabs/home" class="flecha"></ion-back-button> 
     </ion-buttons>
-    <ion-title class="ion-text-center"> {{ exercise.name }}</ion-title>
+      <ion-title class="ion-text-center" color="trygreen"> {{ exerciseData?.name }}</ion-title>  
   </ion-toolbar>
 </ion-header>
 

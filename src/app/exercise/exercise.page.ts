@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
 import { ExerciseService } from '../services/exercise.service';
+import { AuthenticationService } from '../services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-exercise',
@@ -9,24 +10,37 @@ import { ExerciseService } from '../services/exercise.service';
   styleUrls: ['./exercise.page.scss'],
 })
 export class ExercisePage implements OnInit {
-  exerciseData: any;  // Certifique-se de que a propriedade 'exerciseData' seja declarada.
+  exerciseData: any;
 
   constructor(
-    private route: ActivatedRoute, 
-    private exerciseService: ExerciseService
+    private route: ActivatedRoute,
+    private router: Router,
+    private exerciseService: ExerciseService,
+    private authService: AuthenticationService
   ) { }
 
-  ngOnInit() {
-    this.route.paramMap.subscribe((params) => {
+  async ngOnInit() {
+    this.route.paramMap.subscribe(async (params) => {
       const exerciseId = params.get('exerciseId');
-      if (exerciseId) {
-        // Usar o exerciseId para recuperar os detalhes do exercício
-        this.exerciseService.getExerciseById(exerciseId).subscribe((exerciseData) => {
-          console.log('Detalhes do exercício:', exerciseData);
-          // Agora você tem os detalhes do exercício e pode exibi-los na página "exercise"
+      const userId = await this.authService.getUserId();
+
+      if (exerciseId && userId) {
+        this.exerciseService.getExerciseDetails(userId, exerciseId).subscribe((exerciseData) => {
+          //console.log('Detalhes do exercício:', exerciseData);
           this.exerciseData = exerciseData;
+
+          // Nota:  Inserir um serviço de gerenciamento de estado
         });
       }
     });
   }
+
+  startWorkout() {
+    if (this.exerciseData && this.exerciseData.type === 'time') {
+      this.router.navigate(['/timed-exercise', this.exerciseData.exerciseId]); 
+    } else if (this.exerciseData && this.exerciseData.type === 'rep') {
+      this.router.navigate(['/repetitive-exercise', this.exerciseData.exerciseId]); 
+    }
+  }
+  
 }
