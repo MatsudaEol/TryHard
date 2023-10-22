@@ -1,35 +1,36 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar color="darkgray2">
-    <div class="profile-container">
-      <ion-avatar class="perfil-container">
-        <img src="https://png.pngtree.com/png-vector/20220807/ourmid/pngtree-man-avatar-wearing-gray-suit-png-image_6102786.png" alt="perfil" class="perfil-foto">
-      </ion-avatar>
-    </div>
-  </ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home" color="trygreen"></ion-back-button>
+    </ion-buttons>
+      <ion-title class="ion-text-center" color="trygreen">Meus Dados</ion-title>
+    </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true" color="darkgray">
-  <ion-accordion-group (ionChange)="accordionGroupChange($event)" class="list">
-    <ion-accordion value="first">
-      <ion-item slot="header" color="#141414">
-        <ion-label>Editar Perfil</ion-label>
-      </ion-item>
-      <div class="ion-padding" slot="content">Trocar Senha</div>
-      <div class="ion-padding" slot="content">Trocar Foto</div>
-    </ion-accordion>
-    <ion-accordion value="second">
-      <ion-item slot="header"  color="#141414">
-        <ion-label>Avaliações Físicas</ion-label>
-      </ion-item>
-      <div class="ion-padding" slot="content">Second Content</div>
-    </ion-accordion>
-    <ion-accordion value="third">
-      <ion-item slot="header"  color="#141414">
-        <ion-label>Configurações</ion-label>
-      </ion-item>
-      <div class="ion-padding" slot="content">Mudar Senha</div>
-    </ion-accordion>
-  </ion-accordion-group>
-  <ion-button color="dark" (click)="mostrarAlerta()">
- <a style="color:rgb(240, 33, 33)" >Sair da conta</a>
-  </ion-button>
-</ion-content>
+
+<ion-card color="dark" class="container">
+  <div class="profile-container">
+    <ion-avatar class="perfil-container">
+      <!-- Aqui você vai ter que botar pra puxar a imagem do usuário -->
+      <img src="https://i.pinimg.com/474x/f1/da/a7/f1daa70c9e3343cebd66ac2342d5be3f.jpg" alt="perfil" class="perfil-foto">
+    </ion-avatar>
+  </div>
+  <!--aqui vai puxar os dados do usuário -->
+  <ion-item color="dark-light" lines="full" class="linha">
+    <ion-label color="trygreen">Nome:</ion-label>
+  </ion-item>
+
+  <ion-item color="dark-light" lines="full" class="linha">
+    <ion-label color="trygreen">E-mail:</ion-label>
+  </ion-item>
+
+  <ion-item color="dark-light" lines="full" class="linha">
+    <ion-label color="trygreen">Data de nascimento:</ion-label>
+  </ion-item>
+
+  <ion-item color="dark-light" lines="full" class="linha">
+    <ion-label color="trygreen">Celular:</ion-label>
+  </ion-item>
+  <ion-button expand="block" color="trygreen" class="botão-edit">EDITAR</ion-button>
+</ion-card>
+
+

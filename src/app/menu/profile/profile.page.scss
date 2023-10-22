@@ -1,72 +1,50 @@
-.ion-text-center {
-  color: darkgray;
-}
-
-.profile-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
+ .ion-text-center{
+    margin-right: 15%;
+    font-family:'segoe ui';
+    font-size: 1.6rem;
+  }
 
 .perfil-container {
-  width: 45%;
+  margin-left: 23%;
+  width: 60%;
   height: auto;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid #ccc;
-  margin-top: 20px;
+  padding-top: 15px;
   margin-bottom: 5%;
+
 }
+
 .perfil-foto {
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
   object-fit: cover;
 }
 
-.list {
-  --ion-background-color: #25242433;
-  --ion-border-color: #2dd36f;
+ion-header ion-toolbar {
+  height: 3.75rem;
 }
 
-ion-accordion-group {
-  margin: 5%;
-  margin-top: 30%;
+ion-back-button {
+  margin-top: 5px;
+  width: 3.7rem;
+  height: auto;
+  border-radius: 30%;
 }
 
-ion-item[slot="header"] {
-  --background: var(--ion-color-light);
+ion-back-button::part(icon) {
+  font-size: 1.8rem;
 }
 
-ion-accordion div[slot="content"] {
-  padding: 10px;
-  background-color: var(--ion-background-color);
-  border: 1px solid var(--ion-border-color);
+.container {
+  border-radius: 4%;
+  border-top: 3px solid rgba(55, 151, 55, 0.805);
+  border-bottom: 3px solid  rgba(55, 151, 55, 0.805);
+  width: auto;
+  height: 90%;
 }
 
-ion-accordion ion-item {
-  --color: #1C1C1E;
-  --ion-color: var(--ion-border-color);
-}
-
-.item {
-  color: #d1d1e2;
-}
-
-ion-padding {
-  color: black;
-}
-
-.membro-desde {
-
-  font-size: 0.8rem;
-  color: #6c7a72;
-  text-align: center;
-  margin-top: 3%;
-}
-
-ion-button[color="dark"] {
-  margin-left: 30%;
-  margin-top: 40%;
+.linha
+{
+  padding: 8px;
+  border-radius: 10%;
 }
 

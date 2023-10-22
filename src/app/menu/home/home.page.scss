@@ -1,5 +1,5 @@
 ion-header ion-toolbar {
-    height: 3.75rem;
+    height: 3.4rem;
 }
 
 ion-title {
@@ -13,7 +13,6 @@ ion-title {
     right: 0;
     bottom: 0;
     align-items: center;
-    padding-bottom: 1%;
 }
 
 ion-card {
@@ -30,11 +29,15 @@ ion-card {
 }
 
 ion-card-title {
-    color: white;
+    color: rgba(253, 253, 253, 0.932);
+    font-family: 'Segoe UI';
+    font-size: 1.5rem;
 }
 
 ion-card-subtitle {
-    color: #54BB77;
+    color: #339253;
+    font-family: 'Segoe UI';
+    font-size: 1.1rem;
 }
 
 gradient {
@@ -80,22 +83,23 @@ gradient {
   }
 
   .ion-text-left{
-    margin-top: 20px;
-    font-size: 1.1rem;
+    margin-top: 17px;
+    font-size: 1.2rem;
     color: #54BB77;
-    margin-bottom: 20px;
+    border: 3px solid #49c07238;
+    border-radius: 40px;
   }
 
   .meu-botao {
     position: start;
     top: 0;
     right: 0;
-    margin: 10px;
+    margin: 4px;
 }
 
 .ion-text-center{
-  margin-right:10%;
-  font-size: 1.1rem;
+  margin-right:11%;
+  font-size: 1.3rem;
   color: #54BB77;
   font-family: 'ubuntu';
 }
@@ -119,6 +123,6 @@ gradient {
 }
 
 .clicked {
-  transform: scale(1.05); 
-  transition: transform 0.2s; 
+  transform: scale(1.05);
+  transition: transform 0.46s;
 }

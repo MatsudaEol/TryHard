@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { PopoverController, AlertController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UserService } from 'src/app/services/user.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -23,7 +23,8 @@ clickedCards: { [key: number]: boolean } = {};
     private afAuth: AngularFireAuth,
     private userService: UserService,
     private router: Router,
-    private exerciseService: ExerciseService
+    private exerciseService: ExerciseService,
+    private alertCtrl: AlertController
   ) {
     this.userName = 'Visitante';
   }
@@ -32,11 +33,11 @@ clickedCards: { [key: number]: boolean } = {};
     this.afAuth.authState.subscribe(async user => {
       if (user) {
         this.userName = await this.userService.getUserName(user.uid);
-  
+
         const daysOfWeek = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
         const today = new Date().getDay();
         this.currentDay = daysOfWeek[today];
-  
+
         this.exerciseService.getExercises(user.uid).subscribe(exercicios => {
           // console.log('Dados dos exercícios:', exercicios);
           this.listExercises = exercicios;
@@ -45,7 +46,7 @@ clickedCards: { [key: number]: boolean } = {};
         this.exerciseService.clearUserExercises();
       }
     });
-  } 
+  }
 
   loadUserExercises(userId: string) {
     this.exerciseService.getExercises(userId).subscribe(exercicios => {
@@ -56,6 +57,33 @@ clickedCards: { [key: number]: boolean } = {};
   async closePopover() {
     await this.popoverController.dismiss();
   }
+
+  async mostrarAlerta() {
+    const alert = await this.alertCtrl.create({
+      header: 'Confirmação',
+      message: 'Tem certeza que deseja sair da conta?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Ação de cancelamento');
+          }
+        }, {
+          text: 'Sair',
+          cssClass: 'danger',
+          handler: () => {
+            this.logout(); // Chama a função de logout após a confirmação
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+
 
   logout() {
     this.authService.logoutUser().then(() => {
@@ -70,5 +98,5 @@ clickedCards: { [key: number]: boolean } = {};
   onCardClick(index: number) {
     this.clickedCards[index] = !this.clickedCards[index];
   }
-  
+
 }
