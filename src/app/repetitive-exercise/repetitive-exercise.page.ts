@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BdtempService } from 'src/app/services/bdtemp.service';
+import { AuthenticationService } from '../services/authentication.service';
+import { ExerciseService } from '../services/exercise.service';
+
 
 @Component({
   selector: 'app-repetitive-exercise',
@@ -8,28 +10,22 @@ import { BdtempService } from 'src/app/services/bdtemp.service';
   styleUrls: ['./repetitive-exercise.page.scss'],
 })
 export class RepetitiveExercisePage implements OnInit {
-  exercise: any;
-  exerciseNumber: number = 1;
+  exerciseData: any;
   
-  constructor(private activatedRoute: ActivatedRoute, private bdtempService : BdtempService) { }
+  constructor(private route: ActivatedRoute, private authService: AuthenticationService, private exerciseService: ExerciseService) { }
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe((paramMap) => {
-      const exerciseId = paramMap.get('id');
+    this.route.paramMap.subscribe(async (params) => {
+      const exerciseId = params.get('exerciseId');
+      const userId = await this.authService.getUserId();
 
-      // Verifica se exerciseId não é nulo antes de fazer a comparação
-      if (exerciseId !== null) {
-        // Use o ID para buscar os detalhes do exercício
-        this.exercise = this.bdtempService.getExerciseById(exerciseId);
+      if (exerciseId && userId) {
+        this.exerciseService.getExerciseDetails(userId, exerciseId).subscribe((exerciseData) => {
+          //console.log('Detalhes do exercício:', exerciseData);
+          this.exerciseData = exerciseData;
 
-        // Calcula o número do exercício com base na posição na lista
-        const exerciseIndex = this.bdtempService.listExercises.findIndex(
-          (exercise) => exercise.id === +exerciseId
-        );
-
-        if (exerciseIndex !== -1) {
-          this.exerciseNumber = exerciseIndex + 1;
-        }
+          // Nota:  Inserir um serviço de gerenciamento de estado
+        });
       }
     });
 

@@ -29,10 +29,15 @@ export class AuthenticationService {
     return await this.ngFireAuth.currentUser
   }
 
+  async getUserId() {
+    const user = await this.ngFireAuth.currentUser;
+    return user ? user.uid : null;
+  }
+
   async logoutUser() {
     try {
       localStorage.removeItem('userToken'); 
-      await this.ngFireAuth.signOut();
+      await this.ngFireAuth.signOut();  
     } catch (error) {
       console.log('Erro ao fazer logout:', error);
     }

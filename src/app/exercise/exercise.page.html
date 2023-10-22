@@ -1,26 +1,27 @@
 <ion-header [translucent]="true">
+
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-icon name="arrow-back" class="flecha" color="medium"></ion-icon>
-      <div class="container"><img [alt]="exercise.alt" [src]="exercise.image" /></div>
-      <ion-title class="ion-text-center"> Começar <a class="workout-name">{{ exercise.name }}</a></ion-title>
+      <ion-back-button defaultHref="/tabs/home" class="flecha"></ion-back-button> 
     </ion-buttons>
+      <div class="container">
+        <img [src]="exerciseData?.image" /> 
+      </div>
+      <ion-title class="ion-text-center"> Começar <a class="workout-name">{{ exerciseData?.name }}</a></ion-title>
+
     <div class="gradient-border"></div>
     <div class="vertical-border"></div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" color="darkgray">
-  <ion-card>
+  <ion-card *ngIf="exerciseData"> 
     <ion-card-content shape="round">
-      <ion-card-title>Exercício {{ exerciseNumber }} - {{ exercise.name }}</ion-card-title>
-      <ion-card-subtitle *ngIf="exercise.type === 'tempo'" >{{ exercise.group }} - {{ exercise.amount }} Minutos</ion-card-subtitle>
-      <ion-card-subtitle *ngIf="exercise.type === 'repetições'" >{{ exercise.group }} - {{ exercise.sets }} séries de {{ exercise.amount}} repetições</ion-card-subtitle>
-      <div [innerHTML]="exercise.description" class="description"></div>
+      <ion-card-title>Exercício - {{ exerciseData.name }}</ion-card-title>
+      <ion-card-subtitle *ngIf="exerciseData.type === 'time'" >{{ exerciseData.group }} - {{ exerciseData.amount }} Minutos</ion-card-subtitle>
+      <ion-card-subtitle *ngIf="exerciseData.type === 'rep'" >{{ exerciseData.group }} - {{ exerciseData.sets }} séries de {{ exerciseData.reps}} repetições</ion-card-subtitle>
+      <div [innerHTML]="exerciseData.description" class="description"></div>
     </ion-card-content>
   </ion-card>
-  <ion-button expand="full" color="primary" color="trygreen" class="exercise-button" shape="round" (click)="startWorkout()">Começar Treino</ion-button>
 </ion-content>
-
-
-<ion-icon name="arrow-dropleft-circle"></ion-icon>
+<ion-button expand="full" color="primary" color="trygreen" class="exerciseData-button" shape="round" (click)="startWorkout()">Começar Treino</ion-button>

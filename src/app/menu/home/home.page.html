@@ -38,8 +38,7 @@
         <ion-card class=" gradient border"
         *ngFor="let exercise of userExercise.exercises; let j = index"
         [ngClass]="{'clicked': clickedCards[j]}"
-        (click)="onCardClick(j)"
-        [routerLink]="['/exercise', exercise.id]"
+        [routerLink]="['/exercise', exercise.exerciseId]"
       >
       <img [src]="exercise.image" alt="{{ exercise.name }}">
       <ion-card-content class="card-text">

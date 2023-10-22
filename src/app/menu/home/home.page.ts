@@ -39,7 +39,7 @@ clickedCards: { [key: number]: boolean } = {};
         this.currentDay = daysOfWeek[today];
 
         this.exerciseService.getExercises(user.uid).subscribe(exercicios => {
-          // console.log('Dados dos exercícios:', exercicios);
+           console.log('Dados dos exercícios:', exercicios);
           this.listExercises = exercicios;
         });
       } else {

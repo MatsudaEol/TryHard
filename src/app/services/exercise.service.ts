@@ -23,6 +23,7 @@ export class ExerciseService {
                 const amount = type === 'time' ? e.amount : undefined;
 
                 return {
+                  exerciseId,
                   reps,
                   sets,
                   amount,
@@ -35,6 +36,8 @@ export class ExerciseService {
           return combineLatest(exerciseObservables);
         });
 
+        
+        
         return combineLatest(exerciseObservables).pipe(
           map((updatedUserExercises: any[]) => {
             userExercises.forEach((userExercise, index) => {
@@ -45,6 +48,38 @@ export class ExerciseService {
         );
       })
     );
+  }
+
+  getExerciseDetails(userId: string, exerciseId: string) {
+    return this.getExercises(userId).pipe(
+      map((userExercises) => {
+        const userExercise = userExercises.find((userEx) => {
+          return userEx.exercises.some((e) => e.exerciseId === exerciseId);
+        });
+  
+        if (userExercise) {
+          const exercise = userExercise.exercises.find((e) => e.exerciseId === exerciseId);
+          return {
+            exerciseId,
+            reps: exercise.reps,
+            sets: exercise.sets,
+            amount: exercise.amount,
+            ...exercise,   
+          };
+        } else {
+          return {
+            exerciseId,
+            reps: undefined,
+            sets: undefined,
+            amount: undefined,
+          };
+        }
+      })
+    );
+  }
+
+  getExerciseById(exerciseId: string) {
+    return this.afs.doc(`exercises/${exerciseId}`).valueChanges();
   }
 
   clearUserExercises() {
