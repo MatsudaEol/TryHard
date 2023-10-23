@@ -2,10 +2,11 @@
 
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/home" class="flecha"></ion-back-button> 
+      <ion-back-button defaultHref="/tabs/home" class="flecha" color="trygreen">
+      </ion-back-button>
     </ion-buttons>
       <div class="container">
-        <img [src]="exerciseData?.image" /> 
+        <img [src]="exerciseData?.image" />
       </div>
       <ion-title class="ion-text-center"> Começar <a class="workout-name">{{ exerciseData?.name }}</a></ion-title>
 
@@ -15,7 +16,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" color="darkgray">
-  <ion-card *ngIf="exerciseData"> 
+  <ion-card *ngIf="exerciseData">
     <ion-card-content shape="round">
       <ion-card-title>Exercício - {{ exerciseData.name }}</ion-card-title>
       <ion-card-subtitle *ngIf="exerciseData.type === 'time'" >{{ exerciseData.group }} - {{ exerciseData.amount }} Minutos</ion-card-subtitle>

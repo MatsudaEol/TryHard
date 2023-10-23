@@ -1,16 +1,15 @@
  .ion-text-center{
-    margin-right: 15%;
+    margin-right: 13%;
     font-family:'segoe ui';
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 
 .perfil-container {
-  margin-left: 23%;
-  width: 60%;
+  margin-left: 27%;
+  width: 50%;
   height: auto;
   padding-top: 15px;
   margin-bottom: 5%;
-
 }
 
 .perfil-foto {
@@ -38,13 +37,23 @@ ion-back-button::part(icon) {
   border-radius: 4%;
   border-top: 3px solid rgba(55, 151, 55, 0.805);
   border-bottom: 3px solid  rgba(55, 151, 55, 0.805);
-  width: auto;
+  width: 95%;
   height: 90%;
 }
 
-.linha
-{
-  padding: 8px;
-  border-radius: 10%;
+.linha,
+.linha1,
+.linha2,
+.linha3 {
+  border-radius: 30px;
+  padding: 5px;
+  width: auto; /* Adicione o valor desejado para o border-radius */
 }
 
+.botão-edit
+{
+  width: 45%;
+  height: 8%;
+  margin-left: 28%;
+  padding-top:10px;
+}

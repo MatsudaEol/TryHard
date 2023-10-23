@@ -22,7 +22,7 @@ ion-title {
 {
   position: relative; /* Define o contexto de posicionamento para os elementos filhos absolutos */
     width: 100vw;
-    height: 400px;
+    height: 350px;
     background-color: #f0f0f0;
 }
 
@@ -39,20 +39,18 @@ ion-header img {
     position: absolute;
     align-items: center;
     z-index: 2;
-    top: 0;
-    left: 0;
-    font-size: 2.3rem;
-    border: 1px solid green;
-    background-color: rgb(146, 185, 153);
     border-radius: 50%;
-    padding: 3%;
-    margin-left: 7px;
-    margin-top: 2.5px;
+    margin-left: 8px;
+    margin-bottom: 280px;
+    height: 50px;
+    width: 3.6rem;
+    border:1px solid #4fe2a5cc ;
+    background-color: #163a3243;
   }
 
-
-
-
+  ion-back-button::part(icon) {
+    font-size: 1.9rem;
+  }
 
   .gradient-border {
     position: absolute;

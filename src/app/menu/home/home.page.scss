@@ -18,6 +18,9 @@ ion-title {
 ion-card {
     position: relative;
     height: 23vh;
+    width: 95%;
+    margin-left: 2%;
+    border-radius: 20px;
 }
 
 .card-text {
@@ -31,13 +34,13 @@ ion-card {
 ion-card-title {
     color: rgba(253, 253, 253, 0.932);
     font-family: 'Segoe UI';
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
 ion-card-subtitle {
     color: #339253;
     font-family: 'Segoe UI';
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 gradient {
@@ -73,6 +76,7 @@ gradient {
 
   .listpopover {
     background-color: #1a1b1b;
+    border:1px solid #339253;
   }
 
   .ion-text-user{
@@ -82,12 +86,15 @@ gradient {
     font-size: 1.5rem;
   }
 
-  .ion-text-left{
-    margin-top: 17px;
+  .ion-text-left
+  {
+    margin-top: 12px;
     font-size: 1.2rem;
     color: #54BB77;
-    border: 3px solid #49c07238;
-    border-radius: 40px;
+    border: 2px solid #49c07238;
+    border-radius: 10px;
+    background-color: #212522;
+    margin-left: 70px;
   }
 
   .meu-botao {
@@ -105,7 +112,7 @@ gradient {
 }
 
 .dia-semana{
-  color: rgb(235, 237, 238);
+  color: rgb(219, 222, 220);
 }
 
 @media only screen and (min-width: 1200px) {
