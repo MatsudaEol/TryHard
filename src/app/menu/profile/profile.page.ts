@@ -1,56 +1,49 @@
-import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
-import { AlertController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { User } from 'firebase/auth';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
-export class ProfilePage {
+export class ProfilePage implements OnInit {
+  user: User;
+  userData: any;
 
-  constructor(private navCtrl: NavController, private alertCtrl: AlertController) {}
-
-  editarPerfil() {
-    this.navCtrl.navigateForward('/editar-perfil');
+  constructor(
+    private afAuth: AngularFireAuth,
+    private userService: UserService
+  ) {
+    this.userData = {};
   }
 
-  accordionGroupChange = (ev: any) => {
-    const collapsedItems = ['first', 'second', 'third'].filter((value) => value !== ev.detail.value);
-    const selectedValue = ev.detail.value;
+  ngOnInit() {
+    this.afAuth.authState.subscribe(async (user) => {
+      if (user) {
+        this.user = user;
+        const userUID = user.uid;
 
-    console.log(
-      `Expanded: ${selectedValue === undefined ? 'None' : ev.detail.value} | Collapsed: ${collapsedItems.join(', ')}`
-    );
-  };
+        try {
+          this.userData = await this.userService.getUser(userUID);
 
-  async mostrarAlerta() {
-    const alert = await this.alertCtrl.create({
-      header: 'Confirmação',
-      message: 'Tem certeza que deseja sair da conta?',
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-            console.log('Ação de cancelamento');
+          // Converte o Timestamp da data de nascimento em uma representação de data legível
+          if (this.userData.birth) {
+            this.userData.birth = this.formatDate(this.userData.birth.toDate());
           }
-        }, {
-          text: 'Sair',
-          cssClass: 'danger',
-          handler: () => {
-            this.sairDaConta();
-          }
+        } catch (error) {
+          console.error('Erro ao buscar informações do usuário:', error);
         }
-      ]
+      }
     });
-
-    await alert.present();
   }
 
-  sairDaConta() {
-    this.navCtrl.navigateRoot('/login');
+  // Função para formatar a data no formato 'dd/MM/yyyy'
+  formatDate(date: Date): string {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
   }
-
 }

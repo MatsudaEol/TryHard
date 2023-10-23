@@ -6,31 +6,29 @@
       <ion-title class="ion-text-center" color="trygreen">Meus Dados</ion-title>
     </ion-toolbar>
 </ion-header>
+<ion-content color="darkgray">
+  <ion-card color="dark" class="container" >
+    <div class="profile-container">
+      <ion-avatar class="perfil-container">
+        <img [src]="userData.profile">
+      </ion-avatar>
+    </div>
+    <!--aqui vai puxar os dados do usuário -->
+    <ion-item color="dark-light" lines="full" class="linha">
+      <ion-label color="trygreen">Nome: <a class="profileData">{{ userData.username }}</a></ion-label>
+    </ion-item>
 
-<ion-card color="dark" class="container">
-  <div class="profile-container">
-    <ion-avatar class="perfil-container">
-      <!-- Aqui você vai ter que botar pra puxar a imagem do usuário -->
-      <img src="https://i.pinimg.com/474x/f1/da/a7/f1daa70c9e3343cebd66ac2342d5be3f.jpg" alt="perfil" class="perfil-foto">
-    </ion-avatar>
-  </div>
-  <!--aqui vai puxar os dados do usuário -->
-  <ion-item color="dark-light" lines="full" class="linha">
-    <ion-label color="trygreen">Nome:</ion-label>
-  </ion-item>
+    <ion-item color="dark-light" lines="full" class="linha1">
+      <ion-label color="trygreen">E-mail:  <a class="profileData">{{ userData.email }}</a></ion-label>
+    </ion-item>
 
-  <ion-item color="dark-light" lines="full" class="linha1">
-    <ion-label color="trygreen">E-mail:</ion-label>
-  </ion-item>
+    <ion-item color="dark-light" lines="full" class="linha2">
+      <ion-label color="trygreen">Data de nascimento: <a class="profileData">{{ userData.birth }}</a></ion-label>
+    </ion-item>
 
-  <ion-item color="dark-light" lines="full" class="linha2">
-    <ion-label color="trygreen">Data de nascimento:</ion-label>
-  </ion-item>
-
-  <ion-item color="dark-light" lines="full" class="linha3">
-    <ion-label color="trygreen">Celular:</ion-label>
-  </ion-item>
-  <ion-button color="trygreen" class="botão-edit">EDITAR</ion-button>
-</ion-card>
-
-
+    <ion-item color="dark-light" lines="full" class="linha3">
+      <ion-label color="trygreen">Celular: <a class="profileData">{{ userData.phone }}</a></ion-label>
+    </ion-item>
+    <ion-button color="trygreen" class="botão-edit">EDITAR</ion-button>
+  </ion-card>
+</ion-content>

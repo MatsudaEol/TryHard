@@ -13,9 +13,10 @@ import { ExerciseService } from 'src/app/services/exercise.service';
 })
 export class HomePage implements OnInit {
   listExercises: any[] = [];
+  userData: any;
   userName: string;
   currentDay: string;
-clickedCards: { [key: number]: boolean } = {};
+  clickedCards: { [key: number]: boolean } = {};
 
   constructor(
     private authService: AuthenticationService,
@@ -26,24 +27,26 @@ clickedCards: { [key: number]: boolean } = {};
     private exerciseService: ExerciseService,
     private alertCtrl: AlertController
   ) {
-    this.userName = 'Visitante';
+    this.userData = {};
   }
 
   async ngOnInit() {
-    this.afAuth.authState.subscribe(async user => {
+    this.afAuth.authState.subscribe(async (user) => {
       if (user) {
-        this.userName = await this.userService.getUserName(user.uid);
+        this.userData = await this.userService.getUser(user.uid);
+
+        // Acessando o nome de usuário
+        if (this.userData.username) {
+          this.userName = this.userData.username;
+        } else {
+          this.userName = 'Visitante'; // Defina um valor padrão se o nome de usuário estiver ausente
+        }
 
         const daysOfWeek = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
         const today = new Date().getDay();
         this.currentDay = daysOfWeek[today];
 
-        this.exerciseService.getExercises(user.uid).subscribe(exercicios => {
-           console.log('Dados dos exercícios:', exercicios);
-          this.listExercises = exercicios;
-        });
-      } else {
-        this.exerciseService.clearUserExercises();
+        this.loadUserExercises(user.uid);
       }
     });
   }
@@ -83,8 +86,6 @@ clickedCards: { [key: number]: boolean } = {};
     await alert.present();
   }
 
-
-
   logout() {
     this.authService.logoutUser().then(() => {
       this.router.navigate(['/login']).then(() => {
@@ -98,5 +99,4 @@ clickedCards: { [key: number]: boolean } = {};
   onCardClick(index: number) {
     this.clickedCards[index] = !this.clickedCards[index];
   }
-
 }
