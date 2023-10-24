@@ -10,7 +10,7 @@
   <ion-card color="dark" class="container" >
     <div class="profile-container">
       <ion-avatar class="perfil-container">
-        <img [src]="userData.profile">
+        <img [src]="userData.profile || 'https://firebasestorage.googleapis.com/v0/b/tryhard-75312.appspot.com/o/default_profile.png?alt=media&token=a65958d7-167d-4e30-9391-4f92c26366aa'">
       </ion-avatar>
     </div>
     <!--aqui vai puxar os dados do usuário -->

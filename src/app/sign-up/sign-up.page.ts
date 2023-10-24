@@ -65,16 +65,17 @@ export class SignUpPage implements OnInit {
         if (user) {
           const userId = user.uid;
           const username = this.regForm.value.username;
+          const email = this.regForm.value.email; 
           this.regForm.reset();
           loading.dismiss();
   
           const userData = {
-            uid: userId,
             username: username,
+            email: email 
           };
   
           await this.firestore.collection('users').doc(userId).set(userData);
-
+  
           const userExerciseData = {
             exercises: [],
             userId: userId,
@@ -82,7 +83,7 @@ export class SignUpPage implements OnInit {
           };
   
           await this.firestore.collection('userExercises').doc(userId).set(userExerciseData);
-
+  
           this.exerciseService.getExercises(userId).subscribe((exercicios) => {
             console.log('Dados dos exercícios:', exercicios);
           });
@@ -100,5 +101,6 @@ export class SignUpPage implements OnInit {
       loading.dismiss();
     }
   }
+  
   
 }
