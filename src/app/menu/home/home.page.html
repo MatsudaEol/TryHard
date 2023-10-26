@@ -22,7 +22,7 @@
         </ion-popover>
         <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical" color="trygreen"></ion-icon>
       </ion-button>
-      <ion-title class="ion-text-center">Olá {{ userData.username }}</ion-title>
+      <ion-title class="ion-text-center username">Olá {{ userData.username }}</ion-title>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -31,7 +31,10 @@
 <ion-content [fullscreen]="true" color="darkgray">
 
   <ion-item color="darkgray">
-    <ion-title class="ion-text-left" slot="start">Treino de <a class="dia-semana">{{ currentDay }}</a></ion-title>
+    <ion-title class="ion-text-center weekDay" >Treino de <a class="dia-semana">{{ currentDay }}</a></ion-title>
+  </ion-item>
+  <ion-item color="darkgray">
+    <ion-title class="ion-text-center treinoc">Treinos completados: 0</ion-title>
   </ion-item>
 
       <ng-container *ngFor="let userExercise of listExercises; let i = index" >
@@ -42,7 +45,7 @@
       >
       <img [src]="exercise.image" alt="{{ exercise.name }}">
       <ion-card-content class="card-text">
-        <ion-card-title>Exercício {{ j + 1 }} - {{ exercise.name }}</ion-card-title>
+        <ion-card-title> {{ j + 1 }}  {{ exercise.name }}</ion-card-title>
         <ion-card-subtitle *ngIf="exercise.type === 'time'">
           {{ exercise.group }} - {{ exercise.amount }} Minutos
         </ion-card-subtitle>
