@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ExerciseService } from '../services/exercise.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
+import { NavController, LoadingController } from '@ionic/angular'; // Remova a importação redundante do LoadingController
 
 @Component({
   selector: 'app-exercise',
@@ -11,12 +12,15 @@ import { Router } from '@angular/router';
 })
 export class ExercisePage implements OnInit {
   exerciseData: any;
+  loading: HTMLIonLoadingElement;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private exerciseService: ExerciseService,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private navCtrl: NavController,
+    private loadingController: LoadingController // Correção aqui
   ) { }
 
   async ngOnInit() {
@@ -25,11 +29,16 @@ export class ExercisePage implements OnInit {
       const userId = await this.authService.getUserId();
 
       if (exerciseId && userId) {
-        this.exerciseService.getExerciseDetails(userId, exerciseId).subscribe((exerciseData) => {
-          //console.log('Detalhes do exercício:', exerciseData);
-          this.exerciseData = exerciseData;
+        this.loading = await this.loadingController.create({
+          message: 'Carregando...', // Mensagem exibida no spinner
+          translucent: true, // Deixa o spinner translúcido
+        });
 
-          // Nota:  Inserir um serviço de gerenciamento de estado
+        await this.loading.present();
+
+        this.exerciseService.getExerciseDetails(userId, exerciseId).subscribe((exerciseData) => {
+          this.exerciseData = exerciseData;
+          this.loading.dismiss(); // Fecha o loading spinner quando os dados forem carregados
         });
       }
     });
@@ -37,10 +46,13 @@ export class ExercisePage implements OnInit {
 
   startWorkout() {
     if (this.exerciseData && this.exerciseData.type === 'time') {
-      this.router.navigate(['/timed-exercise', this.exerciseData.exerciseId]); 
+      this.router.navigate(['/timed-exercise', this.exerciseData.exerciseId]);
     } else if (this.exerciseData && this.exerciseData.type === 'rep') {
-      this.router.navigate(['/repetitive-exercise', this.exerciseData.exerciseId]); 
+      this.router.navigate(['/repetitive-exercise', this.exerciseData.exerciseId]);
     }
   }
-  
+
+  goBack() {
+    this.navCtrl.back();
+  }
 }

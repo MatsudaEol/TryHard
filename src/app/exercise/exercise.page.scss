@@ -1,130 +1,45 @@
-ion-header ion-toolbar {
-    --background: #1C1C1E;
+.image-wrapper {
+  position: relative;
+  height: 40vh;
 }
 
-ion-title {
-    font-weight: 800;
-    text-align: start;
-    color: var(--ion-color-light);
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    align-items: center;
-    padding-top: 23px;
-    text-shadow: -3px 2px 3px rgba(0, 0, 0, 2.5);
-    margin-left: 42px;
+.exercise-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.container
-{
-  position: relative; /* Define o contexto de posicionamento para os elementos filhos absolutos */
-    width: 100vw;
-    height: 350px;
-    background-color: #f0f0f0;
+.content-wrapper {
+  padding: 20px;
 }
 
-
-ion-header img {
-    position: relative;
-    object-fit: cover;
-    border: none;
-    width: 100%;
-    height: 100%;
-  }
-
-  .flecha{
-    position: absolute;
-    align-items: center;
-    z-index: 2;
-    border-radius: 50%;
-    margin-left: 3px;
-    margin-bottom: 280px;
-    height: 50px;
-    width: 3.6rem;
-
-  }
-
-  ion-back-button::part(icon) {
-    font-size: 1.9rem;
-  }
-
-  @keyframes neonAnimation {
-    0% {
-        background-position: 100% 70%;
-        filter: brightness(1);
-    }
-    100% {
-        background-position: 0% 50%;
-        filter: brightness(1.3) blur(10px);
-    }
+.back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
 }
 
-.gradient-border {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background-size: 200% 100%;
-    background-image: linear-gradient(to right, transparent, #4fe2a5cc);
-    animation: neonAnimation 5s linear infinite alternate;
-    overflow: hidden;
+.exercise-title {
+  font-size: 1.5rem;
 }
 
-.vertical-border {
+.exercise-description {
+  margin-top: 10px;
+}
+
+ion-button {
+  margin-top: 20px;
+}
+
+.dark-background {
   position: absolute;
   top: 0;
-  bottom: 0;
   left: 0;
-  border:5px inset #4fe2a5cc;
-}
-
-.vertical-border2{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 5px; /* Agora, a largura controla a largura da borda vertical */
-  background-size: 100% 200%;
-  background-image: linear-gradient(to bottom, transparent, #4fe2a5cc);
-  animation: neonAnimation 5s linear infinite alternate;
-  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Cor de fundo preta semi-transparente */
+  z-index: 3; /* Coloque-o acima de outros elementos */
 }
 
 
-
-
-ion-card {
-    height: 80%;
-    --background: var(--ion-color-darkgray2);
-}
-
-ion-card-title {
-    color: var(--ion-color-light);
-}
-
-ion-card-subtitle {
-    color: var(--ion-color-trygreen);
-}
-
-.description {
-    color: white;
-    margin-top: 10px;
-    font-size: 12px;
-}
-
-  .exercise-button {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    transition: background-color 0.3s ease;
-  }
-
- .workout-name {
-    color: var(--ion-color-trygreen);
- }
