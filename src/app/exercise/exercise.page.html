@@ -1,34 +1,34 @@
 <ion-content [fullscreen]="true" color="darkgray">
-  <div class="dark-background" *ngIf="loading">
-  <ion-button fill="clear" color="trygreen" (click)="goBack()" class="back-button">
-    <ion-icon name="arrow-back"></ion-icon>
-  </ion-button>
+  <div *ngIf="exibir">
+    <ion-button fill="clear" color="trygreen" (click)="goBack()" class="back-button">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
 
-  <div class="image-wrapper">
-    <img [src]="exerciseData?.image" class="exercise-image" />
-  </div>
+    <div class="image-wrapper">
+      <img [src]="exerciseData?.image" class="exercise-image" />
+    </div>
 
-  <div class="content-wrapper">
-    <ng-container *ngIf="exerciseData">
-      <ion-chip color="trygreen" *ngIf="exerciseData.type === 'time'" >
-        <ion-icon name="time-outline"></ion-icon>
-        <ion-label>{{ exerciseData.amount }} Minutos</ion-label>
-      </ion-chip>
+    <div class="content-wrapper">
+      <ng-container *ngIf="exerciseData">
+        <ion-chip color="trygreen" *ngIf="exerciseData.type === 'time'">
+          <ion-icon name="time-outline"></ion-icon>
+          <ion-label>{{ exerciseData.amount }} Minutos</ion-label>
+        </ion-chip>
 
-      <ion-chip color="trygreen" *ngIf="exerciseData.type === 'rep'" >
-        <ion-icon name="barbell-outline"></ion-icon>
-        <ion-label>{{ exerciseData.sets }} séries de {{ exerciseData.reps}}</ion-label>
-      </ion-chip>
+        <ion-chip color="trygreen" *ngIf="exerciseData.type === 'rep'">
+          <ion-icon name="barbell-outline"></ion-icon>
+          <ion-label>{{ exerciseData.sets }} séries de {{ exerciseData.reps}}</ion-label>
+        </ion-chip>
 
-      <ion-chip color="trygreen">
-        <ion-icon name="barbell-outline"></ion-icon>
-        <ion-label>{{ exerciseData.group }}</ion-label>
-      </ion-chip>
-      <ion-label class="exercise-title">Exercício - {{ exerciseData.name }}</ion-label>
-      <div class="exercise-description" [innerHTML]="exerciseData.description"></div>
-    </ng-container>
+        <ion-chip color="trygreen">
+          <ion-icon name="flash-outline"></ion-icon>
+          <ion-label>{{ exerciseData.group }}</ion-label>
+        </ion-chip>
+        <ion-label class="exercise-title">Exercício - {{ exerciseData.name }}</ion-label>
+        <div class="exercise-description" [innerHTML]="exerciseData.description"></div>
+      </ng-container>
 
-    <ion-button (click)="startWorkout()">Começar Treino</ion-button>
-  </div>
+      <ion-button (click)="startWorkout()">Começar Treino</ion-button>
+    </div>
   </div>
 </ion-content>
