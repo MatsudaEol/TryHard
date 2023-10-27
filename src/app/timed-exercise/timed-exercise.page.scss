@@ -7,12 +7,25 @@ ion-title {
     font-weight: 800;
     text-align: center;
     color: var(--ion-color-trygreen);
-    flex-direction: column; 
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    right: 0; 
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
     align-items: center;
     padding-top: 20px;
+}
+
+.timer {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }

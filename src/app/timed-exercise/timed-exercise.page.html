@@ -1,12 +1,19 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/home" class="flecha"></ion-back-button> 
+      <ion-back-button defaultHref="/tabs/home" class="flecha"></ion-back-button>
     </ion-buttons>
-      <ion-title class="ion-text-center" color="trygreen"> {{ exerciseData?.name }}</ion-title>  
+      <ion-title class="ion-text-center" color="trygreen"> {{ exerciseData?.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" color="darkgray">
-
+  <div class="timer">
+    {{ displayTime }}
+  </div>
+  <div class="controls">
+    <ion-button (click)="startTimer()" [disabled]="isRunning">Iniciar</ion-button>
+    <ion-button (click)="pauseTimer()" [disabled]="!isRunning">Pausar</ion-button>
+    <ion-button (click)="stopTimer()" [disabled]="!isRunning">Parar</ion-button>
+  </div>
 </ion-content>
