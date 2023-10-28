@@ -22,7 +22,7 @@ ion-title {
   font-weight: bold;
   text-align: center;
   margin-bottom: 20px;
-  color: rgb(171, 223, 194);
+  color: rgb(198, 203, 200);
 }
 
 .controls {
@@ -34,4 +34,16 @@ ion-title {
 .botão
 {
   font-size: 23px;
+}
+
+.container
+{
+  display: grid;
+  place-items: center;
+  margin-left: 10px;
+  border-radius: 4%;
+  margin-top: 60px;
+  border: 3px double rgba(67, 160, 67, 0.805);
+  width: 95%;
+  height: 60%;
 }

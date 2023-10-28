@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" color="darkgray">
+  <div class="container">
   <div class="timer">
     {{ displayTime }}
   </div>
@@ -16,4 +17,5 @@
     <ion-button (click)="pauseTimer()" [disabled]="!isRunning" color="trygreen" class="botão"><ion-icon name="pause-outline"></ion-icon></ion-button>
     <ion-button (click)="stopTimer()" [disabled]="!isRunning" color="trygreen" class="botão"><ion-icon name="stop-outline"></ion-icon></ion-button>
   </div>
+</div>
 </ion-content>
