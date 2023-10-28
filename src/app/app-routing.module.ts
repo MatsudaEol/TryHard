@@ -55,7 +55,11 @@ const routes: Routes = [
   {
     path: 'timed-exercise/:exerciseId',
     loadChildren: () => import('./timed-exercise/timed-exercise.module').then( m => m.TimedExercisePageModule)
+  },  {
+    path: 'first-introduction',
+    loadChildren: () => import('./first-introduction/first-introduction.module').then( m => m.FirstIntroductionPageModule)
   },
+
 
 
 ];

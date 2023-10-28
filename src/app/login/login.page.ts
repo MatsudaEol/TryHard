@@ -58,7 +58,7 @@ export class LoginPage {
             console.log('Dados dos exercícios:', exercicios);
             
           });
-          this.router.navigate(['/tabs/home']);
+          this.router.navigate(['/first-introduction']);
         } else {
           console.log('Usuário não encontrado.');
           loading.dismiss();
