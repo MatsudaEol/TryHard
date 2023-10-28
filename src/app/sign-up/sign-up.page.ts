@@ -56,39 +56,39 @@ export class SignUpPage implements OnInit {
   async signUp() {
     const loading = await this.loadingCtrl.create();
     await loading.present();
-  
+
     if (this.regForm?.valid) {
       try {
         const userCredential = await this.authService.registerUser(this.regForm.value.email, this.regForm.value.password);
         const user = userCredential.user;
-  
+
         if (user) {
           const userId = user.uid;
           const username = this.regForm.value.username;
-          const email = this.regForm.value.email; 
+          const email = this.regForm.value.email;
           this.regForm.reset();
           loading.dismiss();
-  
+
           const userData = {
             username: username,
-            email: email 
+            email: email
           };
-  
+
           await this.firestore.collection('users').doc(userId).set(userData);
-  
+
           const userExerciseData = {
             exercises: [],
             userId: userId,
             username: username
           };
-  
+
           await this.firestore.collection('userExercises').doc(userId).set(userExerciseData);
-  
+
           this.exerciseService.getExercises(userId).subscribe((exercicios) => {
             console.log('Dados dos exercícios:', exercicios);
           });
-  
-          this.router.navigate(['/tabs/home']);
+
+          this.router.navigate(['/first-introduction']);
         } else {
           console.log('Fornecer valores corretos');
           loading.dismiss();
@@ -101,6 +101,6 @@ export class SignUpPage implements OnInit {
       loading.dismiss();
     }
   }
-  
-  
+
+
 }
