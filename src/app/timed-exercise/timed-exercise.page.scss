@@ -18,14 +18,20 @@ ion-title {
 }
 
 .timer {
-  font-size: 36px;
+  font-size: 46px;
   font-weight: bold;
   text-align: center;
   margin-bottom: 20px;
+  color: rgb(171, 223, 194);
 }
 
 .controls {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 35px;
+}
+
+.botão
+{
+  font-size: 23px;
 }
