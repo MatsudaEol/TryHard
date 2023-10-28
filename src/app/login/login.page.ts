@@ -22,7 +22,7 @@ export class LoginPage {
     public router: Router,
     public exerciseService: ExerciseService // Injete o serviço ExerciseService
   ) { }
-  
+
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ['', [
@@ -56,9 +56,9 @@ export class LoginPage {
 
           this.exerciseService.getExercises(userId).subscribe((exercicios) => {
             console.log('Dados dos exercícios:', exercicios);
-            
+
           });
-          this.router.navigate(['/first-introduction']);
+          this.router.navigate(['/tabs/home']);
         } else {
           console.log('Usuário não encontrado.');
           loading.dismiss();
@@ -71,7 +71,7 @@ export class LoginPage {
       loading.dismiss();
     }
   }
-  
+
   togglePassword() {
     this.showPassword = !this.showPassword;
   }
