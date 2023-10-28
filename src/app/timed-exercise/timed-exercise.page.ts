@@ -13,6 +13,7 @@ export class TimedExercisePage implements OnInit {
   displayTime: string = '00:00'; // Tempo inicial (minutos:segundos)
   isRunning: boolean = false; // Estado do timer
   timerInterval: any; // Referência para o setInterval
+  totalElapsedSeconds: number = 0; // Tempo total decorrido
 
   constructor(private route: ActivatedRoute, private authService: AuthenticationService, private exerciseService: ExerciseService) { }
 
@@ -24,7 +25,7 @@ export class TimedExercisePage implements OnInit {
       if (exerciseId && userId) {
         this.exerciseService.getExerciseDetails(userId, exerciseId).subscribe((exerciseData) => {
           this.exerciseData = exerciseData;
-          // Nota:  Inserir um serviço de gerenciamento de estado
+          // Nota: Inserir um serviço de gerenciamento de estado
         });
       }
     });
@@ -33,12 +34,11 @@ export class TimedExercisePage implements OnInit {
   startTimer() {
     if (!this.isRunning) {
       this.isRunning = true;
-      let totalSeconds = 0;
 
       this.timerInterval = setInterval(() => {
-        totalSeconds++;
-        const minutes = Math.floor(totalSeconds / 60);
-        const seconds = totalSeconds % 60;
+        this.totalElapsedSeconds++; // Incrementa o tempo total decorrido
+        const minutes = Math.floor(this.totalElapsedSeconds / 60);
+        const seconds = this.totalElapsedSeconds % 60;
 
         this.displayTime = `${this.padZero(minutes)}:${this.padZero(seconds)}`;
       }, 1000);
@@ -55,7 +55,8 @@ export class TimedExercisePage implements OnInit {
   stopTimer() {
     this.isRunning = false;
     clearInterval(this.timerInterval);
-    this.displayTime = '00:00'; // Reinicie o tempo quando parar
+    this.displayTime = '00:00';
+    this.totalElapsedSeconds = 0; // Reseta o tempo total decorrido quando o timer é parado
   }
 
   padZero(num: number) {
