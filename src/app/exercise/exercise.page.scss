@@ -9,10 +9,6 @@
   object-fit: cover;
 }
 
-.content-wrapper {
-  padding: 20px;
-}
-
 .back-button {
   position: absolute;
   top: 10px;
@@ -20,26 +16,44 @@
   z-index: 2;
 }
 
+.chip {
+  padding: 10px 10px 10px 4px;
+}
+
 .exercise-title {
   font-size: 1.5rem;
+  padding: 10px;
 }
 
 .exercise-description {
   margin-top: 10px;
+  max-height: 39vh;
+  overflow-y: auto;
+  padding: 0px 10px;
 }
 
 ion-button {
   margin-top: 20px;
 }
 
-.dark-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Cor de fundo preta semi-transparente */
-  z-index: 3; /* Coloque-o acima de outros elementos */
+.exercise-button {
+  background-color: var(--ion-color-trygreen);
+  font-size: 1.2rem;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative; /* Mudamos de absolute para relative para o alinhamento funcionar */
+  margin: 0 auto; /* Alinhamos o botão no centro horizontal */
+  text-align: center; /* Alinhamos o texto no centro */
 }
 
+.button-container {
+  padding-top: 20px;
+}
 
+.exercise-title a {
+  color: var(--ion-color-trygreen);
+}

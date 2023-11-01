@@ -8,27 +8,44 @@
       <img [src]="exerciseData?.image" class="exercise-image" />
     </div>
 
-    <div class="content-wrapper">
+    <div>
       <ng-container *ngIf="exerciseData">
-        <ion-chip color="trygreen" *ngIf="exerciseData.type === 'time'">
-          <ion-icon name="time-outline"></ion-icon>
-          <ion-label>{{ exerciseData.amount }} Minutos</ion-label>
-        </ion-chip>
 
-        <ion-chip color="trygreen" *ngIf="exerciseData.type === 'rep'">
-          <ion-icon name="barbell-outline"></ion-icon>
-          <ion-label>{{ exerciseData.sets }} séries de {{ exerciseData.reps}}</ion-label>
-        </ion-chip>
+        <div class="chip">
+          <ion-chip color="trygreen" *ngIf="exerciseData.type === 'time'">
+            <ion-icon name="time-outline"></ion-icon>
+            <ion-label>{{ exerciseData.amount }} Minutos</ion-label>
+          </ion-chip>
 
-        <ion-chip color="trygreen">
-          <ion-icon name="flash-outline"></ion-icon>
-          <ion-label>{{ exerciseData.group }}</ion-label>
-        </ion-chip>
-        <ion-label class="exercise-title">Exercício - {{ exerciseData.name }}</ion-label>
-        <div class="exercise-description" [innerHTML]="exerciseData.description"></div>
+          <ion-chip color="trygreen" *ngIf="exerciseData.type === 'rep'">
+            <ion-icon name="barbell-outline"></ion-icon>
+            <ion-label>{{ exerciseData.sets }} séries de {{ exerciseData.reps }}</ion-label>
+          </ion-chip>
+
+          <ion-chip color="trygreen">
+            <ion-icon name="flash-outline"></ion-icon>
+            <ion-label>{{ exerciseData.group }}</ion-label>
+          </ion-chip>
+        </div>
+
+        <div class="exercise-details">
+          <ion-label class="exercise-title">
+            <a> Exercício - </a>{{ exerciseData.name }}
+          </ion-label>
+          <div class="exercise-description">
+            <ion-label>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel ligula auctor neque ullamcorper faucibus ac at lorem. Donec et ex id tortor convallis vestibulum feugiat ac ex. Cras vestibulum lobortis finibus. Vivamus at nisl condimentum, cursus lorem sed, consequat massa. Duis at dolor et ipsum consectetur laoreet. Nullam quam mauris, accumsan vitae vehicula iaculis, volutpat sed tortor. Proin vestibulum augue at convallis malesuada. Suspendisse a semper turpis. Pellentesque laoreet fermentum scelerisque. Vestibulum ultricies est quis porttitor venenatis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+
+              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec ac nisl volutpat, vehicula lorem et, convallis felis. Nulla vitae aliquet felis. Aenean gravida magna sed congue iaculis. Sed convallis nulla commodo odio convallis blandit. Pellentesque efficitur a nisi non dapibus. Aliquam non arcu tincidunt, fermentum nisl ut, tristique elit. Morbi luctus, tellus et maximus sagittis, elit magna placerat turpis, eget volutpat elit nibh a tellus. Etiam id tincidunt tortor. Donec viverra lacinia nulla, ut euismod orci. Nullam nec placerat mi, quis commodo felis. Curabitur luctus blandit nisl sed vehicula. Duis tincidunt accumsan nunc, quis dapibus neque efficitur eget. Sed in aliquam tellus. Nulla quis erat ac risus sagittis finibus.</ion-label>
+          </div>
+        </div>
       </ng-container>
-
-      <ion-button (click)="startWorkout()">Começar Treino</ion-button>
     </div>
+
+    <div class="button-container">
+      <ion-button color="trygreen" class="exercise-button" (click)="startWorkout()">
+        <ion-lab>Começar Treino</ion-lab>
+      </ion-button>
+    </div>
+
   </div>
 </ion-content>
