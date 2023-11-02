@@ -1,5 +1,5 @@
 ion-header ion-toolbar {
-    --background: #1C1C1E; 
+    --background: #1C1C1E;
 }
 
 ion-title {
@@ -7,4 +7,46 @@ ion-title {
     font-weight: 800;
     text-align: center;
     color: var(--ion-color-light);
-}   
+}
+
+
+.calendario {
+  background: var(--background);
+  padding: 20px;
+  text-align: center;
+}
+
+.calendario-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendario-header button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.calendario-dias ion-col {
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-weight: bold;
+  background: white;
+  text-align: center;
+  font-size: 18px;
+}
+
+.calendario-dias ion-col.destacado {
+  background: #00ff00;
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+}
+
+.calendario-dias ion-col.dia-atual {
+  background: #00ff00;
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+}

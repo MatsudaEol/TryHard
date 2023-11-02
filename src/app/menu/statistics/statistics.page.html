@@ -1,8 +1,20 @@
-<ion-header [translucent]="true">
-    <ion-toolbar>
-        <ion-title class="ion-text-center">Estatisticas</ion-title>
-    </ion-toolbar>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Calendário
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" color="darkgray">
+<ion-content class="calendario-container" scrollX="true">
+  <div class="calendario">
+    <div class="calendario-header">
+      <button (click)="retrocederDia()">Anterior</button>
+      <h2>{{ dataAtual | date: 'MMMM yyyy' }}</h2>
+      <button (click)="avancarDia()">Próximo</button>
+    </div>
+    <div class="calendario-dias">
+      <ion-col *ngFor="let dia of diasExibidos; let i = index" [ngClass]="{'destacado': i === 2, 'dia-atual': i === 2}">{{ dia }}</ion-col>
+    </div>
+  </div>
 </ion-content>
