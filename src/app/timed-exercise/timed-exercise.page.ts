@@ -18,6 +18,7 @@ export class TimedExercisePage implements OnInit {
   constructor(private route: ActivatedRoute, private authService: AuthenticationService, private exerciseService: ExerciseService) { }
 
   ngOnInit() {
+    this.displayTime = '00:30'; //Daniel, PUXAR DO BANCO A CONTAGEM DO TREINO
     this.route.paramMap.subscribe(async (params) => {
       const exerciseId = params.get('exerciseId');
       const userId = await this.authService.getUserId();
@@ -34,13 +35,20 @@ export class TimedExercisePage implements OnInit {
   startTimer() {
     if (!this.isRunning) {
       this.isRunning = true;
+      if (this.totalElapsedSeconds === 0) {
+        this.totalElapsedSeconds = 30; //Daniel, PUXAR DO BANCO O TEMPO DO TREINO 
+      }
 
       this.timerInterval = setInterval(() => {
-        this.totalElapsedSeconds++; // Incrementa o tempo total decorrido
-        const minutes = Math.floor(this.totalElapsedSeconds / 60);
-        const seconds = this.totalElapsedSeconds % 60;
+        if (this.totalElapsedSeconds > 0) {
+          this.totalElapsedSeconds--; // Decrementa o tempo total decorrido
+          const minutes = Math.floor(this.totalElapsedSeconds / 60);
+          const seconds = this.totalElapsedSeconds % 60;
 
-        this.displayTime = `${this.padZero(minutes)}:${this.padZero(seconds)}`;
+          this.displayTime = `${this.padZero(minutes)}:${this.padZero(seconds)}`;
+        } else {
+          this.stopTimer(); // Quando o tempo chegar a zero, pare o timer
+        }
       }, 1000);
     }
   }
