@@ -11,9 +11,10 @@
   <div class="container">
   <div class="timer"> {{ displayTime }}</div>
   <div class="controls">
-    <ion-button (click)="startTimer()" [disabled]="isRunning" color="trygreen" class="botão"><ion-icon name="play-circle-outline"></ion-icon></ion-button>
+    <ion-button (click)="startTimer()" [disabled]="isRunning" color="trygreen" class="botão"><ion-icon name="power"></ion-icon></ion-button>
     <ion-button (click)="pauseTimer()" [disabled]="!isRunning" color="trygreen" class="botão"><ion-icon name="pause-outline"></ion-icon></ion-button>
     <ion-button (click)="stopTimer()" [disabled]="!isRunning" color="trygreen" class="botão"><ion-icon name="stop-outline"></ion-icon></ion-button>
   </div>
 </div>
 </ion-content>
+
