@@ -29,14 +29,15 @@
 
 
 <ion-content [fullscreen]="true" color="darkgray">
-
+  <div class="scale-in-ver-bottom">
   <ion-item color="darkgray">
     <ion-title class="ion-text-center weekDay" >Treino de <a class="dia-semana">{{ currentDay }}</a></ion-title>
   </ion-item>
+</div>
   <ion-item color="darkgray">
     <ion-title class="ion-text-center treinoc">Treinos completados: 0</ion-title>
   </ion-item>
-
+      <div class="tilt-in-left-1">
       <ng-container *ngFor="let userExercise of listExercises; let i = index" >
         <ion-card class=" gradient border"
         *ngFor="let exercise of userExercise.exercises; let j = index"
@@ -55,6 +56,6 @@
       </ion-card-content>
     </ion-card>
     </ng-container>
-
+  </div>
 
 </ion-content>
