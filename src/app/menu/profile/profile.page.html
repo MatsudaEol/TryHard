@@ -7,9 +7,10 @@
     </ion-toolbar>
 </ion-header>
 <ion-content color="darkgray">
+  <div *ngIf="exibir">
   <ion-card color="dark" class="container" >
     <div class="profile-container">
-      <ion-avatar class="perfil-container">
+      <ion-avatar class="perfil-container" *ngIf="imageLoaded">
         <img [src]="userData.profile || 'https://firebasestorage.googleapis.com/v0/b/tryhard-75312.appspot.com/o/default_profile.png?alt=media&token=a65958d7-167d-4e30-9391-4f92c26366aa'">
       </ion-avatar>
     </div>
@@ -31,4 +32,5 @@
     </ion-item>
     <ion-button color="trygreen" class="botão-edit">EDITAR</ion-button>
   </ion-card>
+  </div>
 </ion-content>

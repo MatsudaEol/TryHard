@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ExerciseService } from '../services/exercise.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
-import { NavController, LoadingController } from '@ionic/angular'; 
+import { NavController, LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-exercise',
@@ -21,7 +21,7 @@ export class ExercisePage implements OnInit {
     private exerciseService: ExerciseService,
     private authService: AuthenticationService,
     private navCtrl: NavController,
-    private loadingController: LoadingController 
+    private loadingController: LoadingController
   ) { }
 
   async ngOnInit() {
@@ -31,15 +31,15 @@ export class ExercisePage implements OnInit {
 
       if (exerciseId && userId) {
         this.loading = await this.loadingController.create({
-          message: 'Carregando...', 
-          translucent: true, 
+          message: 'Carregando...',
+          translucent: true,
         });
 
         await this.loading.present();
 
         this.exerciseService.getExerciseDetails(userId, exerciseId).subscribe((exerciseData) => {
           this.exerciseData = exerciseData;
-          this.loading.dismiss(); 
+          this.loading.dismiss();
           this.exibir = true
         });
       }

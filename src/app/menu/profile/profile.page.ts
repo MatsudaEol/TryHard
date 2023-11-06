@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { LoadingController } from '@ionic/angular';
 import { User } from 'firebase/auth';
 import { UserService } from 'src/app/services/user.service';
 
@@ -8,18 +9,30 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
-export class ProfilePage implements OnInit {
+export class ProfilePage {
   user: User;
   userData: any;
+  loading: HTMLIonLoadingElement;
+  exibir: boolean = false;
+  imageLoaded: boolean = false;
 
   constructor(
     private afAuth: AngularFireAuth,
-    private userService: UserService
+    private userService: UserService,
+    private loadingController: LoadingController
   ) {
     this.userData = {};
+    this.loadUserData();
   }
 
-  ngOnInit() {
+  async loadUserData() {
+    this.loading = await this.loadingController.create({
+      message: 'Carregando...',
+      translucent: true,
+    });
+
+    await this.loading.present();
+
     this.afAuth.authState.subscribe(async (user) => {
       if (user) {
         this.user = user;
@@ -35,6 +48,18 @@ export class ProfilePage implements OnInit {
         } catch (error) {
           console.error('Erro ao buscar informações do usuário:', error);
         }
+
+        const image = new Image();
+        image.src = this.userData.profile || 'https://firebasestorage.googleapis.com/v0/b/tryhard-75312.appspot.com/o/default_profile.png?alt=media&token=a65958d7-167d-4e30-9391-4f92c26366aa';
+        image.onload = () => {
+          this.imageLoaded = true;
+
+          // Verifique se todos os dados e a imagem foram carregados antes de exibir o conteúdo
+          if (this.imageLoaded && this.userData.username && this.userData.email && this.userData.birth && this.userData.phone) {
+            this.loading.dismiss();
+            this.exibir = true;
+          }
+        };
       }
     });
   }

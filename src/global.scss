@@ -16,3 +16,24 @@
 /* Fontes */
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sometype+Mono:wght@500&display=swap');
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #666666 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 4px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent; /* Definir a cor de fundo como transparente */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #666666;
+  border-radius: 15px;
+  border: 1px solid transparent; /* Definir a borda como transparente */
+}

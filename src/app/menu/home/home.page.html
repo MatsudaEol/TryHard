@@ -1,11 +1,11 @@
-<ion-header>
+<ion-header >
   <ion-toolbar color="darkgray2">
     <ion-buttons class="meu-botao">
-      <ion-button id="click-trigger">
-        <ion-popover trigger="click-trigger" triggerAction="click">
+      <ion-button id="click-trigger" >
+        <ion-popover trigger="click-trigger" triggerAction="click" >
           <ng-template>
             <ion-list class="listpopover">
-              <ion-item color="darkgray2" routerLink="/tabs/profile" (click)="closePopover()">
+              <ion-item color="darkgray2" routerLink="/tabs/profile" (click)="closePopover()" >
                 <ion-icon name="person-outline" slot="start" color="trygreen"></ion-icon>
                 <ion-label>Meus dados</ion-label>
               </ion-item>
@@ -32,7 +32,7 @@
 </ion-header>
 
 
-<ion-content [fullscreen]="true" color="darkgray">
+<ion-content [fullscreen]="true" color="darkgray" >
   <div class="scale-in-ver-bottom">
   <ion-item color="darkgray">
     <ion-title class="ion-text-center weekDay" >Treino de <a class="dia-semana">{{ currentDay }}</a></ion-title>
@@ -50,7 +50,7 @@
       >
       <img [src]="exercise.image" alt="{{ exercise.name }}">
       <ion-card-content class="card-text">
-        <ion-card-title> {{ j + 1 }}  {{ exercise.name }}</ion-card-title>
+        <ion-card-title> {{ j + 1 }} - {{ exercise.name }}</ion-card-title>
         <ion-card-subtitle *ngIf="exercise.type === 'time'">
           {{ exercise.group }} - {{ exercise.amount }} Minutos
         </ion-card-subtitle>
