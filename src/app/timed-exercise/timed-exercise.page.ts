@@ -14,6 +14,10 @@ export class TimedExercisePage implements OnInit {
   isRunning: boolean = false; // Estado do timer
   timerInterval: any; // Referência para o setInterval
   totalElapsedSeconds: number = 0; // Tempo total decorrido
+  breakInterval: any;
+  breakTimerActive: boolean = false;
+  originalTimerColor = 'rgba(251, 251, 251, 0.992)';
+  breakTimerColor = this.originalTimerColor;
 
   constructor(private route: ActivatedRoute, private authService: AuthenticationService, private exerciseService: ExerciseService) { }
 
@@ -57,6 +61,7 @@ export class TimedExercisePage implements OnInit {
     if (this.isRunning) {
       this.isRunning = false;
       clearInterval(this.timerInterval);
+      this.startBreakTimer();
     }
   }
 
@@ -70,4 +75,34 @@ export class TimedExercisePage implements OnInit {
   padZero(num: number) {
     return num.toString().padStart(2, '0');
   }
+
+  //Temporizador de Descanso
+
+  startBreakTimer() {
+    if (!this.breakTimerActive) {
+       this.breakTimerActive = true;
+       const breakDuration = 60;
+       this.breakTimerActive = true;
+        this.breakTimerColor = 'rgba(99, 202, 99, 0.805' // Tempo de descanso em segundos (1 minuto neste exemplo)
+       let remainingBreakTime = breakDuration;
+
+       this.breakInterval = setInterval(() => {
+         if (remainingBreakTime > 0) {
+           remainingBreakTime--;
+           const minutes = Math.floor(remainingBreakTime / 60);
+           const seconds = remainingBreakTime % 60;
+           this.displayTime = `${this.padZero(minutes)}:${this.padZero(seconds)}`;
+         } else {
+           this.stopBreakTimer();
+         }
+       }, 1000);
+    }
+   }
+
+   stopBreakTimer() {
+    this.breakTimerActive = false;
+    clearInterval(this.breakInterval);
+    this.startTimer();
+    this.breakTimerColor = this.originalTimerColor; // Retorna ao timer principal após o descanso
+   }
 }

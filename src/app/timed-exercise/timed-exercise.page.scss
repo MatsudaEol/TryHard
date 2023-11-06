@@ -17,49 +17,63 @@ ion-title {
     padding-top: 20px;
 }
 
-.timer {
-  font-size: 130px;
-  font-weight: 90;
-  color: rgba(251, 251, 251, 0.992);
-  border-radius: 20px;
-  background-color: rgba(34, 35, 34, 0.672);
-  border: 2px groove rgba(214, 218, 214, 0.444);
-}
-
 .controls {
   display: flex;
   justify-content: center;
-  gap: 25px;
+  gap: 50px;
 }
 
 .botão {
-  font-size: 1.7rem;
-  --border-radius: 700px;
+  height: 80px;
+  width: 90px;
+  border-radius: 60%;
 }
 
-.container
-{
+ion-icon{
+  font-size: 2.7rem;
+}
+
+.container {
   display: grid;
   place-items: center;
   border-radius: 3%;
-  margin-top: 20px;
   border-bottom: 3px solid rgba(99, 202, 99, 0.805);
-  background-color: rgba(20, 23, 20, 0.508);
+  background: linear-gradient(to top, rgba(57, 184, 84, 0.119), rgba(61, 61, 61, 0));
   width: auto;
-  height: 50%;
+  height: 60%;
 }
 
-.container2
-{
-  margin-left: 80px;
+
+.container2 {
+  margin: 10px auto; /* Adiciona margem nas laterais e centraliza o elemento */
   display: grid;
   place-items: center;
   border-radius: 5%;
-  margin-top: 10px;
   background-color: rgba(20, 23, 20, 0.508);
   width: 250px;
-  height: 20%;
-  border-right: 2px solid rgba(67, 204, 67, 0.244);
-  border-left: 2px solid rgba(67, 204, 67, 0.244);
-}
+  height: 250px; /* Aumenta a altura do container2 */
+  border: 2px solid rgba(67, 204, 67, 0.244);
+  border-radius: 30px;
+ }
 
+ .timer {
+  font-size: 130px;
+  font-weight: 100;
+  color: rgba(251, 251, 251, 0.992);
+  border-radius: 20px;
+  background: linear-gradient(to top, rgba(6, 229, 55, 0.119), rgba(61, 61, 61, 0));
+ }
+
+ion-button {
+  background-color: var(--ion-color-trygreen);
+  font-size: 1.2rem;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative; /* Mudamos de absolute para relative para o alinhamento funcionar */
+  margin: 0 auto; /* Alinhamos o botão no centro horizontal */
+  text-align: center;
+}
