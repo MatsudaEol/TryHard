@@ -1,62 +1,43 @@
 .introduction-title {
   font-size: 24px;
   color: white;
-  width: 90%;
-  text-align: center;
-  margin-left: 5%;
+  font-family: 'Segoe UI';
 }
 
-.subtitle{
-  font-size: 20px;
-  text-align: center;
-  width: 85%;
-  margin: 5%;
+.subtitle {
+  font-size: 1.4rem;
+  letter-spacing: 2px;
 }
 
 .container {
   border-radius: 4%;
-    /*border-top: 4px solid rgba(55, 151, 55, 0.805);
-    border-bottom: 4px solid  rgba(55, 151, 55, 0.805);*/
   width: 90%;
-  max-width: 450px;
-  height: 80%;
-  max-height: 800px;
+  height: 78%;
   margin: 80px auto;
-  -webkit-box-shadow:0px 0px 20px 4px rgba(84,187,119,0.88);
-  -moz-box-shadow: 0px 0px 20px 4px rgba(84,187,119,0.88);
-  box-shadow: 0px 0px 20px 4px rgba(84,187,119,0.88);
+  box-shadow: 0px 0px 20px 4px rgba(84, 187, 119, 0.88);
 }
 
-.icon{
-  width: 90%;
-  max-width: 450px;
-  height: 80%;
-  max-height: 800px;
+.icon,
+.icon2 {
+  width: 80%;
   align-items: center;
   margin-left: 5%;
 }
 
-.botao{
-  float: right;
-  border-radius: 100%;
-  width: 50px;
-  height: 50px;
-  margin-right: 8%;
+.botao {
+  width: 100px;
+  height: 65px;
 }
 
-.ion-content{
+ion-button {
+  --border-radius: 60%;
+  font-size: 1.4rem;
+  height: 76px;
+}
+
+.ion-content {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
-
-
-.icon2{
-  width: 70%;
-  max-width: 450px;
-  height: 40%;
-  max-height: 600px;
-  align-items: center;
-  margin-left: 5%;
 }
