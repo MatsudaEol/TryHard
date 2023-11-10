@@ -1,54 +1,47 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonContent } from '@ionic/angular';
+import { Component, NgModule } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { GaugeModule } from 'angular-gauge';
+
+@NgModule({
+  imports: [GaugeModule.forRoot()],
+
+})
+export class MyModule {}
 
 @Component({
   selector: 'app-statistics',
   templateUrl: './statistics.page.html',
   styleUrls: ['./statistics.page.scss'],
+  template: `
+  <mwl-gauge
+    [max]="100"
+    [dialStartAngle]="-90"
+    [dialEndAngle]="-90.001"
+    [value]="50"
+    [animated]="true"
+    [animationDuration]="1"
+  >
+  </mwl-gauge>
+  `,
 })
 export class StatisticsPage {
-  @ViewChild(IonContent) content: IonContent;
-  dataAtual: Date;
-  diasExibidos: number[] = [];
+  seuPercentualDeProgresso: number = 50; // Defina um valor padrão
+  seuDateTime: string; // Defina uma variável para o datetime
 
-  private startX: number;
+  constructor(private modalCtrl: ModalController) {}
 
-  constructor() {
-    this.dataAtual = new Date();
-    this.inicializarCalendario();
-  }
+  async openModal() {
+    const modal = await this.modalCtrl.create({
+      component: StatisticsPage,
+    });
 
-  ngAfterViewInit() {
-    this.content.ionScroll.subscribe((event) => {
-      if (event && event.detail) {
-        if (event.detail.startX < this.startX) {
-          this.avancarDia();
-        } else if (event.detail.startX > this.startX) {
-          this.retrocederDia();
-        }
-        this.startX = event.detail.startX;
+    modal.onDidDismiss().then((data) => {
+      if (data.data) {
+        // A data selecionada estará em data.data
+        console.log('Data selecionada:', data.data);
       }
     });
-  }
 
-  inicializarCalendario() {
-    const dataInicial = new Date(this.dataAtual);
-    dataInicial.setDate(dataInicial.getDate() - 2);
-
-    this.diasExibidos = [];
-    for (let i = 0; i < 5; i++) {
-      this.diasExibidos.push(dataInicial.getDate());
-      dataInicial.setDate(dataInicial.getDate() + 1);
-    }
-  }
-
-  avancarDia() {
-    this.dataAtual.setDate(this.dataAtual.getDate() + 1);
-    this.inicializarCalendario();
-  }
-
-  retrocederDia() {
-    this.dataAtual.setDate(this.dataAtual.getDate() - 1);
-    this.inicializarCalendario();
+    return await modal.present();
   }
 }

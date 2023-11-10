@@ -6,15 +6,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="calendario-container" scrollX="true">
-  <div class="calendario">
-    <div class="calendario-header">
-      <button (click)="retrocederDia()">Anterior</button>
-      <h2>{{ dataAtual | date: 'MMMM yyyy' }}</h2>
-      <button (click)="avancarDia()">Próximo</button>
-    </div>
-    <div class="calendario-dias">
-      <ion-col *ngFor="let dia of diasExibidos; let i = index" [ngClass]="{'destacado': i === 2, 'dia-atual': i === 2}">{{ dia }}</ion-col>
-    </div>
-  </div>
+<ion-content color="darkgray">
+
+  <ion-datetime-button datetime="datetime"></ion-datetime-button>
+
+<ion-modal [keepContentsMounted]="true">
+  <ng-template>
+    <ion-datetime id="datetime"></ion-datetime>
+  </ng-template>
+</ion-modal>
+
+  <ion-card class="card-container">
+    <ion-card-content class="top-section">
+      <div class="gauge-container">
+        <angular-gauge [value]="seuPercentualDeProgresso" [max]="100"></angular-gauge>
+      </div>
+    </ion-card-content>
+
+    <ion-card-content class="bottom-section card-divider">
+      <!-- Adicione os treinos do usuário aqui -->
+    </ion-card-content>
+  </ion-card>
 </ion-content>
