@@ -67,7 +67,11 @@ const routes: Routes = [
   {
     path: 'terceira-introduction',
     loadChildren: () => import('./introduction/terceira-introduction/terceira-introduction.module').then( m => m.TerceiraIntroductionPageModule)
+  },  {
+    path: 'sobre',
+    loadChildren: () => import('./sobre/sobre.module').then( m => m.SobrePageModule)
   },
+
 
 
 
