@@ -1,73 +1,63 @@
-.introduction-title {
-  font-size: 2rem;
-  width: 90%;
+.background-image {
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 1.637) 40%, transparent 50%, transparent 100%), url('/assets/homem.jpg');
+  background-size: cover;
+  background-position: center center;
+  width: 560px;
+  height: 100vh;
+  overflow: hidden;
+  filter:blur(2px)
+}
+.content {
+  position: absolute;
+  top: 2%;
+  left: 0%;
+  right: 0%;
   text-align: center;
-  margin-left: 20px;
-  font-family: 'Segoe UI', sans-serif;
+  color: rgb(125, 230, 148);
+}
+ion-title {
+  font-size: 2.2rem;
   margin-bottom: 10px;
-  text-shadow: 4px 10px 4px rgba(19, 20, 19, 0.793);
-  line-height: 1.5;
-  color: aliceblue;
+  font-weight: 500;
+  font-family:'Gill Sans MT';
+  text-shadow:  2px 4px 4px rgba(0, 0, 0, 0.7);
 }
-
-.introduction-title2 {
-  font-size: 1.5rem;
-  width: 90%;
-  text-align: center;
-  margin-left: 20px;
-  margin-bottom: 30px;
-  color: aliceblue;
-  text-shadow: 4px 10px 4px rgba(19, 20, 19, 0.793);
+h1{
+  padding: 5px;
+  letter-spacing: 4px;
+  font-family: 'Arial';
+  color: rgb(255, 255, 255);
+  text-shadow:  2px 4px 4px rgba(0, 0, 0, 0.5);
 }
-
-.container {
-  border-radius: 4%;
-  width: 90%;
-  height: 80%;
-  margin: 80px auto;
-  box-shadow: 0px 0px 20px 4px rgba(84, 187, 119, 0.88);
-  background-color: rgb(16, 29, 29);
+.container
+{
+  background-color: rgba(0, 0, 0, 0.34);
+  height: auto;
+  border-radius: 50px;
 }
 .icon {
+  width: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 86%;
-}
-
-.icon img {
-  max-width: 100%;
-  height: auto;
+  height: 45vh;
+  align-content: center;
+  margin-left: 10px;
 }
 
 .botao {
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 ion-button{
-  --border-radius: 60%;
+  --border-radius:50%;
   font-size: 1.4rem;
-  height: 76px;
-  margin-bottom: 15px;
+  height: 75px;
+  margin-top: 3px;
 }
-
-.ion-content{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.ion-text{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
- }
-
- .slide-in-blurred-bottom {
+//animações
+.slide-in-blurred-bottom {
 	-webkit-animation: slide-in-blurred-bottom 0.8s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
 	        animation: slide-in-blurred-bottom 0.8s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
 }
