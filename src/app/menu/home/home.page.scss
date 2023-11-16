@@ -1,4 +1,6 @@
 /* Estilos para telas menores */
+
+
 ion-toolbar.center-content {
   --background: #19191a;
   --ion-color-base: #19191a !important;
@@ -9,7 +11,7 @@ ion-toolbar.center-content {
   align-items: flex-start;
 
   h1, p {
-    margin-left: 5%;
+    margin: 0;
     color: var(--ion-color-light);
   }
 
@@ -29,6 +31,7 @@ ion-toolbar.center-content {
 
   .text-content {
     flex: 1;
+    margin-left: 5%;
   }
 
   .profile-container {
@@ -73,15 +76,18 @@ ion-content {
   &::-webkit-scrollbar{
     display: none;
   }
+  background-color: #19191a;
 }
 
 .date-container {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
 
   .today {
     text-align: left;
     margin-left: 5%;
+    color: white;
   }
 
   .date {
@@ -94,8 +100,8 @@ ion-content {
 ion-card {
   position: relative;
   height: auto;
-  width: 95%;
-  margin-left: 2%;
+  width: 90%;
+  margin-left: 5%;
   border-radius: 20px;
   border: 3px solid var(--ion-color-trygreen);
 }
@@ -149,12 +155,13 @@ ion-card-subtitle {
 /* Estilos para telas maiores */
 @media screen and (min-width: 1024px) {
   ion-header {
-    margin-bottom: 10vh;
+    background-color: #19191a !important;
   }
 
   .cards-container {
     display: flex;
     justify-content: center;
+    background-color: #19191a !important;
   }
 
   .card-row {

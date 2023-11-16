@@ -17,6 +17,7 @@ export class HomePage implements OnInit {
   userName: string;
   currentDay: string;
   clickedCards: { [key: number]: boolean } = {};
+  formattedDate: string;
 
   constructor(
     private authService: AuthenticationService,
@@ -48,9 +49,21 @@ export class HomePage implements OnInit {
 
         this.loadUserExercises(user.uid);
       }
+      this.formattedDate = this.formatDate(new Date());
     });
   }
 
+  formatDate(date: Date): string {
+    const options: Intl.DateTimeFormatOptions = { weekday: 'long', day: 'numeric', month: 'long' };
+    const dateStr = date.toLocaleDateString('pt-BR', options);
+
+    // Função para capitalizar a primeira letra
+    function capitalizeFirstLetter(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    return capitalizeFirstLetter(dateStr);
+  }
   loadUserExercises(userId: string) {
     this.exerciseService.getExercises(userId).subscribe(exercicios => {
       this.listExercises = exercicios;

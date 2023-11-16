@@ -44,7 +44,11 @@
 </ion-header>
 
 
-<ion-content [fullscreen]="true" color="darkgray" >
+<ion-content [fullscreen]="true">
+  <div class="date-container">
+    <ion-text class="today">Treino de Hoje</ion-text>
+    <ion-text class="date">{{ formattedDate }}</ion-text>
+  </div>
   <div class="cards-container">
     <ng-container *ngFor="let userExercise of listExercises; let i = index" >
       <div class="card-row">
