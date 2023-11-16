@@ -1,65 +1,74 @@
-<ion-header >
-  <ion-toolbar color="darkgray2">
-    <ion-buttons class="meu-botao">
-      <ion-button id="click-trigger" >
-        <ion-popover trigger="click-trigger" triggerAction="click" >
-          <ng-template>
-            <ion-list class="listpopover">
-              <ion-item color="darkgray2" routerLink="/tabs/profile" (click)="closePopover()" >
-                <ion-icon name="person-outline" slot="start" color="trygreen"></ion-icon>
-                <ion-label>Meus dados</ion-label>
-              </ion-item>
-              <ion-item color="darkgray2" (click)="closePopover()">
-                <ion-icon name="build-outline" slot="start" color="trygreen"></ion-icon>
-                <ion-label>Mudar Senha</ion-label>
-              </ion-item>
-              <ion-item color="darkgray2" (click)="closePopover()">
-                <ion-icon name="information-circle-outline" slot="start" color="trygreen"></ion-icon>
-                <ion-label>Sobre</ion-label>
-              </ion-item>
-              <ion-item color="darkgray2"  (click)="closePopover()" (click)="mostrarAlerta()">
-                <ion-icon name="exit-outline" slot="start" color="trygreen"></ion-icon>
-                <ion-label >Sair</ion-label>
-              </ion-item>
-            </ion-list>
-          </ng-template>
-        </ion-popover>
-        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical" color="trygreen"></ion-icon>
-      </ion-button>
-      <ion-title class="ion-text-center username">Olá {{ userData.username }}</ion-title>
-    </ion-buttons>
+<ion-header class="ion-no-border">
+  <ion-toolbar class="center-content">
+    <div class="header-content">
+      <div class="text-content">
+        <h1>Olá {{ userData.username }}</h1>
+        <p>Tenha um bom treino!</p>
+      </div>
+      <div class="profile-container">
+        <ion-avatar class="avatar">
+          <img [src]="userData.profile || 'https://firebasestorage.googleapis.com/v0/b/tryhard-75312.appspot.com/o/default_profile.png?alt=media&token=a65958d7-167d-4e30-9391-4f92c26366aa'">
+
+          <ion-buttons>
+            <button ion-button class="popover-button" id="click-trigger">
+              <img src="../../../assets/icon/gear-icon.png" class="popover-button">
+              <ion-popover trigger="click-trigger" triggerAction="click">
+                <ng-template>
+                  <ion-list class="listpopover">
+                    <ion-item color="darkgray2" routerLink="/tabs/profile" (click)="closePopover()" >
+                      <ion-icon name="person-outline" slot="start" color="trygreen"></ion-icon>
+                      <ion-label>Meus dados</ion-label>
+                    </ion-item>
+                    <ion-item color="darkgray2" (click)="closePopover()">
+                      <ion-icon name="build-outline" slot="start" color="trygreen"></ion-icon>
+                      <ion-label>Mudar Senha</ion-label>
+                    </ion-item>
+                    <ion-item color="darkgray2" (click)="closePopover()">
+                      <ion-icon name="information-circle-outline" slot="start" color="trygreen"></ion-icon>
+                      <ion-label>Sobre</ion-label>
+                    </ion-item>
+                    <ion-item color="darkgray2"  (click)="closePopover()" (click)="mostrarAlerta()">
+                      <ion-icon name="exit-outline" slot="start" color="trygreen"></ion-icon>
+                      <ion-label >Sair</ion-label>
+                    </ion-item>
+                  </ion-list>
+                </ng-template>
+              </ion-popover>
+            </button>
+          </ion-buttons>
+        </ion-avatar>
+
+      </div>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 
-<ion-content [fullscreen]="true" color="darkgray" >
-  <div class="scale-in-ver-bottom">
-  <ion-item color="darkgray">
-    <ion-title class="ion-text-center weekDay" >Treino de <a class="dia-semana">{{ currentDay }}</a></ion-title>
-  </ion-item>
-</div>
-  <ion-item color="darkgray">
-    <ion-title class="ion-text-center treinoc">Treinos completados: 0</ion-title>
-  </ion-item>
-      <div class="tilt-in-left-1">
-      <ng-container *ngFor="let userExercise of listExercises; let i = index" >
-        <ion-card class=" gradient border"
-        *ngFor="let exercise of userExercise.exercises; let j = index"
-        [ngClass]="{'clicked': clickedCards[j]}"
-        [routerLink]="['/exercise', exercise.exerciseId]"
-      >
-      <img [src]="exercise.image" alt="{{ exercise.name }}">
-      <ion-card-content class="card-text">
-        <ion-card-title> {{ j + 1 }} - {{ exercise.name }}</ion-card-title>
-        <ion-card-subtitle *ngIf="exercise.type === 'time'">
-          {{ exercise.group }} - {{ exercise.amount }} Minutos
-        </ion-card-subtitle>
-        <ion-card-subtitle *ngIf="exercise.type === 'rep'">
-          {{ exercise.group }} - {{ exercise.sets }} séries de {{ exercise.reps }} repetições
-        </ion-card-subtitle>
-      </ion-card-content>
-    </ion-card>
-    </ng-container>
+<ion-content [fullscreen]="true">
+  <div class="date-container">
+    <ion-text class="today">Treino de Hoje</ion-text>
+    <ion-text class="date">{{ formattedDate }}</ion-text>
   </div>
-
+  <div class="cards-container">
+    <ng-container *ngFor="let userExercise of listExercises; let i = index" >
+      <div class="card-row">
+      <ion-card class="gradient border"
+      *ngFor="let exercise of userExercise.exercises; let j = index"
+      [ngClass]="{'clicked': clickedCards[j]}"
+      [routerLink]="['/exercise', exercise.exerciseId]"
+    >
+    <img [src]="exercise.image" alt="{{ exercise.name }}">
+    <ion-card-content class="card-text">
+      <ion-card-title> {{ j + 1 }} - {{ exercise.name }}</ion-card-title>
+      <ion-card-subtitle *ngIf="exercise.type === 'time'">
+        {{ exercise.group }} - {{ exercise.amount }} Minutos
+      </ion-card-subtitle>
+      <ion-card-subtitle *ngIf="exercise.type === 'rep'">
+        {{ exercise.group }} - {{ exercise.sets }} séries de {{ exercise.reps }} repetições
+      </ion-card-subtitle>
+    </ion-card-content>
+  </ion-card>
+  </div>
+  </ng-container>
+</div>
 </ion-content>

@@ -26,4 +26,10 @@ ion-tab-button.tab-selected {
     }
   }
 
+  @media screen and (min-width: 1024px) {
+    ion-tab-bar{
+      height: 8vh;
+    }
+  }
+
 
