@@ -2,19 +2,36 @@
   background-image: linear-gradient(to top, rgba(0, 0, 0, 1.637) 40%, transparent 50%, transparent 100%), url('/assets/homem.jpg');
   background-size: cover;
   background-position: center center;
-  width: 560px;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
   filter:blur(2px)
 }
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  position: absolute;
+  top: 25%; 
+  transform: translate(-50%, -50%); 
+  left: 50%;
+  width: 30vh;
+  height: 30vh;
+}
+
+ion-badge {
+  background-color: rgba(20, 20, 20, 0.3);
+  border-radius: 2000px;
+}
+
 .content {
   position: absolute;
-  top: 2%;
-  left: 0%;
-  right: 0%;
+  top: 50%; 
   text-align: center;
   color: rgb(125, 230, 148);
 }
+
 ion-title {
   font-size: 2.2rem;
   margin-bottom: 10px;
@@ -35,70 +52,68 @@ h1{
   height: auto;
   border-radius: 50px;
 }
-.icon {
-  width: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 45vh;
-  align-content: center;
-  margin-left: 10px;
-}
 
 .botao {
-  display: flex;
   justify-content: center;
+  bottom: 10vh;
 }
 
 ion-button{
   --border-radius:50%;
   font-size: 1.4rem;
   height: 75px;
-  margin-top: 3px;
-}
-//animações
-.slide-in-blurred-bottom {
-	-webkit-animation: slide-in-blurred-bottom 0.8s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-	        animation: slide-in-blurred-bottom 0.8s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+  width: 75px;
 }
 
-@-webkit-keyframes slide-in-blurred-bottom {
-  0% {
-    -webkit-transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
-            transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
-    -webkit-transform-origin: 50% 100%;
-            transform-origin: 50% 100%;
-    -webkit-filter: blur(40px);
-            filter: blur(40px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateY(0) scaleY(1) scaleX(1);
-            transform: translateY(0) scaleY(1) scaleX(1);
-    -webkit-transform-origin: 50% 50%;
-            transform-origin: 50% 50%;
-    -webkit-filter: blur(0);
-            filter: blur(0);
-    opacity: 1;
+@media screen and (min-width: 1024px) {
+  .logo {
+    max-height: 25vw;
+    max-width: 25vw;
   }
 }
-@keyframes slide-in-blurred-bottom {
-  0% {
-    -webkit-transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
-            transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
-    -webkit-transform-origin: 50% 100%;
-            transform-origin: 50% 100%;
-    -webkit-filter: blur(40px);
-            filter: blur(40px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateY(0) scaleY(1) scaleX(1);
-            transform: translateY(0) scaleY(1) scaleX(1);
-    -webkit-transform-origin: 50% 50%;
-            transform-origin: 50% 50%;
-    -webkit-filter: blur(0);
-            filter: blur(0);
-    opacity: 1;
-  }
-}
+//animações
+// .slide-in-blurred-bottom {
+// 	-webkit-animation: slide-in-blurred-bottom 0.8s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+// 	        animation: slide-in-blurred-bottom 0.8s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+// }
+
+// @-webkit-keyframes slide-in-blurred-bottom {
+//   0% {
+//     -webkit-transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
+//             transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
+//     -webkit-transform-origin: 50% 100%;
+//             transform-origin: 50% 100%;
+//     -webkit-filter: blur(40px);
+//             filter: blur(40px);
+//     opacity: 0;
+//   }
+//   100% {
+//     -webkit-transform: translateY(0) scaleY(1) scaleX(1);
+//             transform: translateY(0) scaleY(1) scaleX(1);
+//     -webkit-transform-origin: 50% 50%;
+//             transform-origin: 50% 50%;
+//     -webkit-filter: blur(0);
+//             filter: blur(0);
+//     opacity: 1;
+//   }
+// }
+// @keyframes slide-in-blurred-bottom {
+//   0% {
+//     -webkit-transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
+//             transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
+//     -webkit-transform-origin: 50% 100%;
+//             transform-origin: 50% 100%;
+//     -webkit-filter: blur(40px);
+//             filter: blur(40px);
+//     opacity: 0;
+//   }
+//   100% {
+//     -webkit-transform: translateY(0) scaleY(1) scaleX(1);
+//             transform: translateY(0) scaleY(1) scaleX(1);
+//     -webkit-transform-origin: 50% 50%;
+//             transform-origin: 50% 50%;
+//     -webkit-filter: blur(0);
+//             filter: blur(0);
+//     opacity: 1;
+//   }
+// }
