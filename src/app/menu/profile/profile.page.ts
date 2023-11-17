@@ -15,6 +15,15 @@ export class ProfilePage {
   loading: HTMLIonLoadingElement;
   exibir: boolean = false;
   imageLoaded: boolean = false;
+  presentingElement = null;
+
+  // Simule dados de treinos concluídos
+  treinosConcluidos = [
+    { dia: 1 },
+    { dia: 2 },
+    { dia: 3 },
+    // Adicione mais dias conforme necessário
+  ];
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -23,6 +32,7 @@ export class ProfilePage {
   ) {
     this.userData = {};
     this.loadUserData();
+    this.presentingElement = document.querySelector('.ion-page');
   }
 
   async loadUserData() {

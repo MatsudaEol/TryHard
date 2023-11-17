@@ -1,59 +1,48 @@
-ion-header ion-toolbar {
-  --background: #1C1C1E;
-}
-
-ion-title {
-  font-size: 18px;
-  font-weight: 800;
-  text-align: center;
-  color: var(--ion-color-light);
-}
-
-.calendario-container {
-  padding: 50px; /* Adicione preenchimento para criar um espaço interno */
-  margin-top: 50px; /* Adicione margem na parte superior para afastar do cabeçalho */
-  //border: 1px solid #ccc; /* Adicione uma borda para destacar a área */
-  background-color: #141414; /* Adicione uma cor de fundo, se desejar */
-
-  /* Personalize a fonte e a cor do texto */
-  font-size: 16px;
-  color: #333;
-
-  /* Centralize o conteúdo horizontalmente */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  /* Adicione uma sombra sutil */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.card-container {
+.statistics-container {
+  padding: 20px;
   display: grid;
-  grid-template-rows: 1fr 1fr; /* Divide o card em duas partes iguais */
-  max-height: 300px; /* Defina a altura máxima do card conforme necessário */
-  border: 1px solid #ccc; /* Adicione uma borda ao card */
-}
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
 
-.top-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f5f5f5; /* Cor de fundo da parte superior */
-  padding: 20px; /* Espaçamento interno na parte superior */
-}
+  ion-card {
+    margin-bottom: 20px;
 
-.bottom-section {
-  background-color: #fff; /* Cor de fundo da parte inferior */
-  padding: 20px; /* Espaçamento interno na parte inferior */
-  /* Adicione estilos para os treinos do usuário conforme necessário */
-}
+    ion-card-header {
+      color: white;
+    }
 
-ion-card img {
-  max-width: 100%;
-  max-height: 100%;
-}
+    ion-card-content {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #333;
+    }
+  }
 
-.card-divider {
-  border-top: 2px solid #00FF00; /* Adicione uma linha verde para dividir */
+  .overview-card {
+    grid-column: span 2; // Ocupa duas colunas
+
+    ion-card-header {
+      background-color: #3498db;
+    }
+  }
+
+  .performance-card {
+    ion-card-header {
+      background-color: #e74c3c;
+    }
+  }
+
+  .goals-card,
+  .monthly-performance-card {
+    ion-card-header {
+      background-color: #f39c12;
+    }
+  }
+
+  .comparison-card,
+  .history-card {
+    ion-card-header {
+      background-color: #2ecc71;
+    }
+  }
 }

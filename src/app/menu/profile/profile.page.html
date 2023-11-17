@@ -30,7 +30,66 @@
     <ion-item color="dark-light" lines="full" class="linha3">
       <ion-label color="trygreen">Celular: <a class="profileData">{{ userData.phone }}</a></ion-label>
     </ion-item>
-    <ion-button color="trygreen" class="botão-edit">EDITAR</ion-button>
+
+    <ion-button id="open-modal" expand="block">+ Informações</ion-button>
+
+    <ion-modal #modal trigger="open-modal" [presentingElement]="presentingElement">
+      <ng-template>
+
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Estatísticas</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="modal.dismiss()">Close</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+
+        <ion-content>
+
+          <ion-list>
+
+            <ion-card>
+              <ion-item *ngFor="let treino of treinosConcluidos">
+                <ion-icon name="checkmark-circle" slot="start"></ion-icon>
+                <ion-label>
+                  <h2>Dia {{ treino.dia }}</h2>
+                  <p>Treino concluído</p>
+                </ion-label>
+              </ion-item>
+            </ion-card>
+
+            <ion-item>
+              <ion-avatar slot="start">
+                <ion-img src="https://i.pravatar.cc/300?u=a"></ion-img>
+              </ion-avatar>
+              <ion-label>
+                <h2>Daniel Smith</h2>
+                <p>Product Designer</p>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-avatar slot="start">
+                <ion-img src="https://i.pravatar.cc/300?u=d"></ion-img>
+              </ion-avatar>
+              <ion-label>
+                <h2>Greg Smith</h2>
+                <p>Director of Operations</p>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-avatar slot="start">
+                <ion-img src="https://i.pravatar.cc/300?u=e"></ion-img>
+              </ion-avatar>
+              <ion-label>
+                <h2>Zoey Smith</h2>
+                <p>CEO</p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
   </ion-card>
   </div>
 </ion-content>
