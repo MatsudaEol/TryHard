@@ -1,29 +1,27 @@
 <ion-content class="ion-content" color="darkgray">
   <div class="background-image"></div>
+  <swiper-container slides-per-view="1" speed="500" loop="true" navigation="true" pagination="true" scrollbar="true">
+    <swiper-slide>
+      <div class="logo">
+        <ion-badge>
+          <img src="assets/tryhard.png" alt="GIF de introdução" />
+        </ion-badge>
+      </div>
 
-    <div class="logo">
-      <ion-badge>
-    <img src="assets/tryhard.png" alt="GIF de introdução" />
-    </ion-badge>
-    </div>
-
-
-    <div class="content">
-    <ion-card-content class="slide-in-blurred-bottom">
-      <div class="container">
-      <ion-title>Bem Vindo(a)!</ion-title>
-      <h1>
-        Aqui, cada sessão é
-        projetada para atender às suas metas específicas. Chega de abordagens
-        genéricas. É hora de treinar de maneira inteligente e alcançar
-        resultados notáveis.
-      </h1>
-    </div>
-    <div class="botao">
-      <ion-button  color="trygreen" class="round" routerLink="/second-introduction">
-        <ion-icon slot="icon-only" name="chevron-forward" ></ion-icon>
-      </ion-button>
-    </div>
-    </ion-card-content>
-  </div>
+      <div class="content">
+        <ion-card-content class="slide-in-blurred-bottom">
+          <div class="container">
+            <ion-title>Bem Vindo(a)!</ion-title>
+            <h1>
+              Aqui, cada sessão é projetada para atender às suas metas
+              específicas. Chega de abordagens genéricas. É hora de treinar de
+              maneira inteligente e alcançar resultados notáveis.
+            </h1>
+          </div>
+        </ion-card-content>
+      </div>
+    </swiper-slide>
+    <swiper-slide>slide 2</swiper-slide>
+    <swiper-slide>slide 3</swiper-slide>
+  </swiper-container>
 </ion-content>

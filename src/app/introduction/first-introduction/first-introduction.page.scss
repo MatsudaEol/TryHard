@@ -5,20 +5,11 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  filter:blur(2px)
+  filter:blur(2px);
+  display:block;
+  position: absolute;
 }
 
-.logo {
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-  position: absolute;
-  top: 25%; 
-  transform: translate(-50%, -50%); 
-  left: 50%;
-  width: 30vh;
-  height: 30vh;
-}
 
 ion-badge {
   background-color: rgba(20, 20, 20, 0.3);
@@ -26,8 +17,7 @@ ion-badge {
 }
 
 .content {
-  position: absolute;
-  top: 50%; 
+  top: 50%;
   text-align: center;
   color: rgb(125, 230, 148);
 }
