@@ -1,3 +1,22 @@
+swiper-container
+{
+  height: 100vh;
+  swiper-slide{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.swiper-pagination-bullet {
+  background: green !important;
+}
+
+/* Caso específico para o bullet ativo, se necessário */
+.swiper-pagination-bullet-active {
+  background: green !important;
+}
+
 .background-image {
   background-image: linear-gradient(to top, rgba(0, 0, 0, 1.637) 40%, transparent 50%, transparent 100%), url('/assets/homem.jpg');
   background-size: cover;
@@ -14,6 +33,10 @@
 ion-badge {
   background-color: rgba(20, 20, 20, 0.3);
   border-radius: 2000px;
+  position: absolute;
+  top: 50px; /* Adjust this value based on your design */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
 }
 
 .content {
