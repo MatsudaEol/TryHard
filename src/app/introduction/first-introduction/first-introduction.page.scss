@@ -8,14 +8,6 @@ swiper-container
   }
 }
 
-.swiper-pagination-bullet {
-  background: green !important;
-}
-
-/* Caso específico para o bullet ativo, se necessário */
-.swiper-pagination-bullet-active {
-  background: green !important;
-}
 
 .background-image {
   background-image: linear-gradient(to top, rgba(0, 0, 0, 1.637) 40%, transparent 50%, transparent 100%), url('/assets/homem.jpg');
@@ -84,6 +76,7 @@ ion-button{
     max-width: 25vw;
   }
 }
+
 //animações
 // .slide-in-blurred-bottom {
 // 	-webkit-animation: slide-in-blurred-bottom 0.8s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
