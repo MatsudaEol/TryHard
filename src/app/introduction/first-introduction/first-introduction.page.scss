@@ -1,3 +1,14 @@
+swiper-container {
+  height: 100vh;
+
+  swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
 .background-image {
   background-image: linear-gradient(to top, rgba(0, 0, 0, 1.637) 40%, transparent 50%, transparent 100%), url('/assets/homem.jpg');
   background-size: cover;
@@ -5,15 +16,18 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  filter:blur(2px);
-  display:block;
+  filter: blur(2px);
+  display: block;
   position: absolute;
 }
-
 
 ion-badge {
   background-color: rgba(20, 20, 20, 0.3);
   border-radius: 2000px;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .content {
@@ -26,18 +40,20 @@ ion-title {
   font-size: 2.2rem;
   margin-bottom: 10px;
   font-weight: 500;
-  font-family:'Gill Sans MT';
-  text-shadow:  2px 4px 4px rgba(0, 0, 0, 0.7);
+  font-family: 'Gill Sans MT';
+  text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.7);
 }
-h1{
+
+h1 {
   padding: 5px;
   letter-spacing: 4px;
   font-family: 'Arial';
   color: rgb(255, 255, 255);
-  text-shadow:  2px 4px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.5);
 }
-.container
-{
+
+.container {
+  margin-top: 70px;
   background-color: rgba(0, 0, 0, 0.34);
   height: auto;
   border-radius: 50px;
@@ -48,12 +64,7 @@ h1{
   bottom: 10vh;
 }
 
-ion-button{
-  --border-radius:50%;
-  font-size: 1.4rem;
-  height: 75px;
-  width: 75px;
-}
+
 
 @media screen and (min-width: 1024px) {
   .logo {
@@ -61,6 +72,7 @@ ion-button{
     max-width: 25vw;
   }
 }
+
 //animações
 // .slide-in-blurred-bottom {
 // 	-webkit-animation: slide-in-blurred-bottom 0.8s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;

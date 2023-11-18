@@ -8,6 +8,27 @@ import { Component } from '@angular/core';
  styleUrls: ['./first-introduction.page.scss'],
 })
 export class FirstIntroductionPage {
-
- constructor() { }
+    public alertButtons = ['OK'];
+  public alertInputs = [
+    {
+      placeholder: 'Insira seu gênero',
+    },
+    {
+      type: 'decimal',
+      placeholder: 'Peso',
+      min: 1,
+      max: 100,
+    },
+    {
+      type: 'number',
+      placeholder: 'Digite sua altura',
+      min: 1,
+      max: 100,
+    },
+    {
+      type: 'textarea',
+      placeholder: 'A little about yourself',
+    },
+  ];
 }
+
