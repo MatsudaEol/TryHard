@@ -15,22 +15,25 @@
             <h1>
               Aqui, cada sessão é projetada para atender às suas metas
               específicas. Chega de abordagens genéricas. É hora de treinar de
-              maneira inteligente e alcançar resultados notáveis.
+              maneira inteligente e alcançar resultados notáveis!
             </h1>
           </div>
         </ion-card-content>
       </div>
     </swiper-slide>
     <swiper-slide><ion-card-content class="slide-in-blurred-bottom">
-      <div class="container">
-        <ion-title>Bem Vindo(a)!</ion-title>
-        <h1>
-          Aqui, cada sessão é projetada para atender às suas metas
-          específicas. Chega de abordagens genéricas. É hora de treinar de
-          maneira inteligente e alcançar resultados notáveis.
-        </h1>
-      </div>
-    </ion-card-content></swiper-slide>
+        <div class="content">
+          <div class="container">
+            <ion-title>Insira seus dados</ion-title>
+            <h1>
+              Queremos conhecer melhor você, insira seus dados apertando no botão abaixo
+            </h1>
+            <ion-button id="present-alert" color="trygreen">Inserir Dados</ion-button>
+            <ion-alert trigger="present-alert" header="Please enter your info" [buttons]="alertButtons"
+              [inputs]="alertInputs" class="botaoD"></ion-alert>
+          </div>
+        </div>
+      </ion-card-content></swiper-slide>
     <swiper-slide>slide 3</swiper-slide>
   </swiper-container>
 </ion-content>
