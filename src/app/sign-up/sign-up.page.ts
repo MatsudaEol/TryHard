@@ -77,7 +77,42 @@ export class SignUpPage implements OnInit {
           await this.firestore.collection('users').doc(userId).set(userData);
 
           const userExerciseData = {
-            exercises: [],
+            exercises: [
+              {
+                "amount": "15",
+                "exerciseId": "jlXPiRwgytiB8B8duM0c"
+              },
+              {
+                "exerciseId": "8FuLl9ozB2AmNPZ45A3s",
+                "reps": "12",
+                "sets": "3"
+              },
+              {
+                "exerciseId": "8IB5PpB2x2VS4hBkvGnT",
+                "reps": "12",
+                "sets": "3"
+              },
+              {
+                "exerciseId": "LgY4og4i9gMwbs2ScH4K",
+                "reps": "12",
+                "sets": "3"
+              },
+              {
+                "exerciseId": "Uf0dRY4bqXjWANjO3FsG",
+                "reps": "12",
+                "sets": "3"
+              },
+              {
+                "exerciseId": "oPTwyQg9jxbnzIPqLKHZ",
+                "reps": "12",
+                "sets": "3"
+              },
+              {
+                "exerciseId": "pIxXtoKyAoZ9i46vfHDp",
+                "reps": "12",
+                "sets": "3"
+              }
+            ],
             userId: userId,
             username: username
           };

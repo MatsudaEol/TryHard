@@ -50,13 +50,14 @@
     <ion-text class="date">{{ formattedDate }}</ion-text>
   </div>
   <div class="cards-container">
+
     <ng-container *ngFor="let userExercise of listExercises; let i = index" >
       <div class="card-row">
       <ion-card class="gradient border"
       *ngFor="let exercise of userExercise.exercises; let j = index"
-      [ngClass]="{'clicked': clickedCards[j]}"
       [routerLink]="['/exercise', exercise.exerciseId]"
     >
+
     <img [src]="exercise.image" alt="{{ exercise.name }}">
     <ion-card-content class="card-text">
       <ion-card-title> {{ j + 1 }} - {{ exercise.name }}</ion-card-title>

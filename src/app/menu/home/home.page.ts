@@ -5,6 +5,7 @@ import { UserService } from 'src/app/services/user.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
 import { ExerciseService } from 'src/app/services/exercise.service';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-home',
@@ -26,7 +27,8 @@ export class HomePage implements OnInit {
     private userService: UserService,
     private router: Router,
     private exerciseService: ExerciseService,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private firestore: AngularFirestore
   ) {
     this.userData = {};
   }
@@ -48,16 +50,50 @@ export class HomePage implements OnInit {
         this.currentDay = daysOfWeek[today];
 
         this.loadUserExercises(user.uid);
+
+        const todayDate = new Date();
+        const year = todayDate.getFullYear();
+        const month = `${todayDate.getMonth() + 1}`.padStart(2, '0');
+        const day = `${todayDate.getDate()}`.padStart(2, '0');
+        const dataAtual = `${year}-${month}-${day}`;
+
+        const completedExercises = await this.verifyCompletedExercises(user.uid, dataAtual);
+        console.log('Exercícios concluídos:', completedExercises);
       }
       this.formattedDate = this.formatDate(new Date());
     });
   }
 
+  // Vai embora depois eu acho
+  async verifyCompletedExercises(userId: string, dataAtual: string): Promise<any> {
+    const docRef = this.firestore.collection('completedExercises').doc(userId);
+
+    try {
+      const doc = await docRef.get().toPromise();
+
+      if (doc.exists) {
+        const userData = doc.data();
+        const completedExercises = userData[dataAtual];
+
+        if (completedExercises) {
+          return completedExercises;
+        } else {
+          return null;
+        }
+      } else {
+        return null;
+      }
+    } catch (error) {
+      console.error('Erro ao verificar exercícios concluídos:', error);
+      return null;
+    }
+  }
+
+
   formatDate(date: Date): string {
     const options: Intl.DateTimeFormatOptions = { weekday: 'long', day: 'numeric', month: 'long' };
     const dateStr = date.toLocaleDateString('pt-BR', options);
 
-    // Função para capitalizar a primeira letra
     function capitalizeFirstLetter(str) {
       return str.charAt(0).toUpperCase() + str.slice(1);
     }
@@ -109,7 +145,4 @@ export class HomePage implements OnInit {
     });
   }
 
-  onCardClick(index: number) {
-    this.clickedCards[index] = !this.clickedCards[index];
-  }
 }
