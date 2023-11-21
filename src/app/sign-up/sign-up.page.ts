@@ -76,6 +76,10 @@ export class SignUpPage implements OnInit {
 
           await this.firestore.collection('users').doc(userId).set(userData);
 
+          // Criar um documento vazio na coleção completedExercises
+          const completedExercisesData = {};
+          await this.firestore.collection('completedExercises').doc(userId).set(completedExercisesData);
+
           const userExerciseData = {
             exercises: [
               {
