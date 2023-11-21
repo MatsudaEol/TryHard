@@ -20,7 +20,7 @@ swiper-container {
   display: block;
   position: absolute;
 }
-
+//texto123
 ion-badge {
   background-color: rgba(20, 20, 20, 0.3);
   border-radius: 2000px;
@@ -31,7 +31,12 @@ ion-badge {
 }
 
 .content {
-  top: 50%;
+  top: 30%;
+  text-align: center;
+  color: rgb(125, 230, 148);
+}
+.content2 {
+  margin-bottom: 20%;
   text-align: center;
   color: rgb(125, 230, 148);
 }
