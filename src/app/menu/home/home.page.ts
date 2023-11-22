@@ -100,7 +100,31 @@ export class HomePage implements OnInit {
   loadUserExercises(userId: string) {
     this.exerciseService.getExercises(userId).subscribe(exercicios => {
       this.listExercises = exercicios;
+  
+      // Ao carregar os exercícios do usuário, verifique e marque os exercícios concluídos
+      this.markCompletedExercises(userId);
     });
+  }
+
+  markCompletedExercises(userId: string) {
+    this.firestore.collection('completedExercises').doc(userId).valueChanges()
+      .subscribe((completedExercises: any) => {
+        console.log('Dados da coleção "completedExercises":', completedExercises);
+  
+        if (completedExercises && completedExercises[this.dataAtual]) {
+          const completedExercisesToday = completedExercises[this.dataAtual];
+  
+          // Marque os exercícios como concluídos se estiverem presentes nos dados dos exercícios concluídos hoje
+          this.listExercises.forEach((userExercise: any) => {
+            userExercise.exercises.forEach((exercise: any) => {
+              if (completedExercisesToday[exercise.exerciseId]) {
+                exercise.completed = true;
+                console.log(`Exercício "${exercise.name}" concluído.`);
+              }
+            });
+          });
+        }
+      });
   }
 
   async closePopover() {
