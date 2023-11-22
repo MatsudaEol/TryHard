@@ -38,23 +38,23 @@ export class HomePage implements OnInit {
     this.afAuth.authState.subscribe(async (user) => {
       if (user) {
         this.userData = await this.userService.getUser(user.uid);
-  
+
         // Acessando o nome de usuário
         if (this.userData.username) {
           this.userName = this.userData.username;
         } else {
           this.userName = 'Visitante'; // Defina um valor padrão se o nome de usuário estiver ausente
         }
-  
+
         const daysOfWeek = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
         const today = new Date().getDay();
         this.currentDay = daysOfWeek[today];
-  
+
         this.loadUserExercises(user.uid);
-  
+
         const currentDate = new Date().toISOString().split('T')[0];
-        this.dataAtual = currentDate; 
-  
+        this.dataAtual = currentDate;
+
         this.loadCompletedExercises(user.uid);
       }
       this.formattedDate = this.formatDate(new Date());
@@ -62,17 +62,17 @@ export class HomePage implements OnInit {
   }
 
   loadCompletedExercises(userId: string) {
-  
+
     this.firestore.collection('completedExercises').doc(userId).valueChanges()
       .subscribe((completedExercises: any) => {
         console.log('Dados da coleção "completedExercises":', completedExercises);
-  
+
         if (completedExercises && completedExercises[this.dataAtual]) {
           const completedExercisesToday = completedExercises[this.dataAtual];
-  
+
           // Verifique se os dados dos exercícios concluídos foram corretamente recuperados
           console.log('Exercícios concluídos hoje:', completedExercisesToday);
-  
+
           // Marque os exercícios como concluídos se estiverem presentes nos dados dos exercícios concluídos hoje
           this.listExercises.forEach((userExercise: any) => {
             userExercise.exercises.forEach((exercise: any) => {
@@ -100,7 +100,7 @@ export class HomePage implements OnInit {
   loadUserExercises(userId: string) {
     this.exerciseService.getExercises(userId).subscribe(exercicios => {
       this.listExercises = exercicios;
-  
+
       // Ao carregar os exercícios do usuário, verifique e marque os exercícios concluídos
       this.markCompletedExercises(userId);
     });
@@ -110,10 +110,10 @@ export class HomePage implements OnInit {
     this.firestore.collection('completedExercises').doc(userId).valueChanges()
       .subscribe((completedExercises: any) => {
         console.log('Dados da coleção "completedExercises":', completedExercises);
-  
+
         if (completedExercises && completedExercises[this.dataAtual]) {
           const completedExercisesToday = completedExercises[this.dataAtual];
-  
+
           // Marque os exercícios como concluídos se estiverem presentes nos dados dos exercícios concluídos hoje
           this.listExercises.forEach((userExercise: any) => {
             userExercise.exercises.forEach((exercise: any) => {
@@ -153,6 +153,37 @@ export class HomePage implements OnInit {
       ]
     });
 
+    await alert.present();
+  }
+
+  ExerciseRouter(exercise: any) {
+    const exerciseId = exercise.exerciseId; // Certifique-se de ter a variável exerciseId corretamente definida
+    if (exercise.completed) {
+      this.resetExercise(exerciseId);
+    } else {
+      this.router.navigate(['/exercise', exerciseId]);
+    }
+  }
+
+  async resetExercise(exerciseId: string) {
+    const alert = await this.alertCtrl.create({
+      header: 'Confirmação',
+      message: 'Deseja reiniciar o exercício?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+        },
+        {
+          text: 'Sim',
+          cssClass: 'danger',
+          handler: () => {
+            this.router.navigate(['/exercise', exerciseId]); // Navega para a página do exercício
+          }
+        }
+      ]
+    });
     await alert.present();
   }
 
