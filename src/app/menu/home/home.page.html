@@ -60,6 +60,9 @@
 
     <img [src]="exercise.image" alt="{{ exercise.name }}">
     <ion-card-content class="card-text">
+      <div *ngIf="exercise.completed">
+        Cu - ncluidos
+      </div>
       <ion-card-title> {{ j + 1 }} - {{ exercise.name }}</ion-card-title>
       <ion-card-subtitle *ngIf="exercise.type === 'time'">
         {{ exercise.group }} - {{ exercise.amount }} Minutos

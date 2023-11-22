@@ -94,6 +94,7 @@ export class RepetitiveExercisePage implements OnInit {
           }, { merge: true });
 
           console.log('Treino completo adicionado à coleção completedExercises!');
+          console.log(currentDate)
         } else {
           console.error('Detalhes do exercício não encontrados para o usuário.');
         }
