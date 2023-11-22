@@ -16,6 +16,10 @@ export class ProfilePage {
   exibir: boolean = false;
   imageLoaded: boolean = false;
   presentingElement = null;
+  altura: number;
+  peso: number;
+  imc: number;
+  classificacaoIMC: string;
 
   // Simule dados de treinos concluídos
   treinosConcluidos = [
@@ -74,6 +78,12 @@ export class ProfilePage {
     });
   }
 
+  // Método para calcular o IMC
+  calcularIMC() {
+    this.imc = this.peso / (this.altura / 100) ** 2;
+    
+  }
+
   // Função para formatar a data no formato 'dd/MM/yyyy'
   formatDate(date: Date): string {
     const day = date.getDate().toString().padStart(2, '0');
@@ -81,4 +91,6 @@ export class ProfilePage {
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
   }
+
+
 }

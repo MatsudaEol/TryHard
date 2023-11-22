@@ -51,23 +51,40 @@
 
             <ion-card>
               <ion-item *ngFor="let treino of treinosConcluidos">
-                <ion-icon name="checkmark-circle" slot="start"></ion-icon>
-                <ion-label>
-                  <h2>Dia {{ treino.dia }}</h2>
-                  <p>Treino concluído</p>
-                </ion-label>
+                 <ion-icon name="checkmark-circle" slot="start"> </ion-icon>
+                 <ion-label>
+                   <h2> Dia {{ date }} </h2>
+                   <p> Treino: {{ treino.nomeTreino }}, Concluído! </p>
+                 </ion-label>
               </ion-item>
+             </ion-card>
+             
+             <ion-card>
+              <ion-card-header>
+                <ion-card-title>Calcule seu IMC</ion-card-title>
+              </ion-card-header>
+          
+              <ion-card-content>
+                <form>
+                  <ion-item>
+                    <ion-label>Altura (cm)</ion-label>
+                    <ion-input type="number" [(ngModel)]="altura"></ion-input>
+                  </ion-item>
+          
+                  <ion-item>
+                    <ion-label>Peso (kg)</ion-label>
+                    <ion-input type="number" [(ngModel)]="peso"></ion-input>
+                  </ion-item>
+          
+                  <ion-button type="submit">Calcular</ion-button>
+                </form>
+              </ion-card-content>
+          
+              <ion-card-footer>
+                <ion-label>IMC: {{imc | number }}</ion-label>
+              </ion-card-footer>
             </ion-card>
-
-            <ion-item>
-              <ion-avatar slot="start">
-                <ion-img src="https://i.pravatar.cc/300?u=a"></ion-img>
-              </ion-avatar>
-              <ion-label>
-                <h2>Daniel Smith</h2>
-                <p>Product Designer</p>
-              </ion-label>
-            </ion-item>
+             
             <ion-item>
               <ion-avatar slot="start">
                 <ion-img src="https://i.pravatar.cc/300?u=d"></ion-img>
