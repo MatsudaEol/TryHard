@@ -58,33 +58,35 @@
                  </ion-label>
               </ion-item>
              </ion-card>
-             
+
              <ion-card>
               <ion-card-header>
                 <ion-card-title>Calcule seu IMC</ion-card-title>
               </ion-card-header>
-          
+
               <ion-card-content>
-                <form>
+                <form (ngSubmit)="calcularIMC()">
                   <ion-item>
                     <ion-label>Altura (cm)</ion-label>
                     <ion-input type="number" [(ngModel)]="altura"></ion-input>
                   </ion-item>
-          
+
                   <ion-item>
                     <ion-label>Peso (kg)</ion-label>
                     <ion-input type="number" [(ngModel)]="peso"></ion-input>
                   </ion-item>
-          
+
                   <ion-button type="submit">Calcular</ion-button>
                 </form>
               </ion-card-content>
-          
+
               <ion-card-footer>
                 <ion-label>IMC: {{imc | number }}</ion-label>
+                <ion-label *ngIf="classificacaoIMC">Classificação: {{ classificacaoIMC }}</ion-label>
               </ion-card-footer>
+
             </ion-card>
-             
+
             <ion-item>
               <ion-avatar slot="start">
                 <ion-img src="https://i.pravatar.cc/300?u=d"></ion-img>
