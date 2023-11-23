@@ -21,6 +21,7 @@ export class HomePage implements OnInit {
   formattedDate: string;
   dataAtual: string;
 
+
   constructor(
     private authService: AuthenticationService,
     public popoverController: PopoverController,
@@ -38,53 +39,26 @@ export class HomePage implements OnInit {
     this.afAuth.authState.subscribe(async (user) => {
       if (user) {
         this.userData = await this.userService.getUser(user.uid);
-
-        // Acessando o nome de usuário
         if (this.userData.username) {
           this.userName = this.userData.username;
         } else {
-          this.userName = 'Visitante'; // Defina um valor padrão se o nome de usuário estiver ausente
+          this.userName = 'Visitante';
         }
 
         const daysOfWeek = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
         const today = new Date().getDay();
         this.currentDay = daysOfWeek[today];
 
-        this.loadUserExercises(user.uid);
-
         const currentDate = new Date().toISOString().split('T')[0];
         this.dataAtual = currentDate;
 
-        this.loadCompletedExercises(user.uid);
+        this.loadUserExercises(user.uid);
+        this.exerciseService.loadCompletedExercises(user.uid, this.dataAtual, this.listExercises);
       }
       this.formattedDate = this.formatDate(new Date());
     });
   }
 
-  loadCompletedExercises(userId: string) {
-
-    this.firestore.collection('completedExercises').doc(userId).valueChanges()
-      .subscribe((completedExercises: any) => {
-        console.log('Dados da coleção "completedExercises":', completedExercises);
-
-        if (completedExercises && completedExercises[this.dataAtual]) {
-          const completedExercisesToday = completedExercises[this.dataAtual];
-
-          // Verifique se os dados dos exercícios concluídos foram corretamente recuperados
-          console.log('Exercícios concluídos hoje:', completedExercisesToday);
-
-          // Marque os exercícios como concluídos se estiverem presentes nos dados dos exercícios concluídos hoje
-          this.listExercises.forEach((userExercise: any) => {
-            userExercise.exercises.forEach((exercise: any) => {
-              if (completedExercisesToday[exercise.exerciseId]) {
-                exercise.completed = true;
-                console.log(`Exercício "${exercise.name}" concluído.`);
-              }
-            });
-          });
-        }
-      });
-  }
 
   formatDate(date: Date): string {
     const options: Intl.DateTimeFormatOptions = { weekday: 'long', day: 'numeric', month: 'long' };
@@ -100,32 +74,10 @@ export class HomePage implements OnInit {
   loadUserExercises(userId: string) {
     this.exerciseService.getExercises(userId).subscribe(exercicios => {
       this.listExercises = exercicios;
-
-      // Ao carregar os exercícios do usuário, verifique e marque os exercícios concluídos
-      this.markCompletedExercises(userId);
+      this.exerciseService.markCompletedExercises(userId, this.dataAtual, this.listExercises);
     });
   }
 
-  markCompletedExercises(userId: string) {
-    this.firestore.collection('completedExercises').doc(userId).valueChanges()
-      .subscribe((completedExercises: any) => {
-        console.log('Dados da coleção "completedExercises":', completedExercises);
-
-        if (completedExercises && completedExercises[this.dataAtual]) {
-          const completedExercisesToday = completedExercises[this.dataAtual];
-
-          // Marque os exercícios como concluídos se estiverem presentes nos dados dos exercícios concluídos hoje
-          this.listExercises.forEach((userExercise: any) => {
-            userExercise.exercises.forEach((exercise: any) => {
-              if (completedExercisesToday[exercise.exerciseId]) {
-                exercise.completed = true;
-                console.log(`Exercício "${exercise.name}" concluído.`);
-              }
-            });
-          });
-        }
-      });
-  }
 
   async closePopover() {
     await this.popoverController.dismiss();
@@ -166,25 +118,7 @@ export class HomePage implements OnInit {
   }
 
   async resetExercise(exerciseId: string) {
-    const alert = await this.alertCtrl.create({
-      header: 'Confirmação',
-      message: 'Deseja reiniciar o exercício?',
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          cssClass: 'secondary',
-        },
-        {
-          text: 'Sim',
-          cssClass: 'danger',
-          handler: () => {
-            this.router.navigate(['/exercise', exerciseId]); // Navega para a página do exercício
-          }
-        }
-      ]
-    });
-    await alert.present();
+    await this.exerciseService.resetExercise(exerciseId, this.listExercises);
   }
 
   logout() {
