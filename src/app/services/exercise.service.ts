@@ -97,7 +97,7 @@ export class ExerciseService {
   loadCompletedExercises(userId: string, dataAtual: string, listExercises: any[]) {
     this.afs.collection('completedExercises').doc(userId).valueChanges()
       .subscribe((completedExercises: any) => {
-        console.log('Dados da coleção "completedExercises":', completedExercises);
+        //console.log('Dados da coleção "completedExercises":', completedExercises);
 
         if (completedExercises && completedExercises[dataAtual]) {
           const completedExercisesToday = completedExercises[dataAtual];
@@ -109,7 +109,7 @@ export class ExerciseService {
   markCompletedExercises(userId: string, dataAtual: string, listExercises: any[]) {
     this.afs.collection('completedExercises').doc(userId).valueChanges()
       .subscribe((completedExercises: any) => {
-        console.log('Dados da coleção "completedExercises":', completedExercises);
+        //console.log('Dados da coleção "completedExercises":', completedExercises);
 
         if (completedExercises && completedExercises[dataAtual]) {
           const completedExercisesToday = completedExercises[dataAtual];
@@ -123,7 +123,7 @@ export class ExerciseService {
       userExercise.exercises.forEach((exercise: any) => {
         if (completedExercisesToday[exercise.exerciseId]) {
           exercise.completed = true;
-          console.log(`Exercício "${exercise.name}" concluído.`);
+          //console.log(`Exercício "${exercise.name}" concluído.`);
         }
       });
     });
@@ -163,11 +163,11 @@ export class ExerciseService {
                       });
                     });
 
-                    console.log('Exercício reiniciado com sucesso.');
+                    //console.log('Exercício reiniciado com sucesso.');
 
                     this.router.navigate(['/exercise', exerciseId]);
                   }).catch((error) => {
-                    console.error('Erro ao reiniciar o exercício:', error);
+                    //console.error('Erro ao reiniciar o exercício:', error);
                   });
                 }
               });
