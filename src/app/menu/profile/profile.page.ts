@@ -18,8 +18,8 @@ export class ProfilePage {
   presentingElement = null;
   altura: number;
   peso: number;
-  imc: number | null = null;
-  classificacaoIMC: string | null = null;
+  imcResultado: number;
+  classificacao: string;
 
   // Simule dados de treinos concluídos
   treinosConcluidos = [
@@ -80,30 +80,35 @@ export class ProfilePage {
 
   // Método para calcular o IMC
   calcularIMC() {
-
-    this.imc = this.peso / ((this.altura / 100) ** 2);
-
-    if (this.imc < 18.5) {
-      console.log('Abaixo do Peso');
-      this.classificacaoIMC = 'Abaixo do Peso';
-    } else if (this.imc >= 18.5 && this.imc < 24.9) {
-      console.log('Peso Normal');
-      this.classificacaoIMC = 'Peso Normal';
-    } else if (this.imc >= 25 && this.imc < 29.9) {
-      console.log('Sobrepeso');
-      this.classificacaoIMC = 'Sobrepeso';
-    } else if (this.imc >= 30 && this.imc < 34.9) {
-      console.log('Obesidade Grau I');
-      this.classificacaoIMC = 'Obesidade Grau I';
-    } else if (this.imc >= 35 && this.imc < 39.9) {
-      console.log('Obesidade Grau II');
-      this.classificacaoIMC = 'Obesidade Grau II';
+    if (this.altura && this.peso) {
+      this.imcResultado = this.peso / (this.altura * this.altura);
+      this.classificacao = this.getClassificacao(this.imcResultado);
     } else {
-      console.log('Obesidade Grau III');
-      this.classificacaoIMC = 'Obesidade Grau III';
+      // Adicione lógica para lidar com entrada inválida, se necessário
     }
   }
 
+  formatarNumero(numero: number): string {
+    return numero.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+
+  getClassificacao(imc: number): string {
+    if (imc < 18.5) {
+      return 'Abaixo do peso';
+    } else if (imc >= 18.5 && imc <= 24.99) {
+      return 'Peso normal';
+    } else if (imc >= 25 && imc <= 29.99) {
+      return 'Sobrepeso';
+    } else if (imc >= 30 && imc <= 34.99) {
+      return 'Obesidade Grau 1';
+    } else if (imc >= 35 && imc <= 39.99) {
+      return 'Obesidade Grau 2';
+    } else {
+      return 'Obesidade Grau 3';
+    }
+  }
+  
 
   // Função para formatar a data no formato 'dd/MM/yyyy'
   formatDate(date: Date): string {
