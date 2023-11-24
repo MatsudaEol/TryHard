@@ -5,7 +5,7 @@
 ion-item {
   --background: #f1f1f1de;
   border-radius: 15px;
-  margin-bottom: 4%;
+  margin-bottom: 2%;
 }
 
 .header {
@@ -37,15 +37,21 @@ ion-item {
 }
 
 .forgotPassword {
-  display: flex;
-  justify-content: flex-end;
-
+  float: right;
   a {
     font-weight: 400;
-    font-size: 0.9rem;
+    font-size: calc(10px + 0.390625vw);
     text-decoration: none;
+    color: rgba(84, 187, 119, 0.7) !important;
   }
 
+}
+
+.forms {
+  width: 50vw;
+  height: auto;
+  align-content: center;
+  margin: 0 auto;
 }
 
 .fade-in-bottom {
@@ -94,11 +100,10 @@ ion-item {
   height: 80px;
   width: 80px;
   --border-radius: 50%;
-  margin-bottom: 50px;
+    margin-bottom: 50px;
 }
 
-.text-helper,
-.text-helper1 {
+.text-helper{
   color: #54bb77;
   font-size: 1.1rem;
   font-family: 'roboto';
@@ -116,4 +121,8 @@ ion-item {
 
 .form-container{
   width: 100%;
+}
+
+.error {
+  color: red;
 }
