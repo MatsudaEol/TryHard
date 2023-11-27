@@ -1,6 +1,45 @@
-<ion-header>
-  <ion-toolbar color="darkgray2">
-    <ion-title class="ion-text-center" color="trygreen">Nossos Alunos!</ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar class="center-content">
+    <div class="header-content">
+      <div class="text-content">
+        <h1>Olá {{ userData.username }}</h1>
+        <p>Tenha um bom dia treinador!</p>
+      </div>
+      <div class="profile-container">
+        <ion-avatar class="avatar">
+          <img [src]="userData.profile || 'https://firebasestorage.googleapis.com/v0/b/tryhard-75312.appspot.com/o/default_profile.png?alt=media&token=a65958d7-167d-4e30-9391-4f92c26366aa'">
+
+          <ion-buttons>
+            <button ion-button class="popover-button" id="click-trigger">
+              <img src="../../../assets/icon/gear-icon.png" class="popover-button">
+              <ion-popover trigger="click-trigger" triggerAction="click">
+                <ng-template>
+                  <ion-list class="listpopover">
+                    <ion-item color="darkgray2" routerLink="/tabs/profile" (click)="closePopover()" >
+                      <ion-icon name="person-outline" slot="start" color="trygreen"></ion-icon>
+                      <ion-label>Meus dados</ion-label>
+                    </ion-item>
+                    <ion-item color="darkgray2" (click)="closePopover()">
+                      <ion-icon name="build-outline" slot="start" color="trygreen"></ion-icon>
+                      <ion-label>Mudar Senha</ion-label>
+                    </ion-item>
+                    <ion-item color="darkgray2" (click)="closePopover()">
+                      <ion-icon name="information-circle-outline" slot="start" color="trygreen"></ion-icon>
+                      <ion-label>Sobre</ion-label>
+                    </ion-item>
+                    <ion-item color="darkgray2"  (click)="closePopover()" (click)="mostrarAlerta()">
+                      <ion-icon name="exit-outline" slot="start" color="trygreen"></ion-icon>
+                      <ion-label >Sair</ion-label>
+                    </ion-item>
+                  </ion-list>
+                </ng-template>
+              </ion-popover>
+            </button>
+          </ion-buttons>
+        </ion-avatar>
+
+      </div>
+    </div>
   </ion-toolbar>
 </ion-header>
 

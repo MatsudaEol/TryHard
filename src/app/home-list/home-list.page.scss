@@ -7,3 +7,237 @@ h5 {
   font-size: 1.5em;
   margin-bottom: 15px;
 }
+
+/* Estilos para telas menores */
+
+
+ion-toolbar.center-content {
+  --background: #19191a;
+  --ion-color-base: #19191a !important;
+  height: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  h1, p {
+    margin: 0;
+    color: var(--ion-color-light);
+  }
+
+  ion-title {
+    font-size: 16px;
+    font-weight: 800;
+    text-align: center;
+    color: var(--ion-color-light);
+    align-items: center;
+    font-family: 'Segoe UI';
+}
+
+  .header-content {
+    display: flex;
+    align-items: center;
+  }
+
+  .text-content {
+    flex: 1;
+    margin-left: 5%;
+  }
+
+  .profile-container {
+    position: relative;
+    height: 10vh;
+    margin-right: 5%;
+  }
+
+  .avatar {
+    height: 100%;
+    width: 100%;
+    border: 2px solid var(--ion-color-trygreen);
+  }
+
+  .popover-button {
+    position: absolute;
+    background-color: #bb6b57;
+    right: 0px;
+    bottom: 0px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--ion-color-trygreen);
+    cursor: pointer;
+    padding: 3px;
+  }
+
+  ion-button {
+    --border-radius: 1000;
+  }
+}
+
+.listpopover {
+  background-color: #1a1b1b;
+  border:2px outset #339253;
+}
+
+ion-content {
+  --offset-bottom: auto!important;
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar{
+    display: none;
+  }
+  background-color: #19191a;
+}
+
+.date-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+
+  .today {
+    text-align: left;
+    margin-left: 5%;
+    color: white;
+  }
+
+  .date {
+    text-align: right;
+    margin-right: 5%;
+    color: var(--ion-color-trygreen);
+  }
+}
+
+ion-card {
+  position: relative;
+  height: auto;
+  width: 90%;
+  margin-left: 5%;
+  border-radius: 20px;
+
+  &.incomplete-exercise {
+    border: 3px solid var(--ion-color-darkgray);
+  }
+
+  &.completed-exercise {
+    border: 3px solid var(--ion-color-trygreen);
+  }
+
+}
+
+.exercise-status {
+  position: absolute;
+  top: 10px; /* Ajuste a posição vertical conforme necessário */
+  left: 10px; /* Ajuste a posição horizontal conforme necessário */
+  background-color: var(--ion-color-darkgray);
+  color: white;
+  z-index: 1;
+  display: flex;
+  align-items: center; /* Centraliza verticalmente */
+}
+
+.exercise-status-check {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: var(--ion-color-trygreen);
+  color: white;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+
+.exercise-status ion-icon {
+  margin-right: 5px;
+}
+
+.exercise-status-check ion-icon {
+  margin-right: 5px;
+}
+
+.incomplete-exercise.gradient::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    360deg,
+    rgb(10, 18, 15) 0%,
+    rgba(18, 17, 17, 0.9) 20%,
+    rgba(17, 17, 18, 0.83) 25%,
+    rgba(30, 56, 33, 0.246) 100%
+  );
+}
+
+.completed-exercise.gradient::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(28, 28, 30, 0.7),
+    rgba(28, 28, 30, 0.7)
+  );
+}
+
+
+
+.card-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+}
+
+ion-card-title {
+  color: rgba(255, 253, 253, 0.932);
+  font-family: 'Segoe UI';
+  font-size: 1.4rem;
+}
+
+ion-card-subtitle {
+  color: #339253;
+  font-family: 'Segoe UI';
+  font-size: 1rem;
+  padding-top: 3px;
+}
+
+
+
+.clicked {
+  transform: scale(1.05);
+  transition: transform 0.46s;
+}
+
+/* Estilos para telas maiores */
+@media screen and (min-width: 1024px) {
+  ion-header {
+    background-color: #19191a !important;
+  }
+
+  .cards-container {
+    display: flex;
+    justify-content: center;
+    background-color: #19191a !important;
+  }
+
+  .card-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  ion-card {
+    width: 100%;
+    margin: 0vh;
+    border-radius: 10px;
+  }
+}
