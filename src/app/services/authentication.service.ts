@@ -16,14 +16,19 @@ export class AuthenticationService {
     return await this.ngFireAuth.signInWithEmailAndPassword(email,password)
   }
 
-  async resetPassword(email:string) {
-    return await this.ngFireAuth.sendPasswordResetEmail(email)
+  async resetPassword(email: string) {
+    try {
+      await this.ngFireAuth.sendPasswordResetEmail(email);
+      return { success: true, message: 'Email de redefinição de senha enviado. Verifique sua caixa de entrada.' };
+    } catch (error) {
+      return { success: false, message: 'Ocorreu um erro ao enviar o email de redefinição de senha.', error };
+    }
   }
 
   async signOut(){
     return await this.ngFireAuth.signOut()
   }
-  
+
   async getProfile(){
     return await this.ngFireAuth.currentUser
   }
@@ -35,10 +40,10 @@ export class AuthenticationService {
 
   async logoutUser() {
     try {
-      localStorage.removeItem('userToken'); 
-      await this.ngFireAuth.signOut();  
+      localStorage.removeItem('userToken');
+      await this.ngFireAuth.signOut();
     } catch (error) {
       console.log('Erro ao fazer logout:', error);
     }
   }
-} 
+}

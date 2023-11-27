@@ -1,69 +1,80 @@
-<ion-content [fullscreen]="true" class="ion-content" style="--background: rgb(14, 14, 14);">
-  
-  <div class="header">
-    <div class="fade-in-bottom">
-    <img src="assets/logo2.png" alt="logo" class="logo">
+
+
+<ion-content [fullscreen]="true">
+  <div class="fullscreen-bg">
+    <img src="../../assets/background2.jpg" alt="Imagem de fundo">
+</div>
+
+  <div class="form-wrapper">
+
+    <h2>Seja membro da <a href="https://www.instagram.com/tryhardacademiabb/?igshid=NGVhN2U2NjQ0Yg%3D%3D" style="color: var(--ion-color-trygreen);">TryHard</a></h2>
+
+  <form [formGroup]="regForm" class="form-container" >
+
+    <div class="form-control">
+      <input  type="text" required formControlName="username" name="username"  >
+      <label>Nome de Usuário</label>
     </div>
-  </div>
 
-  <form [formGroup]="regForm" novalidate class="form-container">
-    <div class="ion-padding">
-      <div class="text-helper1">Crie sua conta</div>
-
-      <ion-item>
-        <ion-input formControlName="username" placeholder="Nome" class="input"></ion-input>
-        <ion-icon name="person-outline" slot="end" style="color: rgb(96, 100, 97)"></ion-icon>
-      </ion-item>
-      <div *ngIf="this.regForm.controls?.['username'].touched && this.regForm.controls?.['username'].invalid" >
-        <ion-text *ngIf="errorControl.username.errors?.required" style="color: red">
+    <div *ngIf="this.regForm.controls?.['username'].touched && this.regForm.controls?.['username'].invalid"  style="padding-bottom: 16px;">
+      <ion-text *ngIf="errorControl.username.errors?.required" style="color: red">
+        <ion-icon name="alert-circle-outline"></ion-icon>
         Por favor, insira seu nome
-        </ion-text>
+      </ion-text>
+    </div>
+
+    <div class="form-control">
+      <input  type="text" required formControlName="email" name="email"  >
+      <label>Email</label>
+    </div>
+
+    <div *ngIf="this.regForm.controls?.['email'].touched && this.regForm.controls?.['email'].invalid" style="padding-bottom: 16px;">
+      <ion-text *ngIf="errorControl.email.errors?.required" style="color: red">
+        <ion-icon name="alert-circle-outline"></ion-icon>
+        Por favor, insira seu email
+      </ion-text>
+      <ion-text *ngIf="errorControl.email.errors?.pattern" style="color: red">
+        <ion-icon name="alert-circle-outline"></ion-icon>
+        Por favor, insira um email válido
+      </ion-text>
+    </div>
+
+      <div class="form-control">
+        <input  type="text" required formControlName="password" name="password" type="{{ showPassword ? 'text' : 'password' }}" class="input">
+        <label>Senha</label>
+        <ion-icon name="{{ showPassword ? 'eye-off-outline' : 'eye-outline' }}" slot="end" class="password-toggle" (click)="togglePassword()"></ion-icon>
       </div>
 
-      <ion-item>
-        <ion-input formControlName="email" placeholder="Email" class="input"></ion-input>
-        <ion-icon name="mail-outline" slot="end" style="color: rgb(96, 100, 97)"></ion-icon>
-      </ion-item>
-      <div *ngIf="this.regForm.controls?.['email'].touched && this.regForm.controls?.['email'].invalid">
-        <ion-text *ngIf="errorControl.email.errors?.required" style="color: red">
-          Por favor, insira seu email
-        </ion-text>
-        <ion-text *ngIf="errorControl.email.errors?.pattern" style="color: red">
-          Por favor, insira um email válido
-        </ion-text>
-      </div>
-
-      <ion-item>
-        <ion-input formControlName="password" placeholder="Senha" type="{{ showPassword ? 'text' : 'password' }}" class="input"></ion-input>
-        <ion-icon name="{{ showPassword ? 'eye-off-outline' : 'eye-outline' }}" slot="end" style="color: rgb(96, 100, 97);" (click)="togglePassword()"></ion-icon>
-      </ion-item>
       <div *ngIf="this.regForm.controls?.['password'].touched && this.regForm.controls?.['password'].invalid">
         <ion-text *ngIf="errorControl.password.errors?.required" style="color: red">
           Por favor, insira sua senha
         </ion-text>
         <ion-text *ngIf="errorControl.password.errors?.pattern" style="color: red">
-          A senha deve possuir
-          Uma letra
-          Uma letra maiúscula
-          Um número
-          Um caractere especial
-          Conter 8 dígitos 
+
+          A senha deve possuir:
+          <br>- Pelo menos uma letra maiuscula e miniscula
+          <br>- Um número
+          <br>- Um caractere especial
+          <br>- Ter pelo menos 8 caracteres
+
         </ion-text>
       </div>
 
+      <ion-button (click)="signUp()" fill="solid" id="loginButton" [disabled]="regForm.invalid">
+        Cadastre-se
+      </ion-button>
+      <div class="form-help">
+
     </div>
   </form>
-
-  <div class="ion-justify-content-center " style="display: flex;">
-    <ion-button color="trygreen" class="round"  (click)="signUp()">
-      <ion-icon slot="icon-only" name="chevron-forward"></ion-icon>
-    </ion-button>
-  </div>
+  <p>Já possui uma conta? <a [routerLink]="['/login']" style="color: var(--ion-color-trygreen);">Faça Login </a></p>
+</div>
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar color="darkgray">        
-    <div class="signupLink">
-      <p>Já tem uma conta? <a [routerLink]="['/login']" style="color:#54BB77">Faça Login</a></p>
+      <!--
+
+
+
     </div>
-  </ion-toolbar>
+  </form> --> -->
+

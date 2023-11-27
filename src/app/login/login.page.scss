@@ -17,7 +17,7 @@ ion-item {
 }
 
 ion-content {
-  overflow: auto;
+  --overflow: hidden;
   &::-webkit-scrollbar {
     display: none;
   }
