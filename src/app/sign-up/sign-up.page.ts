@@ -22,6 +22,7 @@ export class SignUpPage implements OnInit {
     public router: Router,
     private firestore: AngularFirestore,
     public exerciseService: ExerciseService,
+
   ) { }
 
   ngOnInit() {
@@ -43,6 +44,7 @@ export class SignUpPage implements OnInit {
         ],
       ],
     });
+
   }
 
   togglePassword() {

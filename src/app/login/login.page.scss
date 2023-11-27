@@ -1,128 +1,202 @@
-.input {
-  font-size: 0.9rem;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 ion-item {
-  --background: #f1f1f1de;
-  border-radius: 15px;
-  margin-bottom: 2%;
+  --background: transparent;
+  --border-color: transparent;
+  margin-top: 16px;
 }
 
-.header {
-  text-align: center;
+.logo
+{
+  max-width: 167px;
 }
 
-.subTitle {
-  color: #54bb77;
-  font-size: 1.2rem;
-  width: fit-content;
-  max-height: 665px;
-}
-
-.signupLink {
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  justify-content: center;
-  width: 100%;
-  color: rgb(175, 166, 166);
-
-  p {
-    font-size: 0.9
-  }
-
-  a {
-    text-decoration: none;
+ion-content {
+  --overflow: hidden;
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 
-.forgotPassword {
-  float: right;
-  a {
-    font-weight: 400;
-    font-size: calc(10px + 0.390625vw);
-    text-decoration: none;
-    color: rgba(84, 187, 119, 0.7) !important;
-  }
-
-}
-
-.forms {
-  width: 50vw;
-  height: auto;
-  align-content: center;
-  margin: 0 auto;
-}
-
-.fade-in-bottom {
-  -webkit-animation: fade-in-bottom 2.1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-  animation: fade-in-bottom 2.1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-}
-
-@-webkit-keyframes fade-in-bottom {
-  0% {
-    -webkit-transform: translateY(50px);
-    transform: translateY(50px);
-    opacity: 0;
-  }
-
-  100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fade-in-bottom {
-  0% {
-    -webkit-transform: translateY(50px);
-    transform: translateY(50px);
-    opacity: 0;
-  }
-
-  100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.logo {
-  height: auto;
-  max-width: 140px;
-  margin: auto;
-  padding-bottom: 7%;
-  margin-top: 30%;
-}
-
-
-.round {
-  height: 80px;
-  width: 80px;
-  --border-radius: 50%;
-    margin-bottom: 50px;
-}
-
-.text-helper{
-  color: #54bb77;
-  font-size: 1.1rem;
-  font-family: 'roboto';
-  padding-bottom: 2%;
-}
-
-.login-tio{
+ion-content::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0.5;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
-.form-container{
+/* Estilo para ocupar a tela inteira */
+.fullscreen-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
-.error {
+/* Estilo para a imagem */
+.fullscreen-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garante que a imagem preencha todo o espaço sem distorção */
+}
+
+nav {
+  position: fixed;
+  padding: 25px 60px;
+  z-index: 1;
+  width: 167px;
+}
+
+nav img {
+  width: 100%;
+  height: 100%;
+}
+
+.form-wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 4px;
+    padding: 70px;
+    width: 500px;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, .75);
+
+}
+.form-wrapper h2 {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.form-wrapper form {
+    margin: 25px 0 65px;
+}
+form .form-control {
+    height: 50px;
+    position: relative;
+    margin-bottom: 16px;
+}
+.form-control input {
+    height: 100%;
+    width: 100%;
+    background: #333;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1rem;
+    padding: 0 20px;
+}
+.form-control input:is(:focus, :valid) {
+    background: #444;
+    padding: 16px 20px 0;
+}
+.form-control label {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    pointer-events: none;
+    color: #8c8c8c;
+    transition: all 0.1s ease;
+}
+.form-control input:is(:focus, :valid)~label {
+    font-size: 0.75rem;
+    transform: translateY(-130%);
+}
+
+.error
+{
   color: red;
+}
+
+ion-button {
+    width: 100%;
+    min-height: 50px;
+    font-size: 1rem;
+    --background: var(--ion-color-trygreen);
+    color: #fff;
+    font-weight: bold;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    margin: 25px 0 10px;
+    cursor: pointer;
+    transition: 0.1s ease;
+}
+
+.form-wrapper a {
+    text-decoration: none;
+}
+.form-wrapper a:hover {
+    text-decoration: underline;
+}
+.form-wrapper :where(label, p, small, a) {
+    color: #b3b3b3;
+}
+form .form-help {
+    display: flex;
+    justify-content: space-between;
+}
+form .remember-me {
+    display: flex;
+}
+form .remember-me input {
+    margin-right: 5px;
+    accent-color: #b3b3b3;
+}
+form .form-help :where(label, a) {
+    font-size: 0.9rem;
+}
+.form-wrapper p a {
+    color: #fff;
+}
+.form-wrapper small {
+    display: block;
+    margin-top: 15px;
+    color: #b3b3b3;
+}
+.form-wrapper small a {
+    color: #0071eb;
+}
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  color: #8c8c8c;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+
+    ion-content::before {
+        display: none;
+    }
+    ion-item, .form-wrapper {
+        padding: 20px;
+    }
+    .logo {
+        width: 140px;
+    }
+    .form-wrapper {
+        width: 95%;
+        top: 50%;
+    }
+    .form-wrapper form {
+        margin: 25px 0 40px;
+    }
+
 }

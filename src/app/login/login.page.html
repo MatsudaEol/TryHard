@@ -1,64 +1,76 @@
-<ion-content [fullscreen]="true" class="ion-content" style="--background:rgb(14,14,14)">
-  <div class="login-tio">
 
-  <div class="header">
-    <div class="fade-in-bottom">
-      <img src="assets/logo2.png" alt="logo" class="logo">
+
+<ion-content [fullscreen]="true">
+  <div class="fullscreen-bg">
+    <img src="../../assets/background.jpg" alt="Imagem de fundo">
+</div>
+
+  <div class="form-wrapper">
+
+    <h2>Bem vindo a <a href="https://www.instagram.com/tryhardacademiabb/?igshid=NGVhN2U2NjQ0Yg%3D%3D" style="color: var(--ion-color-trygreen);">TryHard</a></h2>
+  <form  class="form-container" >
+
+    <div class="form-control">
+      <input  type="text" required formControlName="email" name="email"  >
+      <label>Email</label>
     </div>
-  </div>
 
-  <form [formGroup]="loginForm" class="form-container" >
-    <div class="ion-padding forms">
-      <div class="text-helper">Digite seu email</div>
-      <ion-item>
-        <ion-input formControlName="email" name="email" placeholder="Email" class="input"></ion-input>
-        <ion-icon name="mail-outline" slot="end" style="color: rgb(96, 100, 97);"></ion-icon>
-      </ion-item>
-      <div *ngIf="this.loginForm.controls?.['email'].touched && this.loginForm.controls?.['email'].invalid">
-        <ion-text *ngIf="errorControl.email.errors?.required" class="error" >
+      <div *ngIf="this.loginForm.controls?.['email'].touched && this.loginForm.controls?.['email'].invalid" class="error" style="padding-bottom: 16px;">
+        <ion-text *ngIf="errorControl.email.errors?.required" style="padding-bottom: 16px;">
+          <ion-icon name="alert-circle-outline"></ion-icon>
           Por favor, insira seu email
         </ion-text>
         <div>
-        <ion-text *ngIf="errorControl.email.errors?.pattern" class="error">
+        <ion-text *ngIf="errorControl.email.errors?.pattern" style="padding-bottom: 16px;">
+          <ion-icon name="alert-circle-outline"></ion-icon>
           Por favor, insira um email válido
         </ion-text>
         </div>
       </div>
 
-      <div class="text-helper">
-        Digite sua senha 
-        
-    </div>
-      <ion-item>
-        <ion-input formControlName="password" name="password" placeholder="Senha" type="{{ showPassword ? 'text' : 'password' }}" class="input"></ion-input>
-        <ion-icon name="{{ showPassword ? 'eye-off-outline' : 'eye-outline' }}" slot="end" style="color: rgb(96, 100, 97);" (click)="togglePassword()"></ion-icon>
-      </ion-item>
+      <div *ngIf="error" class="error" style="padding-bottom: 16px;">
+        <ion-text >
+          Email ou senha incorretos.
+        </ion-text>
+      </div>
+
+      <div class="form-control">
+        <input  type="text" required formControlName="password" name="password" type="{{ showPassword ? 'text' : 'password' }}" class="input">
+        <label>Senha</label>
+        <ion-icon name="{{ showPassword ? 'eye-off-outline' : 'eye-outline' }}" slot="end" class="password-toggle" (click)="togglePassword()"></ion-icon>
+      </div>
+
       <div *ngIf="this.loginForm.controls?.['password'].touched && this.loginForm.controls?.['password'].invalid">
         <ion-text *ngIf="errorControl.password.errors?.required" class="error">
+          <ion-icon name="alert-circle-outline"></ion-icon>
           Por favor, insira sua senha
         </ion-text>
         <ion-text *ngIf="errorControl.password.errors?.pattern" class="error">
-          A senha deve possuir: Uma letra maiúscula, um número, um caractere e 8 dígitos.
+          <ion-icon name="alert-circle-outline"></ion-icon>
+          Por favor, insira uma senha válida
         </ion-text>
       </div>
-    
+
+      <div>
+        <ion-text *ngIf="error" class="error">
+          <ion-icon name="alert-circle-outline"></ion-icon>
+          Email ou senha incorretos.
+        </ion-text>
+      </div>
+
+      <ion-button (click)="login()" fill="solid" id="loginButton" [disabled]="loginForm.invalid">
+        Fazer Login
+      </ion-button>
+      <div class="form-help">
+        <div class="remember-me">
+            <input type="checkbox" id="remember-me">
+            <label for="remember-me">Lembrar de mim</label>
+        </div>
+        <a [routerLink]="['/reset-password']">Esqueceu a senha?</a>
     </div>
   </form>
-
-<div class="ion-justify-content-center " style="display: flex;">
-  <ion-button color="trygreen" class="round" (click)="login()">
-    <ion-icon slot="icon-only" name="chevron-forward"></ion-icon>
-  </ion-button>
-</div>
-
+  <p>Novo no aplicativo? <a [routerLink]="['/sign-up']" style="color: var(--ion-color-trygreen);">Cadastre-se </a></p>
 </div>
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar color="darkgray">        
-    <div class="signupLink">
-      <p>Novo membro? <a [routerLink]="['/sign-up']" style="color:#54BB77">Inscreva-se agora</a></p>
-    </div>
-  </ion-toolbar>
 
-</ion-footer>

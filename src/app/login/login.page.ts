@@ -14,6 +14,7 @@ import { ExerciseService } from '../services/exercise.service'; // Importe o ser
 export class LoginPage {
   showPassword: boolean = false;
   loginForm: FormGroup;
+  error: boolean;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -62,13 +63,16 @@ export class LoginPage {
         } else {
           console.log('Usuário não encontrado.');
           loading.dismiss();
+          this.error = true;
         }
       } catch (error) {
         console.log(error);
         loading.dismiss();
+        this.error = true;
       }
     } else {
       loading.dismiss();
+      this.error = true;
     }
   }
 
