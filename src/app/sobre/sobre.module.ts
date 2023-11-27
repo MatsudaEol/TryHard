@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { SobrePageRoutingModule } from './sobre-routing.module';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { SobrePage } from './sobre.page';
 
 @NgModule({
@@ -15,6 +15,7 @@ import { SobrePage } from './sobre.page';
     IonicModule,
     SobrePageRoutingModule
   ],
-  declarations: [SobrePage]
+  declarations: [SobrePage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SobrePageModule {}

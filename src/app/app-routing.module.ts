@@ -65,16 +65,14 @@ const routes: Routes = [
     loadChildren: () => import('./introduction/second-introduction/second-introduction.module').then( m => m.SecondIntroductionPageModule)
   },
   {
-    path: 'terceira-introduction',
-    loadChildren: () => import('./introduction/terceira-introduction/terceira-introduction.module').then( m => m.TerceiraIntroductionPageModule)
-  },  {
     path: 'sobre',
     loadChildren: () => import('./sobre/sobre.module').then( m => m.SobrePageModule)
   },
 
-
-
-
+  {
+    path: 'home-list',
+    loadChildren: () => import('./home-list/home-list.module').then (m => m.HomeListPageModule)
+  }
 
 ];
 @NgModule({
