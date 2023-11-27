@@ -53,10 +53,16 @@
 
     <ng-container *ngFor="let userExercise of listExercises; let i = index" >
       <div class="card-row">
-      <ion-card class="gradient border"
+      <ion-card class="gradient"
       *ngFor="let exercise of userExercise.exercises; let j = index"
-      [routerLink]="['/exercise', exercise.exerciseId]"
+      [ngClass]="{'completed-exercise': exercise.completed, 'incomplete-exercise': !exercise.completed}"
+      (click)="ExerciseRouter(exercise)"
     >
+
+
+
+    <ion-badge class="exercise-status" *ngIf="!exercise.completed"><ion-icon name="close-circle-outline"></ion-icon>Exercicio Incompleto</ion-badge>
+    <ion-badge class="exercise-status-check" *ngIf="exercise.completed"><ion-icon name="checkmark-circle-outline"></ion-icon>Exercicio Completo</ion-badge>
 
     <img [src]="exercise.image" alt="{{ exercise.name }}">
     <ion-card-content class="card-text">
@@ -68,7 +74,9 @@
         {{ exercise.group }} - {{ exercise.sets }} séries de {{ exercise.reps }} repetições
       </ion-card-subtitle>
     </ion-card-content>
+
   </ion-card>
+
   </div>
   </ng-container>
 </div>

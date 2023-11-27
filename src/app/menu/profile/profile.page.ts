@@ -16,6 +16,10 @@ export class ProfilePage {
   exibir: boolean = false;
   imageLoaded: boolean = false;
   presentingElement = null;
+  altura: number;
+  peso: number;
+  imcResultado: number;
+  classificacao: string;
 
   // Simule dados de treinos concluídos
   treinosConcluidos = [
@@ -66,13 +70,45 @@ export class ProfilePage {
 
           // Verifique se todos os dados e a imagem foram carregados antes de exibir o conteúdo
           if (this.imageLoaded && this.userData.username && this.userData.email && this.userData.birth && this.userData.phone) {
-            this.loading.dismiss();
-            this.exibir = true;
           }
         };
       }
+      this.loading.dismiss();
+      this.exibir = true;
     });
   }
+
+  // Método para calcular o IMC
+  calcularIMC() {
+    if (this.altura && this.peso) {
+      this.imcResultado = this.peso / (this.altura * this.altura);
+      this.classificacao = this.getClassificacao(this.imcResultado);
+    } else {
+      // Adicione lógica para lidar com entrada inválida, se necessário
+    }
+  }
+
+  formatarNumero(numero: number): string {
+    return numero.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+
+  getClassificacao(imc: number): string {
+    if (imc < 18.5) {
+      return 'Abaixo do peso';
+    } else if (imc >= 18.5 && imc <= 24.99) {
+      return 'Peso normal';
+    } else if (imc >= 25 && imc <= 29.99) {
+      return 'Sobrepeso';
+    } else if (imc >= 30 && imc <= 34.99) {
+      return 'Obesidade Grau 1';
+    } else if (imc >= 35 && imc <= 39.99) {
+      return 'Obesidade Grau 2';
+    } else {
+      return 'Obesidade Grau 3';
+    }
+  }
+  
 
   // Função para formatar a data no formato 'dd/MM/yyyy'
   formatDate(date: Date): string {
