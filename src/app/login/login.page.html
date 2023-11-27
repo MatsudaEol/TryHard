@@ -15,19 +15,25 @@
   <form [formGroup]="loginForm" class="form-container" >
 
     <div class="form-control">
-      <input  type="text" required formControlName="email" name="email" >
+      <input  type="text" required formControlName="email" name="email"  >
       <label>Email</label>
     </div>
 
       <div *ngIf="this.loginForm.controls?.['email'].touched && this.loginForm.controls?.['email'].invalid" class="error" style="padding-bottom: 16px;">
-        <ion-text *ngIf="errorControl.email.errors?.required" style="margin-bottom: 16px;">
+        <ion-text *ngIf="errorControl.email.errors?.required" style="padding-bottom: 16px;">
           Por favor, insira seu email
         </ion-text>
         <div>
-        <ion-text *ngIf="errorControl.email.errors?.pattern" class="error">
+        <ion-text *ngIf="errorControl.email.errors?.pattern" style="padding-bottom: 16px;">
           Por favor, insira um email válido
         </ion-text>
         </div>
+      </div>
+
+      <div *ngIf="error" class="error" style="padding-bottom: 16px;">
+        <ion-text >
+          Email ou senha incorretos.
+        </ion-text>
       </div>
 
       <div class="form-control">
@@ -45,7 +51,13 @@
         </ion-text>
       </div>
 
-      <ion-button (click)="login()" fill="solid">
+      <div>
+        <ion-text *ngIf="error" class="error">
+          Email ou senha incorretos.
+        </ion-text>
+      </div>
+
+      <ion-button (click)="login()" fill="solid" id="loginButton" [disabled]="loginForm.invalid">
         Fazer Login
       </ion-button>
       <div class="form-help">
@@ -53,10 +65,10 @@
             <input type="checkbox" id="remember-me">
             <label for="remember-me">Lembrar de mim</label>
         </div>
-        <a href="#">Esqueceu a senha?</a>
+        <a [routerLink]="['/reset-password']">Esqueceu a senha?</a>
     </div>
   </form>
-  <p>Novo no aplicativo? <a href="sign-in">Cadastre-se </a></p>
+  <p>Novo no aplicativo? <a [routerLink]="['/sign-up']" style="color: var(--ion-color-trygreen);">Cadastre-se </a></p>
 </div>
 </ion-content>
 
