@@ -6,7 +6,6 @@ ion-header {
 }
 
 ion-content {
-  // overwrite inline styles
   --overflow: hidden;
   overflow: auto;
   &::-webkit-scrollbar {

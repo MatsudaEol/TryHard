@@ -1,24 +1,65 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar color="darkgray2">
-    <ion-title color="trygreen">Sobre</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/tabs/home"
+        color="trygreen"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center" color="trygreen">Sobre</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" color="darkgray2">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title slot="start">sobre</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-card color="darkgray2">
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-    <ion-card-header>
-      <ion-card-title style="color: green;">Academia TryHard</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-    </ion-card-header>
+  <swiper-container
+    slides-per-view="1"
+    speed="500"
+    pagination="true"
+    pagination-type="progressbar"
+    scrollbar="true"
+    pagination-dynamic-bullets="true"
+  >
+    <swiper-slide>
+      <div class="container">
+        <img src="assets/tryhard.png" alt="Logo do TryHard" />
+        <h5>Conheça o TryHard: Aplicativo de Treinos</h5>
+        <p>
+          O TryHard foi projetado para facilitar sua jornada de treinos,
+          proporcionando praticidade e eficácia em cada sessão.
+        </p>
+      </div>
+    </swiper-slide>
 
-    <ion-card-content>
-      Here's a small text description for the card content. Nothing more, nothing less.
-    </ion-card-content>
-  </ion-card>
+    <swiper-slide>
+      <div class="container">
+        <ion-card>
+        <h5>Nossa Missão</h5>
+        <p>
+          No coração do TryHard: Aplicativo de Treinos está a nossa profunda
+          convicção de que o bem-estar físico é a base para uma vida plena.
+          Nossa missão é fornecer a você não apenas um aplicativo de treinos,
+          mas um companheiro de jornada que o motive, desafie e o guie na busca
+          pela melhor versão de si mesmo.
+        </p>
+
+        <p>
+          Em cada atualização do TryHard, estamos comprometidos em trazer
+          inovação, qualidade e paixão. Queremos ser parte integrante do seu
+          caminho para uma vida mais saudável e ativa. Junte-se a nós enquanto
+          transformamos aspirações em realizações, um treino de cada vez.
+        </p>
+      </ion-card>
+      </div>
+    </swiper-slide>
+
+    <swiper-slide>
+      <div class="container">
+        <h5>Nossa Equipe</h5>
+        <p>
+          Conheça as mentes criativas por trás do TryHard.
+        </p>
+        //adicionar nossas fotitas vitu
+      </div>
+    </swiper-slide>
+  </swiper-container>
 </ion-content>
