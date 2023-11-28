@@ -8,7 +8,7 @@
   <div class="form-wrapper">
 
     <h2>Bem vindo a <a href="https://www.instagram.com/tryhardacademiabb/?igshid=NGVhN2U2NjQ0Yg%3D%3D" style="color: var(--ion-color-trygreen);">TryHard</a></h2>
-  <form  class="form-container" >
+  <form  class="form-container" [formGroup]="loginForm" >
 
     <div class="form-control">
       <input  type="text" required formControlName="email" name="email"  >
@@ -30,6 +30,7 @@
 
       <div *ngIf="error" class="error" style="padding-bottom: 16px;">
         <ion-text >
+          <ion-icon name="alert-circle-outline"></ion-icon>
           Email ou senha incorretos.
         </ion-text>
       </div>

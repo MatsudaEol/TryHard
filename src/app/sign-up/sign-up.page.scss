@@ -11,10 +11,26 @@ ion-item {
 margin-top: 16px;
 }
 
-.logo
-{
-max-width: 167px;
+.input.invalid-field {
+  border-color: red; /* Cor da borda quando o campo é inválido */
 }
+
+.input.valid-field {
+  border-color: green; /* Cor da borda quando o campo é válido */
+}
+
+.password-validation {
+  margin-top: 10px;
+}
+
+.invalid-criteria {
+  color: red; /* Cor do critério quando não é atendido */
+}
+
+.valid-criteria {
+  color: var(--ion-color-trygreen); /* Cor do critério quando é atendido */
+}
+
 
   ion-content {
     --overflow: hidden;

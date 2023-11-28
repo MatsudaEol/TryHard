@@ -39,42 +39,55 @@
       </ion-text>
     </div>
 
-      <div class="form-control">
-        <input  type="text" required formControlName="password" name="password" type="{{ showPassword ? 'text' : 'password' }}" class="input">
-        <label>Senha</label>
-        <ion-icon name="{{ showPassword ? 'eye-off-outline' : 'eye-outline' }}" slot="end" class="password-toggle" (click)="togglePassword()"></ion-icon>
-      </div>
+    <div class="form-control">
+      <input  required type="text" formControlName="password" name="password" type="{{ showPassword ? 'text' : 'password' }}" class="input" (focus)="passwordFocused = true" (blur)="passwordFocused = false" (click)="passwordFocused = true; regForm.get('password')?.markAsTouched()">
+      <label>Senha</label>
+      <ion-icon name="{{ showPassword ? 'eye-off-outline' : 'eye-outline' }}" slot="end" class="password-toggle" (click)="togglePassword()"></ion-icon>
+    </div>
 
-      <div *ngIf="this.regForm.controls?.['password'].touched && this.regForm.controls?.['password'].invalid">
-        <ion-text *ngIf="errorControl.password.errors?.required" style="color: red">
-          Por favor, insira sua senha
+    <div class="password-validation" *ngIf="passwordFocused && errorControl['password'].touched && this.regForm.get('password')?.invalid && !passwordFullyValid()">
+      <ion-text>
+        <p style="color: red;">O texto deve conter:</p>
+      </ion-text>
+        <ion-text [ngClass]="{ 'valid-criteria': passwordValid('uppercase'), 'invalid-criteria': passwordInvalid('uppercase') }">
+          <div>
+            <ion-icon [name]="passwordValid('uppercase') ? 'checkmark-outline' : 'alert-outline'"></ion-icon>
+          Pelo menos uma letra maiúscula
+          </div>
         </ion-text>
-        <ion-text *ngIf="errorControl.password.errors?.pattern" style="color: red">
-
-          A senha deve possuir:
-          <br>- Pelo menos uma letra maiuscula e miniscula
-          <br>- Um número
-          <br>- Um caractere especial
-          <br>- Ter pelo menos 8 caracteres
-
+        <ion-text [ngClass]="{ 'valid-criteria': passwordValid('lowercase'), 'invalid-criteria': passwordInvalid('lowercase') }">
+          <div>
+          <ion-icon [name]="passwordValid('lowercase') ? 'checkmark-outline' : 'alert-outline'"></ion-icon>
+          Pelo menos uma letra minúscula
+          </div>
+        </ion-text>
+        <ion-text [ngClass]="{ 'valid-criteria': passwordValid('number'), 'invalid-criteria': passwordInvalid('number') }">
+          <div>
+          <ion-icon [name]="passwordValid('number') ? 'checkmark-outline' : 'alert-outline'"></ion-icon>
+          Pelo menos um número
+          </div>
+        </ion-text>
+        <ion-text [ngClass]="{ 'valid-criteria': passwordValid('specialChar'), 'invalid-criteria': passwordInvalid('specialChar') }">
+          <div>
+            <ion-icon [name]="passwordValid('specialChar') ? 'checkmark-outline' : 'alert-outline'"></ion-icon>
+          Pelo menos um caractere especial
+          </div>
+        </ion-text>
+        <ion-text [ngClass]="{ 'valid-criteria': passwordValid('length'), 'invalid-criteria': passwordInvalid('length') }">
+          <div>
+          <ion-icon [name]="passwordValid('length') ? 'checkmark-outline' : 'alert-outline'"></ion-icon>
+          Pelo menos 8 caracteres
+          </div>
         </ion-text>
       </div>
 
       <ion-button (click)="signUp()" fill="solid" id="loginButton" [disabled]="regForm.invalid">
         Cadastre-se
       </ion-button>
-      <div class="form-help">
 
-    </div>
   </form>
   <p>Já possui uma conta? <a [routerLink]="['/login']" style="color: var(--ion-color-trygreen);">Faça Login </a></p>
 </div>
 </ion-content>
 
-      <!--
-
-
-
-    </div>
-  </form> --> -->
 

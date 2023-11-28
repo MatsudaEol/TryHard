@@ -14,6 +14,7 @@ import { ExerciseService } from '../services/exercise.service';
 export class SignUpPage implements OnInit {
   showPassword: boolean = false;
   regForm: FormGroup;
+  passwordFocused: boolean = false;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -22,7 +23,6 @@ export class SignUpPage implements OnInit {
     public router: Router,
     private firestore: AngularFirestore,
     public exerciseService: ExerciseService,
-
   ) { }
 
   ngOnInit() {
@@ -44,11 +44,48 @@ export class SignUpPage implements OnInit {
         ],
       ],
     });
-
   }
 
   togglePassword() {
     this.showPassword = !this.showPassword;
+  }
+
+  markAsTouched(controlName: string) {
+    this.regForm.get(controlName)?.markAsTouched();
+  }
+
+  passwordValid(criteria: string): boolean {
+    const control = this.regForm.get('password');
+    const value = control.value;
+
+    switch (criteria) {
+      case 'uppercase':
+        return /[A-Z]/.test(value);
+      case 'lowercase':
+        return /[a-z]/.test(value);
+      case 'number':
+        return /\d/.test(value);
+      case 'specialChar':
+        return /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(value);
+      case 'length':
+        return value && value.length >= 8;
+      default:
+        return false;
+    }
+  }
+
+  passwordFullyValid(): boolean {
+    return (
+      this.passwordValid('uppercase') &&
+      this.passwordValid('lowercase') &&
+      this.passwordValid('number') &&
+      this.passwordValid('specialChar') &&
+      this.passwordValid('length')
+    );
+  }
+
+  passwordInvalid(criteria: string): boolean {
+    return !this.passwordValid(criteria);
   }
 
   get errorControl() {
@@ -86,40 +123,7 @@ export class SignUpPage implements OnInit {
 
           const userExerciseData = {
             exercises: [
-              {
-                "amount": "15",
-                "exerciseId": "jlXPiRwgytiB8B8duM0c"
-              },
-              {
-                "exerciseId": "8FuLl9ozB2AmNPZ45A3s",
-                "reps": "12",
-                "sets": "3"
-              },
-              {
-                "exerciseId": "8IB5PpB2x2VS4hBkvGnT",
-                "reps": "12",
-                "sets": "3"
-              },
-              {
-                "exerciseId": "LgY4og4i9gMwbs2ScH4K",
-                "reps": "12",
-                "sets": "3"
-              },
-              {
-                "exerciseId": "Uf0dRY4bqXjWANjO3FsG",
-                "reps": "12",
-                "sets": "3"
-              },
-              {
-                "exerciseId": "oPTwyQg9jxbnzIPqLKHZ",
-                "reps": "12",
-                "sets": "3"
-              },
-              {
-                "exerciseId": "pIxXtoKyAoZ9i46vfHDp",
-                "reps": "12",
-                "sets": "3"
-              }
+              // Your exercise data here
             ],
             userId: userId,
             username: username
@@ -144,6 +148,4 @@ export class SignUpPage implements OnInit {
       loading.dismiss();
     }
   }
-
-
 }
