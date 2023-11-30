@@ -1,13 +1,52 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>studentfitnessanalysis</ion-title>
+<ion-header [translucent]="false" color="darkgray2">
+  <ion-toolbar class="center-content">
+    <ion-title style="color: #ffffff;" >
+      Informações do Aluno
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">studentfitnessanalysis</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" color="darkgray2">
+  <!-- Card de Informações do Aluno -->
+  <div color="darkgray">
+    <ion-card class="aluno-card">
+
+      <ion-card-content class="aluno-content">
+
+        <ion-img class="aluno-img" [src]="aluno.foto" alt="Foto do Aluno"></ion-img>
+
+        <div class="info-container">
+          <ion-card-title style="color: #ffffff;">{{ aluno.nome }}</ion-card-title>
+          <ion-card-subtitle style="color: #d6d6d6;">{{ aluno.genero }}</ion-card-subtitle>
+          <ion-card-subtitle style="color: #d6d6d6;">Altura: {{ aluno.altura }}</ion-card-subtitle>
+          <ion-card-subtitle style="color: #d6d6d6;">Peso: {{ aluno.peso }}</ion-card-subtitle>
+          <ion-card-subtitle style="color: #d6d6d6;">            Resultado IMC: {{ calcularIMC(aluno.altura, aluno.peso).toFixed(2) }}
+            - {{ interpretarEstadoIMC(calcularIMC(aluno.altura, aluno.peso)) }}</ion-card-subtitle>
+          <!-- Adicione mais informações do aluno conforme necessário -->
+        </div>
+
+      </ion-card-content>
+
+    </ion-card>
+  </div>
+
+  <!-- Lista de Treinos -->
+  <ion-card class="card-custom">
+    <ion-list *ngFor="let categoria of categorias" class="list-custom">
+      <ion-item (click)="toggleCategoria(categoria)">
+        <ion-label>{{ categoria.nome }}</ion-label>
+        <ion-icon [name]="categoria.expandida ? 'chevron-up' : 'chevron-down'"></ion-icon>
+      </ion-item>
+
+      <ion-list *ngIf="categoria.expandida">
+        <ion-item *ngFor="let treino of categoria.treinos">
+          <ion-label>{{ treino.nome }}</ion-label>
+          <ion-checkbox [(ngModel)]="treino.selecionado"></ion-checkbox>
+        </ion-item>
+      </ion-list>
+    </ion-list>
+  </ion-card>
+
+  <!-- Botão de Envio -->
+  <ion-button class="enviar-button" expand="full" (click)="enviarTreinos()" color="success">Enviar Treinos</ion-button>
 </ion-content>
