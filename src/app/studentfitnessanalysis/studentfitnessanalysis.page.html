@@ -3,6 +3,9 @@
     <ion-title style="color: #ffffff;" >
       Informações do Aluno
     </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home-list" color="trygreen"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -22,7 +25,6 @@
           <ion-card-subtitle style="color: #d6d6d6;">Peso: {{ aluno.peso }}</ion-card-subtitle>
           <ion-card-subtitle style="color: #d6d6d6;">            Resultado IMC: {{ calcularIMC(aluno.altura, aluno.peso).toFixed(2) }}
             - {{ interpretarEstadoIMC(calcularIMC(aluno.altura, aluno.peso)) }}</ion-card-subtitle>
-          <!-- Adicione mais informações do aluno conforme necessário -->
         </div>
 
       </ion-card-content>
@@ -47,6 +49,17 @@
     </ion-list>
   </ion-card>
 
-  <!-- Botão de Envio -->
+  <ion-button class="enviar-button" expand="full" (click)="setOpen(true)" color="success">Enviar Treinos</ion-button>
+  <ion-alert
+    class="info-container2 ion-text-center"
+    [isOpen]="isAlertOpen"
+    header="Treinos Enviados!"
+    subHeader="Aluno destinatário: Gabriel de Angelis Godoy"
+    [buttons]="alertButtons"
+    (didDismiss)="setOpen(false)"
+  ></ion-alert>
+
+  <!-- Botão de Envio
   <ion-button class="enviar-button" expand="full" (click)="enviarTreinos()" color="success">Enviar Treinos</ion-button>
+    <ion-button class="enviar-button" (click)="setOpen(true)" color="success">Enviar Treinos</ion-button> -->
 </ion-content>

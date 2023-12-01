@@ -6,6 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./studentfitnessanalysis.page.scss'],
 })
 export class StudentfitnessanalysisPage {
+  isAlertOpen = false;
+  alertButtons = ['OK'];
+  setOpen(isOpen: boolean) {
+    this.isAlertOpen = isOpen;
+  }
   aluno = {
     nome: 'Gabriel de Angelis Godoy',
     genero: 'Masculino',

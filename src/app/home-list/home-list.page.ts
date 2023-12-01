@@ -12,6 +12,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   styleUrls: ['home-list.page.scss'],
 })
 export class HomeListPage implements OnInit {
+  alunos: string[] = ['Gabriel de Angelis Godoy', 'Vitor Gabriel Pinheiro', 'Daniel dos Santos Posebon '];
   usuarios: any[];
 
 
@@ -53,11 +54,13 @@ export class HomeListPage implements OnInit {
 
         const currentDate = new Date().toISOString().split('T')[0];
         this.dataAtual = currentDate;
-
+        this.fetchUsuarios();
       }
       this.formattedDate = this.formatDate(new Date());
     });
+
   }
+
 
 
   formatDate(date: Date): string {
@@ -111,4 +114,16 @@ export class HomeListPage implements OnInit {
     });
   }
 
+  fetchUsuarios() {
+    this.firestore.collection('usuarios').valueChanges().subscribe((data) => {
+      console.log('Usuarios Data:', data);
+
+      if (data && data.length > 0) {
+        this.usuarios = data as any[];
+      } else {
+        console.warn('No usuarios data found.');
+      }
+    });
+  }
 }
+
