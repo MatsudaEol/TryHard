@@ -1,16 +1,24 @@
-.profile-container {
-  position: relative;
-  height: 10vh;
+ion-card {
   display: flex;
   justify-content: center;
-  top: 10%;
-  flex-direction: column;
+}
+
+.profile-container {
+  height: 18vh;
+  width: 18vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: auto; 
 }
 
 .avatar {
   height: 18vh;
   width: 18vh;
   border: 2px solid var(--ion-color-trygreen);
+  display: flex;
+  justify-content: center;
 }
 
 .profile-button {
@@ -32,4 +40,86 @@
 
 .name {
   margin-top: 20px;
+}
+
+ion-card-title, ion-card-subtitle {
+  display: flex;
+  justify-content: center;
+}
+
+ion-card-title {
+  margin-top: 10px;
+}
+
+ion-card-subtitle {
+  margin-top: 3px;
+  ion-label {
+    color: #b3b3b3 !important;
+  }
+}
+
+
+
+.edit-profile {
+  margin-top: 10px;
+  --border-radius: 20px !important;
+  height: 3vh;
+}
+
+.edit-button {
+  font-weight: bold;
+  width: 20vh !important;
+}
+
+.button-container {
+  height: 50px;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.menu-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(84, 187, 119, 0.4);
+  border-radius: 50px;
+  height: 38px;
+  width: 38px;
+  margin-right: 20px;
+  position: absolute;
+  left: 10%; 
+}
+
+.button-text {
+  display: flex;
+  align-items: center;
+  padding-left: 20%;
+}
+
+.menu-button2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(59, 59, 59, 0.4);
+  border-radius: 50px;
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  right: 10%; 
+}
+
+.icon {
+  font-size: 20px;
+}
+
+.icon2 {
+  font-size: 15px;
+  color: #b3b3b3;
+}
+
+.bottom
+{
+  position: absolute;
+  bottom: 5vh;
+  width: 100%;
 }

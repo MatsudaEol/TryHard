@@ -1,18 +1,103 @@
-<ion-content color="darkgray2">
-  <div class="profile-container">
-    <ion-avatar class="avatar">
-      <img [src]="userData.profile || 'https://firebasestorage.googleapis.com/v0/b/tryhard-75312.appspot.com/o/default_profile.png?alt=media&token=a65958d7-167d-4e30-9391-4f92c26366aa'">
-  
-      <ion-buttons>
-        <button ion-button class="profile-button" id="click-trigger">
-          <ion-icon name="camera" class="pencil"></ion-icon>
-        </button>
-      </ion-buttons>
-    </ion-avatar>
+<ion-header>
+  <ion-toolbar color="darkgray2">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home" color="trygreen"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center" color="trygreen">Meus Dados</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-    <ion-item class="name">
-      <ion-text>Oi</ion-text>
+<ion-content color="darkgray2">
+  <ion-card color="darkgray2">
+    <ion-card-content>
+    <div class="profile-container">
+      <ion-avatar class="avatar">
+        <img [src]="userData.profile || 'https://firebasestorage.googleapis.com/v0/b/tryhard-75312.appspot.com/o/default_profile.png?alt=media&token=a65958d7-167d-4e30-9391-4f92c26366aa'">
+        <ion-buttons>
+          <button ion-button class="profile-button" id="click-trigger">
+            <ion-icon name="camera" class="pencil"></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-avatar>
+    </div>
+    <ion-card-title>
+        <ion-label>{{ userData.username }}</ion-label>
+    </ion-card-title>
+    <ion-card-subtitle>
+      <ion-label>{{ userData.email }}</ion-label>
+    </ion-card-subtitle>
+
+    <ion-button color="trygreen" class="edit-profile">
+      <ion-text class="edit-button">
+      Editar Perfil
+      </ion-text>
+    </ion-button>
+
+  </ion-card-content>
+  </ion-card>
+
+    <ion-item class="button-container" color="darkgray2" style="margin-top: 3vh;">
+      <ion-badge class="menu-button" slot="start">
+        <ion-icon name="build-outline" class="icon" color="trygreen"></ion-icon>
+      </ion-badge>
+      <ion-text class="button-text">
+        Configurações
+      </ion-text>
+      <ion-badge class="menu-button2">
+        <ion-icon name="chevron-forward-outline" class="icon2"></ion-icon>
+      </ion-badge>
     </ion-item>
-  </div>
+
+    <ion-item class="button-container" color="darkgray2">
+      <ion-badge class="menu-button" slot="start">
+        <ion-icon name="build-outline" class="icon" color="trygreen"></ion-icon>
+      </ion-badge>
+      <ion-text class="button-text">
+        Configurações
+      </ion-text>
+      <ion-badge class="menu-button2">
+        <ion-icon name="chevron-forward-outline" class="icon2"></ion-icon>
+      </ion-badge>
+    </ion-item>
+
+    <ion-item class="button-container" color="darkgray2">
+      <ion-badge class="menu-button" slot="start">
+        <ion-icon name="build-outline" class="icon" color="trygreen"></ion-icon>
+      </ion-badge>
+      <ion-text class="button-text">
+        Configurações
+      </ion-text>
+      <ion-badge class="menu-button2">
+        <ion-icon name="chevron-forward-outline" class="icon2"></ion-icon>
+      </ion-badge>
+    </ion-item>
+
+  
+<div class="bottom">
+  <ion-item class="button-container" color="darkgray2">
+    <!-- Últimos dois itens -->
+    <ion-badge class="menu-button" slot="start">
+      <ion-icon name="build-outline" class="icon" color="trygreen"></ion-icon>
+    </ion-badge>
+    <ion-text class="button-text">
+      Configurações
+    </ion-text>
+    <ion-badge class="menu-button2">
+      <ion-icon name="chevron-forward-outline" class="icon2"></ion-icon>
+    </ion-badge>
+  </ion-item>
+
+  <ion-item class="button-container" color="darkgray2">
+    <ion-badge class="menu-button" slot="start">
+      <ion-icon name="log-out-outline" class="icon" color="trygreen"></ion-icon>
+    </ion-badge>
+    <ion-text class="button-text" color="danger">
+      Sair
+    </ion-text>
+    <ion-badge class="menu-button2">
+      <ion-icon name="chevron-forward-outline" class="icon2"></ion-icon>
+    </ion-badge>
+  </ion-item>
+</div>
 
 </ion-content>
