@@ -47,12 +47,17 @@
   <div class="container">
     <h5>Lista de Alunos</h5>
 
-    <ion-list>
-      <ion-item *ngFor="let aluno of alunos">
-        {{ aluno }}
-        <ion-note slot="end">{{ aluno.treino }}</ion-note>
-      </ion-item>
-    </ion-list>
+  <ion-list>
+    <ion-item *ngFor="let aluno of alunos">
+      <ion-avatar slot="start">
+        <ion-img [src]="aluno.imagemPerfil" alt="Imagem de Perfil"></ion-img>
+      </ion-avatar>
+      {{ aluno.nome }}
+      <ion-button color="success" (click)="navegarParaDetalhes(aluno.id)" slot="end">
+        <ion-icon name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
 
   </div>
 </ion-content>

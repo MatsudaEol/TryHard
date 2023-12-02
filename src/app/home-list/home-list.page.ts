@@ -12,7 +12,11 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   styleUrls: ['home-list.page.scss'],
 })
 export class HomeListPage implements OnInit {
-  alunos: string[] = ['Gabriel de Angelis Godoy', 'Vitor Gabriel Pinheiro', 'Daniel dos Santos Posebon '];
+  alunos = [
+    { id: 1, nome: 'Gabriel de Angelis Godoy', imagemPerfil: 'assets/3135768.png' },
+    { id: 2, nome: 'Daniel dos Santos Posebon', imagemPerfil: 'assets/3135768.png' },
+    { id: 3, nome: 'Vitu Gabriel', imagemPerfil: 'assets/3135768.png' },
+  ];
   usuarios: any[];
 
 
@@ -124,6 +128,11 @@ export class HomeListPage implements OnInit {
         console.warn('No usuarios data found.');
       }
     });
+  }
+
+  navegarParaDetalhes(alunoId: number) {
+    console.log('Navegando para detalhes do aluno', alunoId);
+    this.router.navigate(['/studentfitnessanalysis', ]);
   }
 }
 

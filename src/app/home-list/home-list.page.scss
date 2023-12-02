@@ -8,6 +8,14 @@ h5 {
   margin-bottom: 15px;
 }
 
+/* home-list.page.scss */
+ion-button {
+  --background: #007bff; /* Cor de fundo do botão */
+  --color: #ffffff;      /* Cor do texto no botão */
+  --border-radius: 50%;   /* Faz o botão parecer redondo */
+}
+
+
 /* Estilos para telas menores */
 
 
@@ -240,4 +248,11 @@ ion-card-subtitle {
     margin: 0vh;
     border-radius: 10px;
   }
+}
+
+/* home-list.page.scss */
+.custom-button {
+  --background: #54BB77; /* Cor de fundo do botão */
+  --color: #ffffff;      /* Cor do texto no botão */
+  --border-radius: 50%;   /* Faz o botão parecer redondo */
 }
