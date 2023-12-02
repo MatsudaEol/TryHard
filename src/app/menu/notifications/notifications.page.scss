@@ -8,3 +8,43 @@ ion-title {
     text-align: center;
     color: var(--ion-color-light);
 }
+
+ion-segment-button:not(.segment-checked) {
+    color: #a0a0a0; /* Cor desejada para os segmentos inativos */
+}
+
+ion-icon {
+    height: 12px;
+    width: 12px;
+    margin-right: 10px;
+}
+
+ion-list{
+    background-color: var(--ion-color-darkgray);
+}
+.not-card {
+    width: 100%;
+    border-top: 1px solid ; 
+    border-bottom: 1px solid;
+    border-color: #b3b3b3;
+    border-radius: 0;
+}
+
+.not-title {
+    margin-bottom: 5px;
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+.not-subtitle {
+    margin-bottom: 10px;
+    font-size: 1.0rem;
+    font-weight: 300;
+}
+
+.clock {
+    float: right; 
+    color: #b3b3b3;
+    font-size: 1rem;
+    padding-right: 10px;
+}
