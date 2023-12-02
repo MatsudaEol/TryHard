@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { User } from 'firebase/auth';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,6 +12,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage {
+
   user: User;
   userData: any;
   loading: HTMLIonLoadingElement;
@@ -32,7 +35,10 @@ export class ProfilePage {
   constructor(
     private afAuth: AngularFireAuth,
     private userService: UserService,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    private authService: AuthenticationService,
+    private alertCtrl: AlertController,
+    private router: Router
   ) {
     this.userData = {};
     this.loadUserData();
@@ -78,6 +84,31 @@ export class ProfilePage {
     });
   }
 
+  async mostrarAlerta() {
+    const alert = await this.alertCtrl.create({
+      header: 'Confirmação',
+      message: 'Tem certeza que deseja sair da conta?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Ação de cancelamento');
+          }
+        }, {
+          text: 'Sair',
+          cssClass: 'danger',
+          handler: () => {
+            this.logout(); // Chama a função de logout após a confirmação
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
   // Método para calcular o IMC
   calcularIMC() {
     if (this.altura && this.peso) {
@@ -108,7 +139,7 @@ export class ProfilePage {
       return 'Obesidade Grau 3';
     }
   }
-  
+
 
   // Função para formatar a data no formato 'dd/MM/yyyy'
   formatDate(date: Date): string {
@@ -117,4 +148,15 @@ export class ProfilePage {
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
   }
+
+  logout() {
+    this.authService.logoutUser().then(() => {
+      this.router.navigate(['/login']).then(() => {
+        window.location.reload();
+      });
+    }).catch(error => {
+      console.log('Erro ao fazer logout:', error);
+    });
+  }
+  
 }

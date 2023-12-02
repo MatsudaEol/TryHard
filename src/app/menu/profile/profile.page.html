@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar color="darkgray2">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/home" color="trygreen"></ion-back-button>
+      <ion-back-button defaultHref="/tabs/home" color="light"></ion-back-button>
     </ion-buttons>
-    <ion-title class="ion-text-center" color="trygreen">Meus Dados</ion-title>
+    <ion-title class="ion-text-center" color="lightz">Meus Dados</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -27,7 +27,7 @@
       <ion-label>{{ userData.email }}</ion-label>
     </ion-card-subtitle>
 
-    <ion-button color="trygreen" class="edit-profile">
+    <ion-button color="trygreen" class="edit-profile" [routerLink]="['/profile/edit-profile']">
       <ion-text class="edit-button">
       Editar Perfil
       </ion-text>
@@ -43,9 +43,9 @@
       <ion-text class="button-text">
         Configurações
       </ion-text>
-      <ion-badge class="menu-button2">
+      <ion-button class="menu-button2">
         <ion-icon name="chevron-forward-outline" class="icon2"></ion-icon>
-      </ion-badge>
+      </ion-button>
     </ion-item>
 
     <ion-item class="button-container" color="darkgray2">
@@ -55,9 +55,9 @@
       <ion-text class="button-text">
         Configurações
       </ion-text>
-      <ion-badge class="menu-button2">
+      <ion-button class="menu-button2">
         <ion-icon name="chevron-forward-outline" class="icon2"></ion-icon>
-      </ion-badge>
+    </ion-button>
     </ion-item>
 
     <ion-item class="button-container" color="darkgray2">
@@ -67,12 +67,12 @@
       <ion-text class="button-text">
         Configurações
       </ion-text>
-      <ion-badge class="menu-button2">
+      <ion-button class="menu-button2">
         <ion-icon name="chevron-forward-outline" class="icon2"></ion-icon>
-      </ion-badge>
+    </ion-button>
     </ion-item>
 
-  
+
 <div class="bottom">
   <ion-item class="button-container" color="darkgray2">
     <!-- Últimos dois itens -->
@@ -82,21 +82,21 @@
     <ion-text class="button-text">
       Configurações
     </ion-text>
-    <ion-badge class="menu-button2">
+    <ion-button class="menu-button2">
       <ion-icon name="chevron-forward-outline" class="icon2"></ion-icon>
-    </ion-badge>
+    </ion-button>
   </ion-item>
 
   <ion-item class="button-container" color="darkgray2">
-    <ion-badge class="menu-button" slot="start">
+    <ion-badge class="menu-button" slot="start" (click)="mostrarAlerta()">
       <ion-icon name="log-out-outline" class="icon" color="trygreen"></ion-icon>
     </ion-badge>
     <ion-text class="button-text" color="danger">
       Sair
     </ion-text>
-    <ion-badge class="menu-button2">
-      <ion-icon name="chevron-forward-outline" class="icon2"></ion-icon>
-    </ion-badge>
+    <ion-button (click)="mostrarAlerta()" class="menu-button2">
+        <ion-icon name="chevron-forward-outline" class="icon2"></ion-icon>
+    </ion-button>
   </ion-item>
 </div>
 

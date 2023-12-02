@@ -24,12 +24,12 @@ export class HomePage implements OnInit {
 
   constructor(
     private authService: AuthenticationService,
+    private alertCtrl: AlertController,
     public popoverController: PopoverController,
     private afAuth: AngularFireAuth,
     private userService: UserService,
     private router: Router,
     private exerciseService: ExerciseService,
-    private alertCtrl: AlertController,
     private firestore: AngularFirestore
   ) {
     this.userData = {};

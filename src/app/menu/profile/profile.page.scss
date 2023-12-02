@@ -10,7 +10,7 @@ ion-card {
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin: auto; 
+  margin: auto;
 }
 
 .avatar {
@@ -87,7 +87,7 @@ ion-card-subtitle {
   width: 38px;
   margin-right: 20px;
   position: absolute;
-  left: 10%; 
+  left: 10%;
 }
 
 .button-text {
@@ -100,12 +100,12 @@ ion-card-subtitle {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(59, 59, 59, 0.4);
-  border-radius: 50px;
+  --background: rgba(59, 59, 59, 0.4) !important;
+  --border-radius: 50px;
   height: 40px;
   width: 40px;
   position: absolute;
-  right: 10%; 
+  right: 10%;
 }
 
 .icon {
