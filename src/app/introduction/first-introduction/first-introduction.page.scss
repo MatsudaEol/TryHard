@@ -9,6 +9,7 @@ swiper-container {
 }
 
 
+
 .background-image {
   background-image: linear-gradient(to top, rgba(0, 0, 0, 1.637) 40%, transparent 50%, transparent 100%), url('/assets/homem.jpg');
   background-size: cover;
@@ -22,7 +23,7 @@ swiper-container {
 }
 //texto123
 ion-badge {
-  background-color: rgba(20, 20, 20, 0.3);
+  background-color: rgba(20, 20, 20, 0.424);
   border-radius: 2000px;
   position: absolute;
   top: 50px;
@@ -36,7 +37,7 @@ ion-badge {
   color: rgb(125, 230, 148);
 }
 .content2 {
-  margin-bottom: 20%;
+  margin-bottom: 30%;
   text-align: center;
   color: rgb(125, 230, 148);
 }
@@ -49,26 +50,44 @@ ion-title {
   text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.7);
 }
 
+ion-title2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-family: 'Gill Sans MT';
+  text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.7);
+}
+
 h1 {
-  padding: 5px;
-  letter-spacing: 4px;
-  font-family: 'Arial';
-  color: rgb(255, 255, 255);
+  padding: 3px;
+  letter-spacing: 2px;
+  color: rgb(246, 254, 247);
   text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
 .container {
-  margin-top: 70px;
   background-color: rgba(0, 0, 0, 0.34);
   height: auto;
-  border-radius: 50px;
+  border-radius: 0px 0px 20px 20px;
+}
+.container2 {
+  background-color: rgba(0, 0, 0, 0.34);
+  height: auto;
+  border-radius: 10px 10px 0px 0px;
+  width: auto;
+}
+
+.mão-peso{
+  width: 300px;
 }
 
 .botao {
   justify-content: center;
   bottom: 10vh;
+  width: 200px;
+  font-size: 2rem;
+  font-family: 'Impact';
 }
-
 
 
 @media screen and (min-width: 1024px) {
@@ -78,49 +97,51 @@ h1 {
   }
 }
 
-//animações
-// .slide-in-blurred-bottom {
-// 	-webkit-animation: slide-in-blurred-bottom 0.8s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-// 	        animation: slide-in-blurred-bottom 0.8s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-// }
 
-// @-webkit-keyframes slide-in-blurred-bottom {
-//   0% {
-//     -webkit-transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
-//             transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
-//     -webkit-transform-origin: 50% 100%;
-//             transform-origin: 50% 100%;
-//     -webkit-filter: blur(40px);
-//             filter: blur(40px);
-//     opacity: 0;
-//   }
-//   100% {
-//     -webkit-transform: translateY(0) scaleY(1) scaleX(1);
-//             transform: translateY(0) scaleY(1) scaleX(1);
-//     -webkit-transform-origin: 50% 50%;
-//             transform-origin: 50% 50%;
-//     -webkit-filter: blur(0);
-//             filter: blur(0);
-//     opacity: 1;
-//   }
-// }
-// @keyframes slide-in-blurred-bottom {
-//   0% {
-//     -webkit-transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
-//             transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
-//     -webkit-transform-origin: 50% 100%;
-//             transform-origin: 50% 100%;
-//     -webkit-filter: blur(40px);
-//             filter: blur(40px);
-//     opacity: 0;
-//   }
-//   100% {
-//     -webkit-transform: translateY(0) scaleY(1) scaleX(1);
-//             transform: translateY(0) scaleY(1) scaleX(1);
-//     -webkit-transform-origin: 50% 50%;
-//             transform-origin: 50% 50%;
-//     -webkit-filter: blur(0);
-//             filter: blur(0);
-//     opacity: 1;
-//   }
-// }
+
+//animações
+ .slide-in-blurred-bottom {
+ 	-webkit-animation: slide-in-blurred-bottom 0.8s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+ 	        animation: slide-in-blurred-bottom 0.8s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+ }
+
+ @-webkit-keyframes slide-in-blurred-bottom {
+   0% {
+     -webkit-transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
+            transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
+     -webkit-transform-origin: 50% 100%;
+             transform-origin: 50% 100%;
+     -webkit-filter: blur(40px);
+            filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) scaleY(1) scaleX(1);
+            transform: translateY(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-blurred-bottom {
+  0% {
+    -webkit-transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
+            transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+    -webkit-filter: blur(40px);
+            filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) scaleY(1) scaleX(1);
+            transform: translateY(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    opacity: 1;
+  }
+}

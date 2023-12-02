@@ -1,7 +1,13 @@
 <ion-content class="ion-content" color="darkgray">
   <div class="background-image"></div>
-  <swiper-container slides-per-view="1" speed="500" pagination="true" pagination-type="progressbar" scrollbar="true">
-    <swiper-slide>
+  <swiper-container
+    slides-per-view="1"
+    speed="500"
+    pagination="true"
+    pagination-type="progressbar"
+    scrollbar="true"
+  >
+    <swiper-slide class="slide-in-blurred-bottom">
       <div class="logo">
         <ion-badge>
           <img src="assets/tryhard.png" alt="GIF de introdução" />
@@ -9,31 +15,51 @@
       </div>
 
       <div class="content">
-        <ion-card-content class="slide-in-blurred-bottom">
-          <div class="container">
+        <ion-card-content>
+          <div class="container2">
             <ion-title>Bem Vindo(a)!</ion-title>
             <h1>
-              Aqui, cada sessão é projetada para atender às suas metas
-              específicas. Chega de abordagens genéricas. É hora de treinar de
-              maneira inteligente e alcançar resultados notáveis!
+              Desvende um novo padrão de treinamento. O TryHard não é apenas um
+              aplicativo; é o seu guia para uma vida mais saudável e motivadora.
+              Inicie esta jornada extraordinária agora! 💪🚀
             </h1>
           </div>
         </ion-card-content>
       </div>
     </swiper-slide>
-    <swiper-slide><ion-card-content class="slide-in-blurred-bottom">
+    <swiper-slide
+      ><ion-card-content class="slide-in-blurred-bottom">
         <div class="content2">
-          <div class="container">
-            <img src="assets/mulheres.png" alt="mulheres">
-            <ion-title>Como você é?</ion-title>
-            <h1>
-              Queremos conhecer melhor você, insira seus dados apertando no botão abaixo
-            </h1>
-            <ion-button id="present-alert" color="trygreen">Inserir Dados</ion-button>
+          <div class="container2">
+            <img src="assets/tryhardlogo.png" alt="logo" class="logo" />
+          </div>
 
+          <div class="container">
+            <ion-title2>Explore o poder do TryHard</ion-title2>
+            <h1>
+              Treinos personalizados, atualização de peso instantânea,
+              estatísticas em tempo real! O TryHard é o parceiro dinâmico que
+              você precisa para elevar seu treino a novos patamares. Conecte-se
+              ao seu melhor eu agora! 💪🚀
+            </h1>
           </div>
         </div>
-      </ion-card-content></swiper-slide>
-    <swiper-slide>slide 3</swiper-slide>
+      </ion-card-content></swiper-slide
+    >
+    <swiper-slide>
+      <div class="content2">
+        <img src="assets/mulheres.png" alt="mão-peso" class="mão-peso" />
+        <div class="container2">
+          <ion-title2>Explore o poder do TryHard</ion-title2>
+          <h1 style="font-size: x-large">
+            O TryHard aguarda por você! Aperte o cinto, prepare-se para uma
+            jornada épica. Mais que um app, é a chave para um você mais forte,
+            saudável e incrível. Clique abaixo e inicie agora! 💥🏋️‍♂️
+            #TryHardChallenge
+          </h1>
+          <ion-button color="trygreen" class="botao" routerLink="/tabs/home">Iniciar</ion-button>
+        </div>
+      </div>
+    </swiper-slide>
   </swiper-container>
 </ion-content>
