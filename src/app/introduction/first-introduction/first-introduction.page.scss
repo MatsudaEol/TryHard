@@ -11,13 +11,13 @@ swiper-container {
 
 
 .background-image {
-  background-image: linear-gradient(to top, rgba(0, 0, 0, 1.637) 40%, transparent 50%, transparent 100%), url('/assets/homem.jpg');
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 1.637) 40%, transparent 50%, transparent 100%), url('/assets/peso.jpg');
   background-size: cover;
   background-position: center center;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  filter: blur(2px);
+  filter: blur(1px);
   display: block;
   position: absolute;
 }
@@ -78,7 +78,7 @@ h1 {
 }
 
 .mão-peso{
-  width: 300px;
+  width: 250px;
 }
 
 .botao {
@@ -87,6 +87,7 @@ h1 {
   width: 200px;
   font-size: 2rem;
   font-family: 'Impact';
+  border: none;
 }
 
 
@@ -101,8 +102,8 @@ h1 {
 
 //animações
  .slide-in-blurred-bottom {
- 	-webkit-animation: slide-in-blurred-bottom 0.8s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
- 	        animation: slide-in-blurred-bottom 0.8s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+ 	-webkit-animation: slide-in-blurred-bottom 0.9s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+ 	        animation: slide-in-blurred-bottom 0.9s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
  }
 
  @-webkit-keyframes slide-in-blurred-bottom {

@@ -5,7 +5,6 @@ import { ExerciseService } from '../services/exercise.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { map } from 'rxjs/operators';
 
-// Interface para definir a estrutura dos detalhes do exercício
 interface ExerciseDetails {
   exercises: {
     exerciseId: string;
@@ -24,6 +23,16 @@ interface ExerciseDetails {
 export class RepetitiveExercisePage implements OnInit {
   exerciseData: any;
   userId: string | null = null;
+  isRunning: boolean = false;
+  repetitionCount: number = 0;
+  displayTime: string = '00:00'; // Tempo inicial (minutos:segundos)
+  timerInterval: any; // Referência para o setInterval
+  totalElapsedSeconds: number = 0; // Tempo total decorrido
+  breakInterval: any;
+  breakTimerActive: boolean = false;
+  originalTimerColor = 'rgba(251, 251, 251, 0.992)';
+  breakTimerColor = this.originalTimerColor;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -48,6 +57,91 @@ export class RepetitiveExercisePage implements OnInit {
         });
       }
     });
+  }
+
+  startTimer() {
+    // Verifica se o timer não está em execução
+    if (!this.isRunning) {
+      this.isRunning = true;
+      if (this.totalElapsedSeconds === 0) {
+        this.totalElapsedSeconds = 900; //Daniel, PUXAR DO BANCO O TEMPO DO TREINO
+      }
+
+      // Inicia o intervalo para atualizar o tempo
+      this.timerInterval = setInterval(() => {
+        // Decrementa o tempo total decorrido
+        if (this.totalElapsedSeconds > 0) {
+          this.totalElapsedSeconds--;
+          const minutes = Math.floor(this.totalElapsedSeconds / 60);
+          const seconds = this.totalElapsedSeconds % 60;
+
+          // Atualiza o tempo exibido
+          this.displayTime = `${this.padZero(minutes)}:${this.padZero(seconds)}`;
+        } else {
+          this.stopTimer(); // Quando o tempo chegar a zero, para o timer
+        }
+      }, 1000);
+    }
+  }
+
+  pauseTimer() {
+    if (this.isRunning) {
+      this.isRunning = false;
+      clearInterval(this.timerInterval);
+      this.startBreakTimer();
+    }
+  }
+
+  // Para o timer
+  stopTimer() {
+    this.isRunning = false;
+    clearInterval(this.timerInterval);
+    this.displayTime = '00:00';
+    this.totalElapsedSeconds = 0; // Reseta o tempo total decorrido quando o timer é parado
+  }
+
+  // Adiciona um zero à esquerda para números menores que 10
+  padZero(num: number) {
+    return num.toString().padStart(2, '0');
+  }
+
+  startBreakTimer() {
+    if (!this.breakTimerActive) {
+      this.breakTimerActive = true;
+      const breakDuration = 60;
+      this.breakTimerActive = true;
+      this.breakTimerColor = 'rgba(99, 202, 99, 0.805' // Tempo de descanso em segundos (1 minuto neste exemplo)
+      let remainingBreakTime = breakDuration;
+
+      // Inicia o intervalo para atualizar o tempo de descanso
+      this.breakInterval = setInterval(() => {
+        if (remainingBreakTime > 0) {
+          remainingBreakTime--;
+          const minutes = Math.floor(remainingBreakTime / 60);
+          const seconds = remainingBreakTime % 60;
+
+          // Atualiza o tempo exibido durante o descanso
+          this.displayTime = `${this.padZero(minutes)}:${this.padZero(seconds)}`;
+        } else {
+          this.stopBreakTimer();
+        }
+      }, 1000);
+    }
+  }
+
+  // Para o timer de descanso
+  stopBreakTimer() {
+    this.breakTimerActive = false;
+    clearInterval(this.breakInterval);
+    this.startTimer();
+    this.breakTimerColor = this.originalTimerColor; // Retorna ao timer principal após o descanso
+  }
+
+
+  incrementRepetition() {
+    if (this.isRunning) {
+      this.repetitionCount++;
+    }
   }
 
   async completeExercise() {

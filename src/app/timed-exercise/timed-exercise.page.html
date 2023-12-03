@@ -7,24 +7,28 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" color="darkgray">
+<ion-content [fullscreen]="true" color="darkgray2">
   <div class="container">
-    <div class="timer" [style.color]="breakTimerColor"> {{ displayTime }}</div>
+    <div class="timer" [style.color]="breakTimerColor"> {{ displayTime }}
   <div class="controls">
-    <ion-button (click)="startTimer()" [disabled]="isRunning" color="trygreen" class="botão"><ion-icon name="play"></ion-icon></ion-button>
-    <ion-button (click)="pauseTimer()" [disabled]="!isRunning" color="trygreen" class="botão"><ion-icon name="pause-outline"></ion-icon></ion-button>
-    <ion-button (click)="stopTimer()" [disabled]="!isRunning" color="trygreen" class="botão"><ion-icon name="stop-outline"></ion-icon></ion-button>
+    <ion-button (click)="startTimer()" [disabled]="isRunning" color="button" class="botão"><ion-icon name="play"></ion-icon></ion-button>
+    <ion-button (click)="pauseTimer()" [disabled]="!isRunning" color="button" class="botão"><ion-icon name="pause-outline"></ion-icon></ion-button>
   </div>
 </div>
+</div>
   <div class="container2">
-  <ion-chip color="trygreen">Aquecimento</ion-chip>
-  <ion-chip color="trygreen">5 minutos de corrida leve (50-60% da intensidade máxima)</ion-chip>
-  <ion-chip color="trygreen">Queima aproximada: 75-100 calorias</ion-chip>
-  <ion-chip color="trygreen">5 minutos de corrida moderada (60-70% da intensidade máxima)</ion-chip>
-  <ion-chip color="trygreen">Queima aproximada: 100-150 calorias</ion-chip>
-  <ion-chip color="trygreen">5 minutos de corrida intensa (70-80% da intensidade máxima)</ion-chip>
-  <ion-chip color="trygreen">Queima aproximada: 150-200 calorias</ion-chip>
-  <ion-chip color="trygreen">Resfriamento e alongamento</ion-chip>
+    <ion-chip color="trygreen">1 - Aquecimento</ion-chip>
+    <ion-chip color="trygreen">2 - 5 min corrida leve</ion-chip>
+    <ion-chip color="trygreen">3 - Queima: 75-100 cal</ion-chip>
+
+    <ion-chip color="trygreen">4 - 5 min corrida moderada</ion-chip>
+    <ion-chip color="trygreen">5 - Queima: 100-150 cal</ion-chip>
+
+    <ion-chip color="trygreen">6 - 5 min corrida intensa</ion-chip>
+    <ion-chip color="trygreen">7 - Queima: 150-200 cal</ion-chip>
+
+    <ion-chip color="trygreen">8 - Resfriamento e alongamento</ion-chip>
+
   </div>
-  <ion-button color="trygreen" style="--border-radius:10px" (click)="completeExercise()" routerLink="/tabs/home">Finalizar Treino</ion-button>
 </ion-content>
+<ion-button color="trygreen" style="--border-radius:10px" (click)="completeExercise()" routerLink="/tabs/home">Finalizar Treino</ion-button>

@@ -4,6 +4,8 @@ import { LoadingController } from '@ionic/angular';
 import { User } from 'firebase/auth';
 import { UserService } from 'src/app/services/user.service';
 
+
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -108,7 +110,7 @@ export class ProfilePage {
       return 'Obesidade Grau 3';
     }
   }
-  
+
 
   // Função para formatar a data no formato 'dd/MM/yyyy'
   formatDate(date: Date): string {
