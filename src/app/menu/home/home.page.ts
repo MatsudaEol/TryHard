@@ -54,10 +54,16 @@ export class HomePage implements OnInit {
 
         this.loadUserExercises(user.uid);
         this.exerciseService.loadCompletedExercises(user.uid, this.dataAtual, this.listExercises);
+
+        // Calculando a porcentagem de exercícios completos e mostrando no console
+        this.exerciseService.calculateCompletionPercentage(user.uid).subscribe((percentage) => {
+          console.log(`Porcentagem de exercícios completos: ${percentage}%`);
+        });
       }
       this.formattedDate = this.formatDate(new Date());
     });
   }
+
 
 
   formatDate(date: Date): string {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { combineLatest } from 'rxjs';
+import { combineLatest, of } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
@@ -129,9 +129,18 @@ export class ExerciseService {
     });
   }
 
+  dataAtual(): string {
+    const now = new Date();
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0'); // Mês começa do zero, por isso o +1
+    const year = String(now.getFullYear());
+
+    return `${year}-${month}-${day}`;
+  }
+
   async resetExercise(exerciseId: string, listExercises: any[]) {
-    const dataAtual = new Date().toISOString().split('T')[0];
-    console.log('Data atual:', dataAtual);
+
+    console.log('Data atual legal:', this.dataAtual());
     const alert = await this.alertController.create({
       header: 'Confirmação',
       message: 'Deseja reiniciar o exercício?',
@@ -153,7 +162,7 @@ export class ExerciseService {
               docRef.get().subscribe((doc) => {
                 if (doc.exists) {
                   const completedExercises = doc.data();
-                  delete completedExercises[dataAtual][exerciseId];
+                  delete completedExercises[this.dataAtual()][exerciseId];
 
                   docRef.set(completedExercises).then(() => {
                     listExercises.forEach((userExercise: any) => {
@@ -179,5 +188,41 @@ export class ExerciseService {
     });
     await alert.present();
   }
+
+  calculateCompletionPercentage(userId: string) {
+    return combineLatest([
+      this.afs.collection('userExercises', (ref) => ref.where('userId', '==', userId)).valueChanges(),
+      this.afs.collection('completedExercises').doc(userId).valueChanges()
+    ]).pipe(
+      switchMap(([userExercises, completedExercises]: [any[], any]) => {
+
+        let totalExercises = 0;
+        let completedCount = 0;
+
+        if (userExercises && completedExercises && completedExercises[this.dataAtual()]) {
+          const completedExerciseIds = Object.keys(completedExercises[this.dataAtual()]);
+
+          userExercises.forEach((userExercise: any) => {
+            userExercise.exercises.forEach((exercise: any) => {
+              totalExercises++;
+
+              if (completedExerciseIds.includes(exercise.exerciseId)) {
+                completedCount++;
+              }
+            });
+          });
+        }
+
+        const completionPercentage = totalExercises > 0 ? (completedCount / totalExercises) * 100 : 0;
+        const roundedPercentage = Math.round(completionPercentage); // Arredondando a porcentagem
+
+        console.log(`Porcentagem de exercícios completos: ${roundedPercentage}%`);
+
+        return of(roundedPercentage);
+      })
+    );
+  }
+
+
 }
 
