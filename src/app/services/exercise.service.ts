@@ -189,6 +189,93 @@ export class ExerciseService {
     await alert.present();
   }
 
+  async removeExercise(exerciseId: string, listExercises: any[]): Promise<boolean> {
+    return new Promise<boolean>((resolve, reject) => {
+      this.afAuth.currentUser.then(async (user) => {
+        if (user) {
+          const userId = user.uid;
+          const docRef = this.afs.collection('completedExercises').doc(userId);
+
+          docRef.get().subscribe((doc) => {
+            if (doc.exists) {
+              const completedExercises = doc.data();
+              if (completedExercises[this.dataAtual()] && completedExercises[this.dataAtual()][exerciseId]) {
+                delete completedExercises[this.dataAtual()][exerciseId];
+
+                docRef.set(completedExercises).then(() => {
+                  listExercises.forEach((userExercise: any) => {
+                    userExercise.exercises.forEach((exercise: any) => {
+                      if (exercise.exerciseId === exerciseId) {
+                        exercise.completed = false;
+                      }
+                    });
+                  });
+                  resolve(true); // Resolvendo como true se o exercício foi removido com sucesso
+                }).catch((error) => {
+                  reject(false); // Rejeitando em caso de erro
+                });
+              } else {
+                resolve(false); // Resolvendo como false se o exercício não foi encontrado
+              }
+            } else {
+              resolve(false); // Resolvendo como false se o documento não existe
+            }
+          });
+        }
+      });
+    });
+  }
+
+  async completeExercise(userId: string, exerciseData: any) {
+    if (!userId || !exerciseData) {
+      console.error('Dados de usuário ou exercício ausentes.');
+      return;
+    }
+
+    const currentDate = new Date().toISOString().split('T')[0];
+
+    try {
+      const exerciseDetails = await this.afs.collection('userExercises')
+        .doc(userId).get().toPromise();
+
+      const userExercises = exerciseDetails.data();
+
+      if (userExercises && Array.isArray(userExercises['exercises'])) {
+        const exerciseToComplete = userExercises['exercises'].find((exercise: any) =>
+          exercise.exerciseId === exerciseData.exerciseId);
+
+        if (exerciseToComplete) {
+          let completedExerciseData: any = {
+            name: exerciseData.name,
+            // Other common exercise details can go here
+          };
+
+          if ('amount' in exerciseToComplete) {
+            completedExerciseData.amount = exerciseToComplete.amount || '0';
+          } else if ('reps' in exerciseToComplete && 'sets' in exerciseToComplete) {
+            completedExerciseData.reps = exerciseToComplete.reps || '0';
+            completedExerciseData.sets = exerciseToComplete.sets || '0';
+          }
+
+          await this.afs.collection('completedExercises').doc(userId).set({
+            [currentDate]: {
+              [exerciseData.exerciseId]: completedExerciseData,
+            },
+          }, { merge: true });
+
+          console.log('Exercício completo adicionado à coleção completedExercises!');
+        } else {
+          console.error('Detalhes do exercício não encontrados para o usuário.');
+        }
+      } else {
+        console.error('Dados de exercício não encontrados para o usuário ou formato inválido.');
+      }
+    } catch (error) {
+      console.error('Erro ao adicionar exercício completo:', error);
+    }
+  }
+
+
   calculateCompletionPercentage(userId: string) {
     return combineLatest([
       this.afs.collection('userExercises', (ref) => ref.where('userId', '==', userId)).valueChanges(),

@@ -1,48 +1,59 @@
-.statistics-container {
-  padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  ion-card {
-    margin-bottom: 20px;
+.progress {
+  text-align: center;
+}
 
-    ion-card-header {
-      color: white;
-    }
+ion-card {
+  background-color: var(--ion-color-darkgray);
+  width: 90%;
+}
 
-    ion-card-content {
-      font-size: 16px;
-      line-height: 1.5;
-      color: #333;
-    }
-  }
+ion-list {
+  background-color: var(--ion-color-darkgray);
+}
 
-  .overview-card {
-    grid-column: span 2; // Ocupa duas colunas
+.item-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 75px;
+  background-color: var(--ion-color-darkgray2);
+  border-radius: 20px;
+  margin: 10px 0;
+  padding: 0 15px;
+}
 
-    ion-card-header {
-      background-color: #3498db;
-    }
-  }
 
-  .performance-card {
-    ion-card-header {
-      background-color: #e74c3c;
-    }
-  }
 
-  .goals-card,
-  .monthly-performance-card {
-    ion-card-header {
-      background-color: #f39c12;
-    }
-  }
+.title {
+  font-size: 18px;
+  font-weight: bold;
+}
 
-  .comparison-card,
-  .history-card {
-    ion-card-header {
-      background-color: #2ecc71;
-    }
-  }
+.subtitle {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+ion-checkbox {
+  --size: 23px;
+  --checkbox-background: var(--ion-color-darkgray);
+  --checkbox-background-checked: var(--ion-color-trygreen);
+  --checkmark-color: #3b3b3b;
+
+}
+
+ion-checkbox::part(container) {
+  border-radius: 6px;
+  border: 2px solid var(--ion-color-trygreen);
+}
+
+
+.fakecheck {
+  --checkbox-background: var(--ion-color-trygreen) !important;
 }

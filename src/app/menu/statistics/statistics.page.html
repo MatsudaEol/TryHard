@@ -1,19 +1,60 @@
-<ion-content color="darkgray">
+<ion-content color="darkgray" class="content">
+  <div class="progress">
+    <circle-progress
+      [percent]="completionPercentage"
+      [radius]="100"
+      [outerStrokeWidth]="10"
+      [innerStrokeWidth]="5"
+      [outerStrokeColor]="'#54BB77'"
+      [innerStrokeColor]="'#98d6ad'"
+      [animation]="true"
+      [animationDuration]="1000"
+      [renderOnClick]="false"
+      [subtitle]="subtitle"
+      [startFromZero]="false"
+    ></circle-progress>
+  </div>
 
-  <!-- Adiciona o título acima do botão de data e hora -->
-  <ion-title>
-    Treino Completado!
-  </ion-title>
+  <ion-card color="darkgray">
+    <ion-text class="title">Exercícios de Hoje:</ion-text>
+    <ion-list *ngFor="let userExercise of listExercises;" class="list">
+      <ng-container *ngFor="let exercise of userExercise.exercises">
+        <div *ngIf="!exercise.completed" class="item-container">
+          <div>
+            <ion-text class="title">{{ exercise.name }}</ion-text>
+            <div *ngIf="exercise.type === 'time'">
+              <ion-text color="trygreen" class="sutitle">{{ exercise.amount }} Minutos</ion-text>
+            </div>
+            <div *ngIf="exercise.type === 'rep'">
+              <ion-text color="trygreen" class="subtitle">
+                {{ exercise.sets }} séries de {{ exercise.reps }} repetições
+              </ion-text>
+            </div>
+          </div>
+          <ion-checkbox (ionChange)="completeExercise(exercise)" ></ion-checkbox>
+        </div>
+      </ng-container>
+    </ion-list>
+    <!-- Treinos Concluidos -->
 
-  <ion-datetime-button datetime="datetime"></ion-datetime-button>
-
-  <ion-modal [keepContentsMounted]="true">
-    <ng-template>
-      <ion-datetime id="datetime"></ion-datetime>
-    </ng-template>
-  </ion-modal>
-
-  <ion-card>
-    <!-- Conteúdo do cartão -->
+    <ion-text class="title">Exercícios Concluidos:</ion-text>
+    <ion-list *ngFor="let userExercise of listExercises;" class="list">
+      <ng-container *ngFor="let exercise of userExercise.exercises">
+        <div *ngIf="exercise.completed" class="item-container">
+          <div>
+            <ion-text class="title">{{ exercise.name }}</ion-text>
+            <div *ngIf="exercise.type === 'time'">
+              <ion-text color="trygreen" class="sutitle">{{ exercise.amount }} Minutos</ion-text>
+            </div>
+            <div *ngIf="exercise.type === 'rep'">
+              <ion-text color="trygreen" class="subtitle">
+                {{ exercise.sets }} séries de {{ exercise.reps }} repetições
+              </ion-text>
+            </div>
+          </div>
+          <ion-checkbox [checked]="true" (ionChange)="resetExercise(exercise.exerciseId)" class="fakecheck"></ion-checkbox>
+        </div>
+      </ng-container>
+    </ion-list>
   </ion-card>
 </ion-content>

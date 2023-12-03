@@ -142,49 +142,17 @@ export class TimedExercisePage implements OnInit {
 
   // Função a ser implementada para registrar o término do exercício
   async completeExercise() {
-    // Verifica se há um usuário logado
-    if (!this.userId) {
-      console.error('ID do usuário não encontrado.');
+    if (!this.userId || !this.exerciseData) {
+      console.error('Dados de usuário ou exercício ausentes.');
       return;
     }
 
-    // Obtém a data atual no formato adequado
-    const currentDate = new Date().toISOString().split('T')[0];
-
     try {
-      const exerciseDetails = await this.afs.collection('userExercises')
-        .doc(this.userId).get()
-        .pipe(
-          map((doc) => doc.data() as ExerciseDetails)
-        ).toPromise();
+      await this.exerciseService.completeExercise(this.userId, this.exerciseData);
 
-      if (exerciseDetails && Array.isArray(exerciseDetails.exercises)) {
-        const exerciseToComplete = exerciseDetails.exercises.find((exercise) =>
-          exercise.exerciseId === this.exerciseData.exerciseId);
-
-        if (exerciseToComplete) {
-          const { amount } = exerciseToComplete;
-          const completedExerciseData = {
-            name: this.exerciseData.name,
-            amount: amount || '0', // Usando '0' como padrão se não houver valor definido
-            // ... Outros detalhes conforme necessário
-          };
-
-          await this.afs.collection('completedExercises').doc(this.userId).set({
-            [currentDate]: {
-              [this.exerciseData.exerciseId]: completedExerciseData,
-            },
-          }, { merge: true });
-
-          console.log('Exercício completo adicionado à coleção completedExercises!');
-        } else {
-          console.error('Detalhes do exercício não encontrados para o usuário.');
-        }
-      } else {
-        console.error('Dados de exercício não encontrados para o usuário ou formato inválido.');
-      }
+      console.log('Treino completo adicionado à coleção completedExercises!');
     } catch (error) {
-      console.error('Erro ao adicionar exercício completo:', error);
+      console.error('Erro ao adicionar treino completo:', error);
     }
   }
 }

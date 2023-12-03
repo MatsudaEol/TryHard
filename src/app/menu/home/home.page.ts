@@ -39,12 +39,6 @@ export class HomePage implements OnInit {
     this.afAuth.authState.subscribe(async (user) => {
       if (user) {
         this.userData = await this.userService.getUser(user.uid);
-        if (this.userData.username) {
-          this.userName = this.userData.username;
-        } else {
-          this.userName = 'Visitante';
-        }
-
         const daysOfWeek = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
         const today = new Date().getDay();
         this.currentDay = daysOfWeek[today];
@@ -54,11 +48,6 @@ export class HomePage implements OnInit {
 
         this.loadUserExercises(user.uid);
         this.exerciseService.loadCompletedExercises(user.uid, this.dataAtual, this.listExercises);
-
-        // Calculando a porcentagem de exercícios completos e mostrando no console
-        this.exerciseService.calculateCompletionPercentage(user.uid).subscribe((percentage) => {
-          console.log(`Porcentagem de exercícios completos: ${percentage}%`);
-        });
       }
       this.formattedDate = this.formatDate(new Date());
     });
