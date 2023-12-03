@@ -1,20 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UserService } from 'src/app/services/user.service';
+
+interface Notification {
+  notificationId: string;
+  title: string;
+  content: string;
+  time: string;
+}
 
 @Component({
   selector: 'app-notifications',
   templateUrl: 'notifications.page.html',
   styleUrls: ['notifications.page.scss'],
 })
-
-export class NotificationsPage {
+export class NotificationsPage implements OnInit {
   segment = 'novas';
-  welcome = false; // Inicialmente definido como falso
   userData: any;
   userId: string;
   checkedWelcomeStatus = false;
+  notifications: Notification[] = [];
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -29,38 +35,42 @@ export class NotificationsPage {
       if (user && !this.checkedWelcomeStatus) {
         this.userData = await this.userService.getUser(user.uid);
         this.userId = user.uid;
-        await this.checkAndSetWelcomeStatus();
+        await this.getNotifications();
       }
     });
   }
 
-  async checkAndSetWelcomeStatus() {
+  onItemSwipe(notificationId: string) {
+    console.log('Item deslizado!', notificationId);
+    this.deleteNotification(notificationId);
+  }
+
+  async deleteNotification(notificationId: string) {
+    const notificationRef = this.firestore.collection('userNotifications').doc(this.userId);
+
+    // Filtrar a notificação a ser removida com base no notificationId
+    this.notifications = this.notifications.filter(notification => notification.notificationId !== notificationId);
+
+    try {
+      await notificationRef.update({ notifications: this.notifications });
+      console.log('Notificação removida com sucesso do Firestore!');
+    } catch (error) {
+      console.error('Erro ao remover a notificação:', error);
+      // Tratar possíveis erros ou adicionar feedback para o usuário
+    }
+  }
+
+  async getNotifications() {
     const notificationRef = this.firestore.collection('userNotifications').doc(this.userId);
     const notificationDoc = await notificationRef.get().toPromise();
 
     if (notificationDoc.exists) {
-      const notificationData = notificationDoc.data() as { welcome: boolean } | undefined;
-
-      if (notificationData && typeof notificationData.welcome === 'boolean') {
-        if (notificationData.welcome) {
-          this.welcome = true; // Define 'welcome' como true para mostrar a notificação
-        }
-        this.checkedWelcomeStatus = true; // Define como true para evitar futuras verificações
+      const userData = notificationDoc.data() as { notifications: Notification[] } | undefined;
+      if (userData && userData.notifications) {
+        this.notifications = userData.notifications;
+        console.log(this.notifications)
       }
     }
   }
-
-  onItemSwipe(event: any) {
-    console.log('Item deslizado!', event);
-    this.deleteNotification();
-  }
-
-  async deleteNotification() {
-    const notificationRef = this.firestore.collection('userNotifications').doc(this.userId);
-    await notificationRef.update({ welcome: false });
-    this.welcome = false; // Atualiza localmente para evitar exibir a notificação
-  }
+  
 }
-
-
-

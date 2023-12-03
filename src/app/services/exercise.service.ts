@@ -131,6 +131,7 @@ export class ExerciseService {
 
   async resetExercise(exerciseId: string, listExercises: any[]) {
     const dataAtual = new Date().toISOString().split('T')[0];
+    console.log('Data atual:', dataAtual);
     const alert = await this.alertController.create({
       header: 'Confirmação',
       message: 'Deseja reiniciar o exercício?',

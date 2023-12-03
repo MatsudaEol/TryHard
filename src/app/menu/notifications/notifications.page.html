@@ -28,20 +28,23 @@
     </ion-card-header>
 
   </ion-card>
-<ion-list>
-  <ion-item-sliding *ngIf="welcome" (ionSwipe)="onItemSwipe($event)">
-    <ion-item color="darkgray">
-      <ion-card color="darkgray" class="not-card">
-        <ion-card-title class="not-title"> <ion-icon name="ellipse" color="trygreen"></ion-icon>Bem vindo <a class="clock">20:05</a></ion-card-title>
-        <ion-card-subtitle class="not-subtitle">Seja bem vindo a TryHard, sua jornada conosco começa aqui!</ion-card-subtitle>
-      </ion-card>
-    </ion-item>  
-    <ion-item-options>
-      <ion-item-option color="darkgray" >Deletar</ion-item-option>
-    </ion-item-options>
 
-  </ion-item-sliding>
-</ion-list>
+  <ion-list>
+    <ion-item-sliding *ngFor="let notification of notifications; let i = index" (ionSwipe)="onItemSwipe(notification.notificationId)">
+      <ion-item [class.no-top-border]="i !== 0" color="darkgray">
+        <ion-card [class.no-top-border]="i !== 0" color="darkgray" class="not-card">
+          <ion-card-title class="not-title">
+            <ion-icon name="ellipse" color="trygreen"></ion-icon>
+            {{ notification.title }} <a class="clock">{{ notification.time }}</a>
+          </ion-card-title>
+          <ion-card-subtitle class="not-subtitle">{{ notification.content }}</ion-card-subtitle>
+        </ion-card>
+      </ion-item>
+      <ion-item-options>
+        <ion-item-option color="darkgray" (click)="deleteNotification(notification)">Deletar</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 
 
 </ion-content>

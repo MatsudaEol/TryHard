@@ -111,6 +111,7 @@ export class SignUpPage implements OnInit {
           const userData = {
             username: username,
             email: email
+
           };
 
           await this.firestore.collection('users').doc(userId).set(userData);
@@ -122,8 +123,15 @@ export class SignUpPage implements OnInit {
           await this.firestore.collection('completedExercises').doc(userId).set(completedExercisesData);
 
           const notificationsData = {
+            notificationId: this.firestore.createId(),
+            notifications: [
+              {
+              "title": "Bem vindo",
+              "content": "Seja bem vindo a TryHard, sua jornada conosco começa aqui",
+              "type": "welcome",
+              }
+            ],
             username: username,
-            welcome: true
           };
           await this.firestore.collection('userNotifications').doc(userId).set(notificationsData);
 

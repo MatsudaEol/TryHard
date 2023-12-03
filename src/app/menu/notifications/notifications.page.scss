@@ -1,5 +1,5 @@
 ion-header ion-toolbar {
-    --background: #1C1C1E; 
+    --background: #1C1C1E;
 }
 
 ion-title {
@@ -24,10 +24,15 @@ ion-list{
 }
 .not-card {
     width: 100%;
-    border-top: 1px solid ; 
+    border-top: 1px solid ;
     border-bottom: 1px solid;
     border-color: #b3b3b3;
     border-radius: 0;
+    margin: 0 10px 0 10px;
+}
+
+.not-card.no-top-border {
+  border-top: none;
 }
 
 .not-title {
@@ -43,7 +48,7 @@ ion-list{
 }
 
 .clock {
-    float: right; 
+    float: right;
     color: #b3b3b3;
     font-size: 1rem;
     padding-right: 10px;
