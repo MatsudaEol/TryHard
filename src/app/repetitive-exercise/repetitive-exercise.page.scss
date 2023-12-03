@@ -7,11 +7,11 @@ ion-title {
     font-weight: 800;
     text-align: center;
     color: var(--ion-color-trygreen);
-    flex-direction: column; 
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    right: 0; 
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
     align-items: center;
     padding-top: 20px;
@@ -46,12 +46,119 @@ ion-card-subtitle {
   .exercise-button {
     width: 100%;
     max-width: 400px;
-    margin: 0 auto; 
-    font-size: 16px; 
-    font-weight: bold; 
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: bold;
     color: white;
-    border: none; 
-    padding: 10px 20px; 
-    transition: background-color 0.3s ease; 
+    border: none;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
   }
-  
+
+  ion-header ion-toolbar {
+    --background: #08080800;
+  }
+
+
+  ion-title {
+    font-size: 18px;
+    font-weight: 800;
+    text-align: center;
+    color: var(--ion-color-trygreen);
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    padding-top: 20px;
+  }
+
+  .controls {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 5px;
+  }
+
+  .botão {
+  height: 90px;
+  width: 100px;
+  border-radius: 40%;
+  }
+
+  ion-icon{
+  font-size: 2.7rem;
+  }
+
+  .container {
+  display: grid;
+  place-items: center;
+  width: auto;
+  height: 60%;
+  }
+
+  .cardio{
+    width: 200px;
+    height: auto;
+  }
+
+
+  .container2 {
+    margin: 10px auto; /* Adiciona margem nas laterais e centraliza o elemento */
+    display: grid;
+    place-items: initial;
+    border-radius: 20px;
+    background-color: #050d09b6;
+    max-width: 370px;
+    max-height: 250px; /* Aumenta a altura do container2 */
+    overflow-y: auto; /* Adiciona rolagem vertical apenas quando necessário */
+    overflow-x: hidden;
+   }
+
+   .container2::before {
+    content: "";
+    background: url('/assets/cardio.gif') center center no-repeat; /* Substitua 'caminho/do/seu/gif.gif' pelo caminho real do seu GIF */
+    background-size: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1; /* Coloca o fundo atrás do conteúdo do container */
+    border-radius: 20px;
+    filter: contrast(1); /* Mantém o mesmo raio de borda do container */
+  }
+
+   .timer {
+    font-family: fantasy;
+    font-size: 130px;
+    font-weight: 100;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, rgba(6, 43, 6, 0.601) rgba(61, 61, 61, 0));
+   }
+
+   ion-button {
+    background-color: var(--ion-color-trygreen);
+    font-size: 1.3rem;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    max-width: 75%;
+    border-radius: 30px;
+    overflow: hidden;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 30px;
+   }
+
+   ion-chip {
+    height: 55px;
+    font-size: 1.1rem;
+    border: none;
+    margin-bottom: 10px;
+    padding: 10px; /* Adiciona espaço abaixo dos chips */
+   }
+
+
