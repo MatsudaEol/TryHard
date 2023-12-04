@@ -62,15 +62,14 @@ export class NotificationsPage implements OnInit {
 
   async getNotifications() {
     const notificationRef = this.firestore.collection('userNotifications').doc(this.userId);
-    const notificationDoc = await notificationRef.get().toPromise();
 
-    if (notificationDoc.exists) {
-      const userData = notificationDoc.data() as { notifications: Notification[] } | undefined;
-      if (userData && userData.notifications) {
-        this.notifications = userData.notifications;
-        console.log(this.notifications)
+    notificationRef.valueChanges().subscribe((data: any) => {
+      if (data && data.notifications) {
+        this.notifications = data.notifications;
+        console.log(this.notifications);
       }
-    }
+    });
   }
-  
+
+
 }

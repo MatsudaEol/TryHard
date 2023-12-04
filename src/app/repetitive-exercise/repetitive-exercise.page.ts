@@ -146,7 +146,7 @@ export class RepetitiveExercisePage implements OnInit {
 
   async completeExercise() {
     if (!this.userId || !this.exerciseData) {
-      console.error('Dados de usuário ou exercício ausentes.');
+      console.error('Dados d  e usuário ou exercício ausentes.');
       return;
     }
 

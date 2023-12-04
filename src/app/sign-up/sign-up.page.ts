@@ -121,19 +121,25 @@ export class SignUpPage implements OnInit {
             username: username
           };
           await this.firestore.collection('completedExercises').doc(userId).set(completedExercisesData);
+          
+          const now = new Date();
+          const formattedTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
 
           const notificationsData = {
             notificationId: this.firestore.createId(),
             notifications: [
               {
-              "title": "Bem vindo",
-              "content": "Seja bem vindo a TryHard, sua jornada conosco começa aqui",
-              "type": "welcome",
+                title: "Bem vindo",
+                content: "Seja bem vindo a TryHard, sua jornada conosco começa aqui",
+                type: "welcome",
+                time: formattedTime, // Adicionando a propriedade de hora formatada
               }
             ],
             username: username,
           };
+
           await this.firestore.collection('userNotifications').doc(userId).set(notificationsData);
+
 
           const userExerciseData = {
             exercises: [

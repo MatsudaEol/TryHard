@@ -29,6 +29,10 @@
 
   </ion-card>
 
+  <div *ngIf="notifications.length === 0" class="no-notifications">
+    <p class="not-subtitle" style="padding: 16px; color: #b3b3b3;">Nenhuma notificação encontrada.</p>
+  </div>
+  
   <ion-list>
     <ion-item-sliding *ngFor="let notification of notifications; let i = index" (ionSwipe)="onItemSwipe(notification.notificationId)">
       <ion-item [class.no-top-border]="i !== 0" color="darkgray">

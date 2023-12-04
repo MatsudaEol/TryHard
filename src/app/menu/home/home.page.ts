@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PopoverController, AlertController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UserService } from 'src/app/services/user.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
 import { ExerciseService } from 'src/app/services/exercise.service';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +18,6 @@ export class HomePage implements OnInit {
   currentDay: string;
   clickedCards: { [key: number]: boolean } = {};
   formattedDate: string;
-  dataAtual: string;
 
 
   constructor(
@@ -30,8 +28,7 @@ export class HomePage implements OnInit {
     private router: Router,
     private exerciseService: ExerciseService,
     private alertCtrl: AlertController,
-    private firestore: AngularFirestore
-  ) {
+    private cdr: ChangeDetectorRef  ) {
     this.userData = {};
   }
 
@@ -43,17 +40,22 @@ export class HomePage implements OnInit {
         const today = new Date().getDay();
         this.currentDay = daysOfWeek[today];
 
-        const currentDate = new Date().toISOString().split('T')[0];
-        this.dataAtual = currentDate;
-
         this.loadUserExercises(user.uid);
-        this.exerciseService.loadCompletedExercises(user.uid, this.dataAtual, this.listExercises);
+        this.exerciseService.loadCompletedExercises(user.uid, this.dataAtual(), this.listExercises);
       }
       this.formattedDate = this.formatDate(new Date());
+      
     });
   }
 
+  dataAtual(): string {
+    const now = new Date();
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0'); // Mês começa do zero, por isso o +1
+    const year = String(now.getFullYear());
 
+    return `${year}-${month}-${day}`;
+  }
 
   formatDate(date: Date): string {
     const options: Intl.DateTimeFormatOptions = { weekday: 'long', day: 'numeric', month: 'long' };
@@ -69,7 +71,8 @@ export class HomePage implements OnInit {
   loadUserExercises(userId: string) {
     this.exerciseService.getExercises(userId).subscribe(exercicios => {
       this.listExercises = exercicios;
-      this.exerciseService.markCompletedExercises(userId, this.dataAtual, this.listExercises);
+      this.exerciseService.markCompletedExercises(userId, this.dataAtual(), this.listExercises);
+      this.cdr.detectChanges(); // Forçar detecção de mudanças
     });
   }
 

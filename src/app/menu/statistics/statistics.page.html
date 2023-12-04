@@ -1,3 +1,9 @@
+<ion-header>
+  <ion-toolbar color="darkgray2">
+    <ion-title>Estatísticas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content color="darkgray" class="content">
   <div class="progress">
     <circle-progress
@@ -15,9 +21,8 @@
     ></circle-progress>
   </div>
 
-  <ion-card color="darkgray">
-    <ion-text class="title">Exercícios de Hoje:</ion-text>
-    <ion-list *ngFor="let userExercise of listExercises;" class="list">
+    <ion-text class="title" *ngIf="listExercises.length && !areAllExercisesCompleted()">Exercícios de Hoje:</ion-text>
+    <div *ngFor="let userExercise of listExercises;" class="list">
       <ng-container *ngFor="let exercise of userExercise.exercises">
         <div *ngIf="!exercise.completed" class="item-container">
           <div>
@@ -34,11 +39,11 @@
           <ion-checkbox (ionChange)="completeExercise(exercise)" ></ion-checkbox>
         </div>
       </ng-container>
-    </ion-list>
+    </div>
     <!-- Treinos Concluidos -->
 
-    <ion-text class="title">Exercícios Concluidos:</ion-text>
-    <ion-list *ngFor="let userExercise of listExercises;" class="list">
+    <ion-text class="title" *ngIf="listExercises.length && !areAllExercisesInProgress()">Exercícios Concluidos:</ion-text>
+    <div *ngFor="let userExercise of listExercises;" class="list">
       <ng-container *ngFor="let exercise of userExercise.exercises">
         <div *ngIf="exercise.completed" class="item-container">
           <div>
@@ -55,6 +60,5 @@
           <ion-checkbox [checked]="true" (ionChange)="resetExercise(exercise.exerciseId)" class="fakecheck"></ion-checkbox>
         </div>
       </ng-container>
-    </ion-list>
-  </ion-card>
+    </div>
 </ion-content>

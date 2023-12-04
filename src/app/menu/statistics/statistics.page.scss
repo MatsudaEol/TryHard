@@ -1,3 +1,14 @@
+ion-header ion-toolbar {
+    --background: #1C1C1E;
+}
+
+ion-title {
+    font-size: 18px;
+    font-weight: 800;
+    text-align: center;
+    color: var(--ion-color-light);
+}
+
 .content {
   display: flex;
   justify-content: center;
@@ -15,6 +26,10 @@ ion-card {
 
 ion-list {
   background-color: var(--ion-color-darkgray);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .item-container {
@@ -22,30 +37,32 @@ ion-list {
   align-items: center;
   justify-content: space-between;
   height: 75px;
+  width: 90%;
   background-color: var(--ion-color-darkgray2);
   border-radius: 20px;
-  margin: 10px 0;
+  margin: 10px auto;
   padding: 0 15px;
 }
-
-
 
 .title {
   font-size: 18px;
   font-weight: bold;
+  margin-left: 5%;
 }
 
+.sutitle,
 .subtitle {
   font-size: 14px;
   font-weight: 300;
 }
+
 
 ion-checkbox {
   --size: 23px;
   --checkbox-background: var(--ion-color-darkgray);
   --checkbox-background-checked: var(--ion-color-trygreen);
   --checkmark-color: #3b3b3b;
-
+  bottom: 0px;
 }
 
 ion-checkbox::part(container) {

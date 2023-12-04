@@ -73,7 +73,7 @@ export class StatisticsPage {
       }
   }
 
-  
+
 
   updateSubtitle() {
     if (this.isPercentageComplete) {
@@ -140,4 +140,18 @@ export class StatisticsPage {
     console.error('Erro ao adicionar treino completo:', error);
   }
 }
+
+areAllExercisesCompleted(): boolean {
+  return this.listExercises.every(userExercise => {
+    return userExercise.exercises.every(exercise => exercise.completed);
+  });
+}
+
+// Método para verificar se todos os exercícios estão em andamento
+areAllExercisesInProgress(): boolean {
+  return this.listExercises.every(userExercise => {
+    return userExercise.exercises.every(exercise => !exercise.completed);
+  });
+}
+
 }

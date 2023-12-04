@@ -5,6 +5,8 @@ import { switchMap, map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +18,8 @@ export class ExerciseService {
     private alertController: AlertController,
     private router: Router
   ) {}
+
+  percent = 0;
 
   getExercises(userId: string) {
     return this.afs.collection('userExercises', (ref) => ref.where('userId', '==', userId)).valueChanges().pipe(
@@ -232,7 +236,6 @@ export class ExerciseService {
       return;
     }
 
-    const currentDate = new Date().toISOString().split('T')[0];
 
     try {
       const exerciseDetails = await this.afs.collection('userExercises')
@@ -258,12 +261,13 @@ export class ExerciseService {
           }
 
           await this.afs.collection('completedExercises').doc(userId).set({
-            [currentDate]: {
+            [this.dataAtual()]: {
               [exerciseData.exerciseId]: completedExerciseData,
             },
           }, { merge: true });
 
           console.log('Exercício completo adicionado à coleção completedExercises!');
+          await this.checkAndSendNotification(userId);
         } else {
           console.error('Detalhes do exercício não encontrados para o usuário.');
         }
@@ -303,13 +307,56 @@ export class ExerciseService {
         const completionPercentage = totalExercises > 0 ? (completedCount / totalExercises) * 100 : 0;
         const roundedPercentage = Math.round(completionPercentage); // Arredondando a porcentagem
 
-        console.log(`Porcentagem de exercícios completos: ${roundedPercentage}%`);
+        this.percent = roundedPercentage
 
+        console.log(`Porcentagem de exercícios completos (Round): ${this.percent}%`);
         return of(roundedPercentage);
       })
     );
   }
 
+  private async checkAndSendNotification(userId: string) {
+    if (this.percent === 100) {
+      this.sendNotification(userId);
+    }
+  }
+
+  sendNotification(userId: string) {
+    const notificationId = this.afs.createId();
+    const now = new Date();
+    const formattedTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+    const newNotification = {
+      time: formattedTime,
+      notificationId: notificationId,
+      title: "Parabéns",
+      content: "Você completou seu treino, tenha um bom descanso!"
+    };
+
+    this.afs.collection('userNotifications').doc(userId).get().subscribe((doc: any) => {
+      if (doc.exists) {
+        const notifications = doc.data().notifications || []; // Obter notificações existentes ou um array vazio
+
+        notifications.push(newNotification); // Adicionar a nova notificação ao array
+
+        this.afs.collection('userNotifications').doc(userId).update({ notifications: notifications })
+          .then(() => {
+            console.log('Notificação adicionada para o usuário', userId);
+          })
+          .catch((error: any) => {
+            console.error('Erro ao adicionar notificação:', error);
+          });
+      } else {
+        // Se o documento não existir, crie um novo com a notificação
+        this.afs.collection('userNotifications').doc(userId).set({ notifications: [newNotification] })
+          .then(() => {
+            console.log('Notificação criada para o usuário', userId);
+          })
+          .catch((error: any) => {
+            console.error('Erro ao criar notificação:', error);
+          });
+      }
+    });
+  }
 
 }
 
