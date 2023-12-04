@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { PopoverController, AlertController } from '@ionic/angular';
+import { PopoverController, AlertController, LoadingController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UserService } from 'src/app/services/user.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -18,7 +18,8 @@ export class HomePage implements OnInit {
   currentDay: string;
   clickedCards: { [key: number]: boolean } = {};
   formattedDate: string;
-
+  loading: HTMLIonLoadingElement;
+  exibir: boolean = false;
 
   constructor(
     private authService: AuthenticationService,
@@ -28,13 +29,16 @@ export class HomePage implements OnInit {
     private router: Router,
     private exerciseService: ExerciseService,
     private alertCtrl: AlertController,
-    private cdr: ChangeDetectorRef  ) {
+    private cdr: ChangeDetectorRef,
+    private loadingController: LoadingController
+    ) {
     this.userData = {};
   }
 
   async ngOnInit() {
     this.afAuth.authState.subscribe(async (user) => {
       if (user) {
+        await this.presentLoading();
         this.userData = await this.userService.getUser(user.uid);
         const daysOfWeek = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
         const today = new Date().getDay();
@@ -44,8 +48,23 @@ export class HomePage implements OnInit {
         this.exerciseService.loadCompletedExercises(user.uid, this.dataAtual(), this.listExercises);
       }
       this.formattedDate = this.formatDate(new Date());
-      
+      await this.dismissLoading();
+      this.exibir = true
     });
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingController.create({
+      message: 'Carregando...',
+      translucent: true,
+    });
+    await this.loading.present();
+  }
+
+  async dismissLoading() {
+    if (this.loading) {
+      await this.loading.dismiss();
+    }
   }
 
   dataAtual(): string {

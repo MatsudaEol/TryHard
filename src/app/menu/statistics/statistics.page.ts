@@ -2,7 +2,7 @@ import { ExerciseService } from 'src/app/services/exercise.service';
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UserService } from 'src/app/services/user.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-statistics',
@@ -17,25 +17,45 @@ export class StatisticsPage {
   subtitle: string = '';
   isPercentageComplete: boolean = false;
   isChecked: boolean = true;
+  loading: HTMLIonLoadingElement;
+  exibir: boolean = false;
 
   constructor(
     private exerciseService: ExerciseService,
     private afAuth: AngularFireAuth,
     private userService: UserService,
     private alertCtrl: AlertController,
-
+    private loadingController: LoadingController
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.presentLoading(); // Exibir o componente de loading
+
     this.afAuth.authState.subscribe(async (user) => {
       if (user) {
         this.userData = await this.userService.getUser(user.uid);
         this.userId = user.uid;
+        await this.loadUserExercises(user.uid);
+        await this.exerciseService.loadCompletedExercises(user.uid, this.dataAtual(), this.listExercises);
         this.calculatePercentage();
-        this.loadUserExercises(user.uid);
-        this.exerciseService.loadCompletedExercises(user.uid, this.dataAtual(), this.listExercises);
       }
+      await this.dismissLoading(); // Ocultar o componente de loading quando tudo estiver carregado
+      this.exibir = true; 
     });
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingController.create({
+      message: 'Carregando...',
+      translucent: true,
+    });
+    await this.loading.present();
+  }
+
+  async dismissLoading() {
+    if (this.loading) {
+      await this.loading.dismiss();
+    }
   }
 
   loadUserExercises(userId: string) {

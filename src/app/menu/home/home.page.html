@@ -1,4 +1,6 @@
+
 <ion-header class="ion-no-border">
+  <div *ngIf="exibir">
   <ion-toolbar class="center-content">
     <div class="header-content">
       <div class="text-content">
@@ -41,9 +43,11 @@
       </div>
     </div>
   </ion-toolbar>
+</div>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <div *ngIf="exibir">
   <div class="date-container">
     <ion-text class="today">Treino de Hoje</ion-text>
     <ion-text class="date">{{ formattedDate }}</ion-text>
@@ -79,4 +83,6 @@
   </div>
   </ng-container>
 </div>
+</div>
 </ion-content>
+
