@@ -18,23 +18,15 @@ ion-title {
 }
 
 
-
-ion-card img {
-    max-width: 100%; /* Define a largura máxima como 100% do container pai */
-    height: auto; /* Mantém a proporção original da imagem */
-  }
-
-ion-card {
-    height: auto;
-    --background: var(--ion-color-darkgray2);
+.title {
+  font-size: 19px;
+  font-weight: bold;
+  margin-left: 5%;
 }
-
-ion-card-title {
-    color: var(--ion-color-light);
-}
-
-ion-card-subtitle {
-    color: var(--ion-color-trygreen);
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .description {
@@ -92,44 +84,24 @@ ion-card-subtitle {
   font-size: 2.7rem;
   }
 
-  .container {
-  display: grid;
-  place-items: center;
-  width: auto;
-  height: 60%;
-  }
-
-  .cardio{
-    width: 200px;
-    height: auto;
-  }
-
-
   .container2 {
     margin: 10px auto; /* Adiciona margem nas laterais e centraliza o elemento */
     display: grid;
-    place-items: initial;
+    place-items: inherit;
     border-radius: 20px;
-    background-color: #050d09b6;
-    max-width: 370px;
-    max-height: 250px; /* Aumenta a altura do container2 */
+    background-color: #1a1b1bb6;
+    max-width: 350px;
+    max-height: auto; /* Aumenta a altura do container2 */
     overflow-y: auto; /* Adiciona rolagem vertical apenas quando necessário */
     overflow-x: hidden;
    }
 
-   .container2::before {
-    content: "";
-    background: url('/assets/cardio.gif') center center no-repeat; /* Substitua 'caminho/do/seu/gif.gif' pelo caminho real do seu GIF */
-    background-size: auto;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1; /* Coloca o fundo atrás do conteúdo do container */
-    border-radius: 20px;
-    filter: contrast(1); /* Mantém o mesmo raio de borda do container */
-  }
+   .container {
+    display: grid;
+    place-items: center;
+    width: auto;
+    height: 40%;
+    }
 
    .timer {
     font-family: fantasy;
@@ -153,6 +125,11 @@ ion-card-subtitle {
     margin-bottom: 30px;
    }
 
+   ion-item {
+    margin: 10px;
+    background-color: #1C1C1E;
+   }
+
    ion-chip {
     height: 55px;
     font-size: 1.1rem;
@@ -162,3 +139,58 @@ ion-card-subtitle {
    }
 
 
+   .checkbox-list {
+    padding: 5px; /* Adicione algum espaçamento interno */
+    background-color: #252525;
+    border-radius: 5px;
+    width: 300px;
+  }
+  .item-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 75px;
+    width: 90%;
+    background-color: var(--ion-color-darkgray2);
+    border-radius: 20px;
+    margin: 10px auto;
+    padding: 0 15px;
+  }
+
+
+  ion-checkbox {
+    display: block; /* Garante que cada checkbox apareça em uma nova linha */
+    margin-bottom: 10px; /* Espaçamento entre os checkboxes */
+    font-size: 1.2rem;
+    border-radius: 5px;
+  }
+
+  ion-checkbox {
+  --size: 23px;
+  --checkbox-background: var(--ion-color-darkgray);
+  --checkbox-background-checked: var(--ion-color-trygreen);
+  --checkmark-color: #3b3b3b;
+  bottom: 0px;
+}
+
+ion-checkbox::part(container) {
+  border-radius: 6px;
+  border: 2px solid var(--ion-color-trygreen);
+}
+
+
+.fakecheck {
+  --checkbox-background: var(--ion-color-trygreen) !important;
+}
+
+ion-text{
+  color:  var(--ion-color-trygreen);
+}
+
+ion-list {
+  background-color: var(--ion-color-darkgray);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

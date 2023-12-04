@@ -1,27 +1,52 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/home" class="flecha" color="trygreen"></ion-back-button>
+      <ion-back-button
+        defaultHref="/tabs/home"
+        class="flecha"
+        color="trygreen"
+      ></ion-back-button>
     </ion-buttons>
-    <ion-title class="ion-text-center" color="trygreen"> {{ exerciseData?.name }}</ion-title>
+    <ion-title class="ion-text-center" color="trygreen"
+      >{{ exerciseData?.name }}</ion-title
+    >
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" color="darkgray2">
   <div class="container">
-    <div class="repetition-counter" [style.color]="breakTimerColor"> Repetições: {{ exerciseData?.repetitionCount }} / {{ exerciseData?.targetRepetitions }}
-    </div>
-    <div class="controls">
-      <ion-button (click)="startTimer()" [disabled]="exerciseData?.isRunning" color="button" class="botão"><ion-icon name="play"></ion-icon></ion-button>
-      <ion-button (click)="pauseTimer()" [disabled]="!exerciseData?.isRunning" color="button" class="botão"><ion-icon name="pause-outline"></ion-icon></ion-button>
-      <ion-button (click)="incrementRepetition()" [disabled]="!exerciseData?.isRunning" color="button" class="botão"><ion-icon name="add"></ion-icon></ion-button>
-    </div>
+  <div class="timer" [style.color]="breakTimerColor"> {{ displayTime }} </div>
+  <ion-button  color="trygreen">Iniciar Descanso</ion-button>
   </div>
-
-  <div class="container2">
-    <!-- Adicione aqui o conteúdo referente aos exercícios -->
-    <!-- Exemplo: <ion-chip color="trygreen">1 - Flexões</ion-chip> -->
-  </div>
+  <ion-text class="title">Séries a fazer:</ion-text>
+    <div class="list">
+      <div class="container2">
+        <div class="item-container">
+            <ion-text class="title">Primeira série de 12x</ion-text>
+            <div>
+          </div>
+          <ion-checkbox></ion-checkbox>
+        </div>
+        <div class="item-container">
+            <ion-text class="title">Segunda série de 12x</ion-text>
+            <div>
+          </div>
+          <ion-checkbox></ion-checkbox>
+        </div>
+        <div class="item-container">
+            <ion-text class="title">Terceira série de 12x</ion-text>
+            <div>
+          </div>
+          <ion-checkbox></ion-checkbox>
+        </div>
+      </div>
+    </div>
 </ion-content>
 
-<ion-button color="trygreen" style="--border-radius:10px" (click)="completeExercise()" routerLink="/tabs/home">Finalizar Treino</ion-button>
+<ion-button
+  color="trygreen"
+  style="--border-radius: 10px"
+  (click)="completeExercise()"
+  routerLink="/tabs/home"
+  >Finalizar Treino</ion-button
+>
