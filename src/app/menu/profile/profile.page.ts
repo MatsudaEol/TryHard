@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component  } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, AlertController } from '@ionic/angular';
 import { User } from 'firebase/auth';
 import { UserService } from 'src/app/services/user.service';
 
@@ -22,7 +22,69 @@ export class ProfilePage {
   peso: number;
   imcResultado: number;
   classificacao: string;
+  public actionSheetButtons = [
+    {
+      text: 'Altura',
+      role: 'destructive',
+      handler: () => {
+        this.showInput('altura');
+      },
+    },
+    {
+      text: 'Peso',
+      handler: () => {
+        this.showInput('peso');
+      },
+    },
+    {
+      text: 'Sair',
+      role: 'cancel',
+      handler: () => {
+        this.performAction('cancel');
+      },
+    },
+  ];
 
+
+  async showInput(type: string) {
+    const alert = await this.alertController.create({
+      header: (type === 'peso' ? 'Informe seu ' : 'Informe sua ') + type,
+      inputs: [
+        {
+          name: type,
+          type: 'number',
+          placeholder: (type === 'peso' ? 'Digite seu ' : 'Digite sua ') + type,
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Ok',
+          handler: (data) => {
+            this.performAction(type, data[type]);
+          },
+        },
+      ],
+    });
+    await alert.present();
+  }
+
+
+
+  performAction(action: string, value?: number) {
+    if (action === 'altura') {
+      this.altura = value;
+    } else if (action === 'peso') {
+      this.peso = value;
+      this.calcularIMC();
+      this.showIMCResult();
+    } else {
+      // Lógica para outras ações, se necessário
+    }
+  }
   // Simule dados de treinos concluídos
   treinosConcluidos = [
     { dia: 1 },
@@ -34,7 +96,8 @@ export class ProfilePage {
   constructor(
     private afAuth: AngularFireAuth,
     private userService: UserService,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    private alertController: AlertController
   ) {
     this.userData = {};
     this.loadUserData();
@@ -90,6 +153,19 @@ export class ProfilePage {
     }
   }
 
+  async showIMCResult() {
+    const formattedIMC = this.formatarNumero(this.imcResultado);
+    const classification = this.classificacao;
+
+    const alert = await this.alertController.create({
+      header: 'Resultado do IMC',
+      message: `Seu IMC é ${formattedIMC} (${classification}).`,
+      buttons: ['OK'],
+    });
+
+    await alert.present();
+  }
+
   formatarNumero(numero: number): string {
     return numero.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
@@ -120,3 +196,4 @@ export class ProfilePage {
     return `${day}/${month}/${year}`;
   }
 }
+

@@ -50,22 +50,23 @@
 
     <ion-item class="button-container" color="darkgray2">
       <ion-badge class="menu-button" slot="start">
-        <ion-icon name="build-outline" class="icon" color="trygreen"></ion-icon>
+        <ion-icon name="calculator" color="trygreen" class="calc"></ion-icon>
       </ion-badge>
-      <ion-text class="button-text">
-        Configurações
+      <ion-text class="button-text" id="open-action-sheet">
+        Calcular IMC
       </ion-text>
-      <ion-badge class="menu-button2">
-        <ion-icon name="chevron-forward-outline" class="icon2"></ion-icon>
+      <ion-action-sheet trigger="open-action-sheet" class="my-custom-class" header="Calcular IMC" [buttons]="actionSheetButtons" ></ion-action-sheet>
+      <ion-badge class="menu-button2" id="open-action-sheet">
+        <ion-icon name="chevron-forward-outline" class="icon2"  ></ion-icon>
       </ion-badge>
     </ion-item>
 
     <ion-item class="button-container" color="darkgray2">
       <ion-badge class="menu-button" slot="start">
-        <ion-icon name="build-outline" class="icon" color="trygreen"></ion-icon>
+        <ion-icon name="information-circle" class="info" color="trygreen"></ion-icon>
       </ion-badge>
       <ion-text class="button-text">
-        Configurações
+        Informações 
       </ion-text>
       <ion-badge class="menu-button2">
         <ion-icon name="chevron-forward-outline" class="icon2"></ion-icon>

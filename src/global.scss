@@ -61,3 +61,33 @@ mwl-gauge > .gauge > .value-text {
   font-size: 1em;
 }
 
+ion-action-sheet.my-custom-class .action-sheet-group {
+  background: #0f1311;
+}
+
+ion-action-sheet.my-custom-class .action-sheet-title {
+  color: #1e975b;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+ion-action-sheet.my-custom-class .action-sheet-cancel::after {
+  background: #e97223;
+}
+
+ion-action-sheet.my-custom-class .action-sheet-button,
+ion-action-sheet.my-custom-class .action-sheet-button.ion-focused {
+  color: #1e975b;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+@media (any-hover: hover) {
+  ion-action-sheet.my-custom-class .action-sheet-button:hover {
+    color: #12e67c;
+  }
+}
+
+ion-action-sheet.my-custom-class ion-backdrop {
+  opacity: 0.6;
+}

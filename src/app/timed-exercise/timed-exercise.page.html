@@ -1,34 +1,67 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/home" class="flecha" color="trygreen"></ion-back-button>
+      <ion-back-button
+        defaultHref="/tabs/home"
+        class="flecha"
+        color="trygreen"
+      ></ion-back-button>
     </ion-buttons>
-      <ion-title class="ion-text-center" color="trygreen"> {{ exerciseData?.name }}</ion-title>
+    <ion-title class="ion-text-center" color="trygreen">
+      {{ exerciseData?.name }}</ion-title
+    >
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" color="darkgray2">
   <div class="container">
-    <div class="timer" [style.color]="breakTimerColor"> {{ displayTime }}
-  <div class="controls">
-    <ion-button (click)="startTimer()" [disabled]="isRunning" color="button" class="botão"><ion-icon name="play"></ion-icon></ion-button>
-    <ion-button (click)="pauseTimer()" [disabled]="!isRunning" color="button" class="botão"><ion-icon name="pause-outline"></ion-icon></ion-button>
+    <div class="timer" [style.color]="breakTimerColor">
+      {{ displayTime }}
+      <div class="controls">
+        <ion-button
+          (click)="startTimer()"
+          [disabled]="isRunning"
+          color="trygreen"
+          class="botão"
+          ><ion-icon name="play"></ion-icon
+        ></ion-button>
+        <ion-button
+          (click)="pauseTimer()"
+          [disabled]="!isRunning"
+          color="button"
+          class="botão"
+          ><ion-icon name="pause-outline"></ion-icon
+        ></ion-button>
+      </div>
+    </div>
   </div>
-</div>
-</div>
   <div class="container2">
-    <ion-chip color="trygreen">1 - Aquecimento</ion-chip>
-    <ion-chip color="trygreen">2 - 5 min corrida leve</ion-chip>
-    <ion-chip color="trygreen">3 - Queima: 75-100 cal</ion-chip>
+    <ion-title></ion-title>
+    <ion-chip color="trygreen">
+      Aquecimento
+      <ion-checkbox color="trygreen"></ion-checkbox>
+    </ion-chip>
+    <ion-chip color="trygreen">
+      5 min corrida leve <ion-checkbox color="trygreen"></ion-checkbox
+    ></ion-chip>
 
-    <ion-chip color="trygreen">4 - 5 min corrida moderada</ion-chip>
-    <ion-chip color="trygreen">5 - Queima: 100-150 cal</ion-chip>
+    <ion-chip color="trygreen">
+      5 min corrida moderada <ion-checkbox color="trygreen"></ion-checkbox
+    ></ion-chip>
 
-    <ion-chip color="trygreen">6 - 5 min corrida intensa</ion-chip>
-    <ion-chip color="trygreen">7 - Queima: 150-200 cal</ion-chip>
+    <ion-chip color="trygreen"
+      >5 min corrida intensa <ion-checkbox color="trygreen"></ion-checkbox
+    ></ion-chip>
 
-    <ion-chip color="trygreen">8 - Resfriamento e alongamento</ion-chip>
-
+    <ion-chip color="trygreen"
+      >Resfriamento e alongamento <ion-checkbox color="trygreen"></ion-checkbox
+    ></ion-chip>
   </div>
 </ion-content>
-<ion-button color="trygreen" style="--border-radius:10px" (click)="completeExercise()" routerLink="/tabs/home">Finalizar Treino</ion-button>
+<ion-button
+  color="trygreen"
+  style="--border-radius: 10px"
+  (click)="completeExercise()"
+  routerLink="/tabs/home"
+  >Finalizar Treino</ion-button
+>

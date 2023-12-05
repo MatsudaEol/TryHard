@@ -60,6 +60,15 @@ height: 60%;
   overflow-x: hidden;
  }
 
+ ion-checkbox
+ {
+  --size: 23px;
+  --checkbox-background: var(--ion-color-darkgray);
+  --checkbox-background-checked: var(--ion-color-trygreen);
+  --checkmark-color: #3b3b3b;
+  bottom: 0px;
+ }
+
  .container2::before {
   content: "";
   background: url('/assets/cardio.gif') center center no-repeat; /* Substitua 'caminho/do/seu/gif.gif' pelo caminho real do seu GIF */
@@ -75,8 +84,8 @@ height: 60%;
 }
 
  .timer {
-  font-family: fantasy;
-  font-size: 130px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 140px;
   font-weight: 100;
   border-radius: 10px;
   background: linear-gradient(to bottom, rgba(6, 43, 6, 0.601) rgba(61, 61, 61, 0));
