@@ -35,27 +35,31 @@
       </div>
     </div>
   </div>
+  <div class="lista-concluida">
+    <ion-text class="listconc" color="trygreen">
+      Lista concluída? <ion-checkbox [(ngModel)]="listaConcluida" (ionChange)="onCheckboxChange()"></ion-checkbox>
+    </ion-text>
+  </div>
   <div class="container2">
-    <ion-title></ion-title>
     <ion-chip color="trygreen">
       Aquecimento
-      <ion-checkbox color="trygreen"></ion-checkbox>
+
     </ion-chip>
     <ion-chip color="trygreen">
-      5 min corrida leve <ion-checkbox color="trygreen"></ion-checkbox
-    ></ion-chip>
+      5 min corrida leve
+    </ion-chip>
 
     <ion-chip color="trygreen">
-      5 min corrida moderada <ion-checkbox color="trygreen"></ion-checkbox
-    ></ion-chip>
+      5 min corrida moderada
+    </ion-chip>
 
     <ion-chip color="trygreen"
-      >5 min corrida intensa <ion-checkbox color="trygreen"></ion-checkbox
-    ></ion-chip>
+      >5 min corrida intensa
+    </ion-chip>
 
     <ion-chip color="trygreen"
-      >Resfriamento e alongamento <ion-checkbox color="trygreen"></ion-checkbox
-    ></ion-chip>
+      >Resfriamento e alongamento
+    </ion-chip>
   </div>
 </ion-content>
 <ion-button
@@ -63,5 +67,6 @@
   style="--border-radius: 10px"
   (click)="completeExercise()"
   routerLink="/tabs/home"
+  [disabled]="!listaConcluida"
   >Finalizar Treino</ion-button
 >

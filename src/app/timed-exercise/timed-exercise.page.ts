@@ -30,6 +30,7 @@ export class TimedExercisePage implements OnInit {
   originalTimerColor = 'rgba(251, 251, 251, 0.992)';
   breakTimerColor = this.originalTimerColor;
   userId: string | null = null;
+  listaConcluida: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -51,7 +52,8 @@ export class TimedExercisePage implements OnInit {
         // Obtém os detalhes do exercício do serviço de exercícios
         this.exerciseService.getExerciseDetails(this.userId, exerciseId).subscribe((exerciseData) => {
           this.exerciseData = exerciseData;
-          // Nota: Inserir um serviço de gerenciamento de estado
+          this.listaConcluida = exerciseData?.listaConcluida || false;
+
         });
       }
     });
@@ -138,6 +140,11 @@ export class TimedExercisePage implements OnInit {
     clearInterval(this.breakInterval);
     this.startTimer();
     this.breakTimerColor = this.originalTimerColor; // Retorna ao timer principal após o descanso
+  }
+
+  onCheckboxChange() {
+    // Atualiza o estado da checkbox e verifica se o botão deve ser ativado ou desativado
+    this.listaConcluida = !this.listaConcluida;
   }
 
   // Função a ser implementada para registrar o término do exercício

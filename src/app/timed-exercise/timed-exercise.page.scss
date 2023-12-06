@@ -55,18 +55,18 @@ height: 60%;
   border-radius: 20px;
   background-color: #050d09b6;
   max-width: 370px;
-  max-height: 250px; /* Aumenta a altura do container2 */
+  max-height: 230px; /* Aumenta a altura do container2 */
   overflow-y: auto; /* Adiciona rolagem vertical apenas quando necessário */
   overflow-x: hidden;
  }
 
  ion-checkbox
  {
-  --size: 23px;
+  --size: 26px;
   --checkbox-background: var(--ion-color-darkgray);
   --checkbox-background-checked: var(--ion-color-trygreen);
   --checkmark-color: #3b3b3b;
-  bottom: 0px;
+  vertical-align: middle;
  }
 
  .container2::before {
@@ -114,3 +114,12 @@ height: 60%;
  }
 
 
+.lista-concluida
+ {
+  padding-left: 30px;
+ }
+
+ .listconc
+ {
+  font-size: 1.3rem;
+ }

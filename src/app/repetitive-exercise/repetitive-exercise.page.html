@@ -16,7 +16,7 @@
 <ion-content [fullscreen]="true" color="darkgray2">
   <div class="container">
   <div class="timer" [style.color]="breakTimerColor"> {{ displayTime }} </div>
-  <ion-button  color="trygreen">Iniciar Descanso</ion-button>
+  <ion-button  color="trygreen" (click)="startBreakTimer()">Iniciar Descanso</ion-button>
   </div>
   <ion-text class="title">Séries a fazer:</ion-text>
     <div class="list">
