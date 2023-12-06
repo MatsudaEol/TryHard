@@ -142,9 +142,12 @@ export class TimedExercisePage implements OnInit {
     this.breakTimerColor = this.originalTimerColor; // Retorna ao timer principal após o descanso
   }
 
-  onCheckboxChange() {
-    // Atualiza o estado da checkbox e verifica se o botão deve ser ativado ou desativado
-    this.listaConcluida = !this.listaConcluida;
+  finalizar() {
+    if (this.listaConcluida === false) {
+    this.listaConcluida = true;
+    } else {
+      this.listaConcluida = false;
+    }
   }
 
   // Função a ser implementada para registrar o término do exercício

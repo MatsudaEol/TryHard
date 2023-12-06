@@ -37,7 +37,7 @@
   </div>
   <div class="lista-concluida">
     <ion-text class="listconc" color="trygreen">
-      Lista concluída? <ion-checkbox [(ngModel)]="listaConcluida" (ionChange)="onCheckboxChange()"></ion-checkbox>
+      Lista concluída? <ion-checkbox (click)="finalizar()"></ion-checkbox>
     </ion-text>
   </div>
   <div class="container2">
@@ -63,10 +63,12 @@
   </div>
 </ion-content>
 <ion-button
+  id="completeButton"
   color="trygreen"
   style="--border-radius: 10px"
   (click)="completeExercise()"
   routerLink="/tabs/home"
   [disabled]="!listaConcluida"
-  >Finalizar Treino</ion-button
 >
+  Finalizar Treino
+</ion-button>
